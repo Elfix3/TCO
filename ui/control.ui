@@ -1,0 +1,2862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CONTROL</class>
+ <widget class="QMainWindow" name="CONTROL">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1547</width>
+    <height>967</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="AlimTAB">
+       <attribute name="title">
+        <string>Alimentation</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="1">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Policy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0" rowspan="3">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_21">
+           <item row="9" column="1">
+            <widget class="QFrame" name="frame_9">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_25">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>Zone 7B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_27">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QFrame" name="frame_5">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_7">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_13">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Zone 3A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QRadioButton" name="radioButton_15">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QFrame" name="frame_6">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_8">
+              <item row="0" column="3">
+               <widget class="QRadioButton" name="radioButton_16">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Zone 5A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_18">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QFrame" name="frame_2">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_6">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QRadioButton" name="radioButton_4">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Zone 1B</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>100</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="5" column="1">
+            <widget class="QFrame" name="frame_8">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_10">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_22">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_24">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_10">
+                <property name="text">
+                 <string>Zone 3B</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="QFrame" name="frame_16">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_18">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>Zone 13B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_48">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_46">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QFrame" name="frame_7">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_9">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Zone 5B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_21">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_19">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QFrame" name="frame_11">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_13">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_31">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_33">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_13">
+                <property name="text">
+                 <string>Zone 9A</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="QFrame" name="frame_15">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_17">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_43">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_17">
+                <property name="text">
+                 <string>Zone 13A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_45">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="16" column="1">
+            <widget class="QFrame" name="frame_18">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_20">
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_54">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_52">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_20">
+                <property name="text">
+                 <string>Zone 15A</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QFrame" name="frame_13">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_15">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Zone 11A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_39">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_37">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QFrame" name="frame_10">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_12">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>Zone 9B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_30">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_28">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QFrame" name="frame">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Zone 1A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_2">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QFrame" name="frame_14">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_16">
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_42">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_16">
+                <property name="text">
+                 <string>Zone 11B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QRadioButton" name="radioButton_40">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="17" column="1">
+            <widget class="QFrame" name="frame_17">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_19">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_49">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_51">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_19">
+                <property name="text">
+                 <string>Zone 15B</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label">
+             <property name="font">
+              <font>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Alimentation circuit de voie 1 :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QFrame" name="frame_12">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_14">
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_36">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_34">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>Zone 7A</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>100</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_35">
+           <item row="14" column="1">
+            <widget class="QFrame" name="frame_28">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_31">
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_84">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_82">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_31">
+                <property name="text">
+                 <string>Zone  12A</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QFrame" name="frame_29">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_32">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_32">
+                <property name="text">
+                 <string>Zone  10B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_87">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_85">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_22">
+             <property name="font">
+              <font>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Alimentation circuit de voie 2 :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" rowspan="2">
+            <widget class="QFrame" name="frame_20">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_23">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_58">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_60">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_23">
+                <property name="text">
+                 <string>Zone 2B </string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QFrame" name="frame_19">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_22">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_55">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_21">
+                <property name="text">
+                 <string>Zone 2A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_57">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QFrame" name="frame_24">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_27">
+              <item row="1" column="1">
+               <widget class="QRadioButton" name="radioButton_72">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_27">
+                <property name="text">
+                 <string>Zone  6B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QRadioButton" name="radioButton_70">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QFrame" name="frame_23">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_26">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_26">
+                <property name="text">
+                 <string>Zone  8A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_69">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_67">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="16" column="1">
+            <widget class="QFrame" name="frame_30">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_33">
+              <item row="0" column="3">
+               <widget class="QRadioButton" name="radioButton_88">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="label_33">
+                <property name="text">
+                 <string>Zone  4B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_90">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QFrame" name="frame_25">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_28">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_28">
+                <property name="text">
+                 <string>Zone  6A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_75">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_73">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QFrame" name="frame_22">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_25">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_25">
+                <property name="text">
+                 <string>Zone  4B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_64">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_66">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QFrame" name="frame_31">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_34">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_34">
+                <property name="text">
+                 <string>Zone  10A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_93">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_91">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="4" column="1" rowspan="2">
+            <widget class="QFrame" name="frame_21">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_24">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_61">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_24">
+                <property name="text">
+                 <string>Zone 4A</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_63">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QFrame" name="frame_26">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_29">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_76">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_29">
+                <property name="text">
+                 <string>Zone  8B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_78">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="QFrame" name="frame_27">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_30">
+              <item row="0" column="2">
+               <widget class="QRadioButton" name="radioButton_79">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_30">
+                <property name="text">
+                 <string>Zone  12B</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="radioButton_81">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>100</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="10" column="2">
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>100</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QGroupBox" name="Special">
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_37">
+           <item row="0" column="0">
+            <widget class="QFrame" name="frame_32">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_36">
+              <item row="0" column="3" colspan="2">
+               <widget class="QLabel" name="label_36">
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Activer signalisation</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QRadioButton" name="radioButton_5">
+                <property name="text">
+                 <string>Non</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="pushButton">
+                <property name="text">
+                 <string>On</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_35">
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Tous :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QRadioButton" name="radioButton_3">
+                <property name="text">
+                 <string>Oui</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Policy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>60</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="SignauxTAB">
+       <attribute name="title">
+        <string>Signaux</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_38">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="SensNormalbox">
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_43">
+           <item row="11" column="3">
+            <widget class="QFrame" name="frame_63">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_74">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_75">
+                <property name="text">
+                 <string>Signal 29</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_33">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="16" column="1">
+            <widget class="QFrame" name="frame_47">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_58">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_59">
+                <property name="text">
+                 <string>Signal 6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_17">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="3">
+            <widget class="QFrame" name="frame_33">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_39">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_37">
+                <property name="font">
+                 <font>
+                  <pointsize>15</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Voie 1</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="7" column="1" rowspan="2">
+            <widget class="QFrame" name="frame_43">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_49">
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_7">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_49">
+                <property name="text">
+                 <string>Signal 9</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="QFrame" name="frame_46">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_57">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_58">
+                <property name="text">
+                 <string>Signal 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_16">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="17" column="1">
+            <widget class="QFrame" name="frame_48">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_59">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_60">
+                <property name="text">
+                 <string>Signal 8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_18">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="7" column="3">
+            <widget class="QFrame" name="frame_61">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_72">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_73">
+                <property name="text">
+                 <string>Signal 25</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_31">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="18" column="3">
+            <widget class="QFrame" name="frame_55">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_66">
+              <item row="0" column="1">
+               <widget class="QLabel" name="label_67">
+                <property name="text">
+                 <string>Signal 22</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QComboBox" name="comboBox_25">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QLabel" name="label_38">
+             <property name="font">
+              <font>
+               <pointsize>18</pointsize>
+               <italic>false</italic>
+               <bold>true</bold>
+               <underline>false</underline>
+              </font>
+             </property>
+             <property name="text">
+              <string>IPCS :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1" colspan="3">
+            <widget class="QFrame" name="voie2">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame#voie2 {
+    border: 2px solid #4A6FA5;
+    border-radius: 4px;
+    padding: 2px; /* Espace intérieur préservé */
+}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_40">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_40">
+                <property name="font">
+                 <font>
+                  <pointsize>15</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Voie 2</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="QFrame" name="frame_49">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_60">
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_19">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_61">
+                <property name="text">
+                 <string>Signal 4</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="16" column="3">
+            <widget class="QFrame" name="frame_57">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_68">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_69">
+                <property name="text">
+                 <string>Signal 18</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_27">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QFrame" name="frame_52">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_63">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_64">
+                <property name="text">
+                 <string>Signal 15</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_22">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="18" column="1">
+            <widget class="QFrame" name="frame_50">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_61">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_62">
+                <property name="text">
+                 <string>Signal 10</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_20">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <spacer name="horizontalSpacer_8">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>200</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="3" column="3">
+            <widget class="QFrame" name="frame_53">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_64">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_65">
+                <property name="text">
+                 <string>Signal 19</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_23">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QFrame" name="frame_42">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QLabel" name="label_48">
+                <property name="text">
+                 <string>Signal 3</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_6">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="19" column="3">
+            <widget class="QFrame" name="frame_65">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_76">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_77">
+                <property name="text">
+                 <string>Signal 24</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_35">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="12" column="2">
+            <spacer name="horizontalSpacer_7">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>200</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="9" column="1" rowspan="2">
+            <widget class="QFrame" name="frame_40">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_46">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_46">
+                <property name="text">
+                 <string>Signal 11</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_4">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_39">
+             <property name="font">
+              <font>
+               <pointsize>18</pointsize>
+               <italic>false</italic>
+               <bold>true</bold>
+               <underline>false</underline>
+              </font>
+             </property>
+             <property name="text">
+              <string>Sens Normal</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="3">
+            <widget class="QFrame" name="frame_62">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_73">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_74">
+                <property name="text">
+                 <string>Signal 27</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_32">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QFrame" name="frame_38">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_44">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_44">
+                <property name="text">
+                 <string>Signal 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_2">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="19" column="1">
+            <widget class="QFrame" name="frame_45">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_50">
+              <item row="0" column="2">
+               <widget class="QComboBox" name="comboBox_9">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="label_51">
+                <property name="text">
+                 <string>Signal 12</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="17" column="3">
+            <widget class="QFrame" name="frame_56">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_67">
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_68">
+                <property name="text">
+                 <string>Signal 20</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="comboBox_26">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="12" column="3">
+            <widget class="QFrame" name="frame_59">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_70">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_71">
+                <property name="text">
+                 <string>Signal 31</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_29">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <widget class="QFrame" name="frame_60">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_71">
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_30">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_72">
+                <property name="text">
+                 <string>Signal 21</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="5" column="3">
+            <widget class="QFrame" name="frame_54">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_65">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_66">
+                <property name="text">
+                 <string>Signal 23</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_24">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="15" column="3">
+            <widget class="QFrame" name="frame_64">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_75">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_76">
+                <property name="text">
+                 <string>Signal 16</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_34">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QFrame" name="frame_51">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_62">
+              <item row="0" column="1">
+               <widget class="QLabel" name="label_63">
+                <property name="text">
+                 <string>Signal 17</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QComboBox" name="comboBox_21">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QFrame" name="frame_44">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_48">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_50">
+                <property name="text">
+                 <string>Signal 13</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_8">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="5" column="1" rowspan="2">
+            <widget class="QFrame" name="frame_39">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_45">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_45">
+                <property name="text">
+                 <string>Signal 7</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_3">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QFrame" name="frame_41">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_47">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_47">
+                <property name="text">
+                 <string>Signal 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_5">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="14" column="3">
+            <widget class="QFrame" name="frame_58">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_69">
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBox_28">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_70">
+                <property name="text">
+                 <string>Signal 14</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="12" column="4">
+            <spacer name="horizontalSpacer_9">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>200</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="AiguillesTAB">
+       <attribute name="title">
+        <string>Aiguilles</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

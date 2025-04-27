@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GUI</class>
+ <widget class="QMainWindow" name="GUI">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1440</width>
+    <height>810</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1440</width>
+    <height>810</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1440</width>
+    <height>810</height>
+   </size>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#GUI {
+    border-image: url(:/images/background.png) 0;
+    border-width: 0;
+    margin: 0;
+
+    background: url(:/images/background.png) center/contain no-repeat;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1440</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuAfficher">
+    <property name="title">
+     <string>Afficher</string>
+    </property>
+    <addaction name="actionIPCS"/>
+    <addaction name="actionCirculation"/>
+    <addaction name="actionZones"/>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuAfficher"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionActives">
+   <property name="text">
+    <string>Actives</string>
+   </property>
+  </action>
+  <action name="actionIPCS">
+   <property name="text">
+    <string>Signaux</string>
+   </property>
+  </action>
+  <action name="actionCirculation">
+   <property name="text">
+    <string>Circulation</string>
+   </property>
+  </action>
+  <action name="actionAiguilles_2">
+   <property name="text">
+    <string>Aiguilles</string>
+   </property>
+  </action>
+  <action name="actionZones">
+   <property name="text">
+    <string>Zones</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
