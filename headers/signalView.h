@@ -18,7 +18,7 @@ struct Bulb {
 //color palette
 #define GRAY            0x808080
 #define OFF             0x400b06
-#define YELLOW          0xFFFF00
+#define YELLOW          0xCC9900
 #define RED             0xFF0000
 #define GREEN           0x00FF00
 #define WHITE           0xFFFFFF
@@ -63,5 +63,15 @@ class SignalView : public QWidget{
         const int SAVLR_height = 71;
         const int CSAVLRRR_width = 51;
         const int CSAVLRRR_height = 91;
+
+        const int SAVL_IPCS_width =91;
+        const int SAVL_IPCS_height =91;
+        const int SAVLR_IPCS_width = 121;
+        const int SAVLR_IPCS_height = 71;
+        const int CSAVLRRR_IPCS_width = 131;
+        const int CSAVLRRR_IPCS_height = 91;
+
+        bool border = false;
+
 };
 #endif //SIGNALVIEW_H

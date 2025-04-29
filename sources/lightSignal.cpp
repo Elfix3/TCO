@@ -1,14 +1,18 @@
 #include "lightSignal.h"
 
 LightSignal::LightSignal(int id, SignalType type, QObject *parent)
- :QObject(parent), id(id), type(type), currentAspect(IDLE){
-    qDebug() <<"Signal" << id << "created";
+ :QObject(parent), id(id), type(type), currentAspect(IDLE), isIPCS(false){
+     if(id>15){
+         isIPCS = true;
+        }
+    //qDebug() <<"Signal" << id << "created" << (isIPCS ? "in IPCS" :"");
 }
 
 LightSignal::~LightSignal(){
     delete this;
 }
 
+//infos for debug purposes
 void LightSignal::info(){
     if(this!=nullptr){
         
@@ -41,12 +45,14 @@ SignalType LightSignal::getType(){
 Aspect LightSignal::getAspect(){
     return currentAspect;
 }
-
-LightSignal *LightSignal::getPrevious(){
+const LightSignal *LightSignal::getPrevious(){
     return previousSignal;
 }
-LightSignal *LightSignal::getNext(){
+const LightSignal *LightSignal::getNext(){
     return nextSignal;
+}
+bool LightSignal::getisIPCS(){
+    return isIPCS;
 }
 
 //Setters

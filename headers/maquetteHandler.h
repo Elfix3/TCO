@@ -3,7 +3,7 @@
 
 //file includes
 #include "lightSignal.h"
-//#include "aiguilles.h"
+#include "aiguille.h"
 
 //Qt includes
 #include <QObject>
@@ -18,21 +18,28 @@ class MaquetteHandler : public QObject {
         QMap<int,LightSignal*> getAllSignals();
 
         
-        //
-        void INIT_VL();
-        
         void processCommand(QString command);
         
         signals:
             void sendCommand(const QString &command);
         
         private:
-            QMap <int,LightSignal*> lightSignals;
-            
+            QMap <int,LightSignal*> lightSignals; //Qmap with all my lightSignals
+            QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
+            //Qmap with relais or zones ? équivalent ???
+
+
             
             bool connectSignalsById(int next, int previous);
             bool connectSetup(int setup=1);
+
+
             void addSignalToMaquette(LightSignal *mySignal);
+            void addAiguilleToMaquette(Aiguille *myAiguille);
+
+            //Setup  functions to call in constructor
+            void SETUP_SIGNALS();
+            void SETUP_AIGUILLES();
 
 };
 

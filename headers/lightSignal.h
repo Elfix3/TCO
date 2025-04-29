@@ -43,8 +43,9 @@ class LightSignal : public QObject{
         int getId();
         SignalType getType();
         Aspect getAspect();
-        LightSignal* getPrevious();
-        LightSignal* getNext();
+        const LightSignal* getPrevious();
+        const LightSignal* getNext();
+        bool getisIPCS();
 
         //setters
         void setAspect(Aspect newAspect);
@@ -66,6 +67,7 @@ class LightSignal : public QObject{
         int id;
         const SignalType type; //SIGNAL DOESNT CHANGE ITS TYPE
         Aspect currentAspect;
+        bool isIPCS;
         
         LightSignal* previousSignal = nullptr;
         LightSignal* nextSignal = nullptr; 

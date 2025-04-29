@@ -16,7 +16,7 @@
 
 #include "ui_gui.h"
 #include "signalView.h"
-//#include "aiguilleView"
+#include "aiguilleView.h"
 
 
 #define DEFAULT_WIDTH       1920

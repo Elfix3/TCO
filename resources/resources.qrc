@@ -4,5 +4,9 @@
         <file>images/SAVL.png</file>
         <file>images/SAVLR.png</file>
         <file>images/CSAVLRRR.png</file>
+        <file>images/SAVLipcs.png</file>
+        <file>images/SAVLRipcs.png</file>
+        <file>images/CSAVLRRRipcs.png</file>
+        <file>images/aiguille.png</file>
     </qresource>
 </RCC>

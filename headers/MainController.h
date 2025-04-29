@@ -38,7 +38,10 @@ class MainController : public QObject {
         SerialHandler *mySerialHandler;
 
         bool buttonState = false;
+        
+        //all my tests setups
         void dumbTestSetup();
+        void minimalistTestSetup();
 
 };
 

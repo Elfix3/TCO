@@ -4,42 +4,8 @@
 MaquetteHandler::MaquetteHandler(QObject *parent)
     : QObject(parent)
 {
-
-    //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL SIGNALS
-    addSignalToMaquette(new LightSignal(1, SAVLR));
-    addSignalToMaquette(new LightSignal(2, SAVLR));
-    addSignalToMaquette(new LightSignal(3, CSAVLRRR));
-    addSignalToMaquette(new LightSignal(4, CSAVLRRR));
-    addSignalToMaquette(new LightSignal(5, CSAVLRR));
-    addSignalToMaquette(new LightSignal(6, CSAVLRR));
-    addSignalToMaquette(new LightSignal(7,SAVL));
-    addSignalToMaquette(new LightSignal(8,SAVLR));
-    addSignalToMaquette(new LightSignal(9,SAVLR));
-    addSignalToMaquette(new LightSignal(10,CSAVLRRR));
-    addSignalToMaquette(new LightSignal(11,CSAVLRRR));
-    addSignalToMaquette(new LightSignal(12,CSAVLRR));
-    addSignalToMaquette(new LightSignal(13,CSAVLRR));
-    addSignalToMaquette(new LightSignal(15,SAVL));
-
-    qDebug() << "\nEnd of signal adding\n";
-
-    //connect all signals :
-    if(connectSetup()){
-        qDebug() << "All connections made";
-    } else {
-        qWarning() << "Error : invalid connexion";
-    }
-
-    INIT_VL();
-
-
-    //connectSignalsById(1,2);
-    //connectSignalsById(2,3);
-
-    //lightSignals[1]->info();
-    //lightSignals[2]->info();
-
-    //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL SWITCHES = AIGUILLES
+    SETUP_AIGUILLES();
+    //SETUP_SIGNALS();
 
 }
 
@@ -56,9 +22,6 @@ bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
         qWarning() << "Error : Id"<<nextId<<"not found";
         return false;
     }
-
-    
-
     LightSignal* prev = lightSignals[previousId];
     LightSignal* next = lightSignals[nextId];
     prev->setNext(next);
@@ -96,11 +59,11 @@ bool MaquetteHandler::connectSetup(int setup){
     return false;
 }
 
-void MaquetteHandler::INIT_VL(){
+/* void MaquetteHandler::INIT_VL(){
     foreach(LightSignal *signal, lightSignals){
         signal->setAspect(VL);
     }
-}
+} */
 
 void MaquetteHandler::processCommand(QString command){
     
@@ -127,12 +90,56 @@ void MaquetteHandler::processCommand(QString command){
 void MaquetteHandler::addSignalToMaquette(LightSignal *mySignal){
     //This method is to add the LightSignal instances to the  maquette
     short sigId = mySignal->getId();
-
     if(sigId<1){
         qWarning() << "Error : Incorrect Signal ID must be greater than 0";
     } else if(lightSignals.contains(sigId)){
         qWarning() << "Error : Signal with ID" << sigId << "Already exits";
     } else {
+
+        qDebug() << "Signal"<<sigId<< "with type"<<mySignal->toString(mySignal->getType()).c_str()<<"added to the maquette";
         lightSignals[mySignal->getId()] = mySignal;
     }
+}
+
+void MaquetteHandler::addAiguilleToMaquette(Aiguille *myAiguille){
+    short aigId = myAiguille->getId();
+    //Direction dir = myAiguille->getDirection();
+    if(aigId<1){
+        qWarning() << "Error : Incorrect aiguille ID must be greater than 0";
+    } else if(aiguilles.contains(aigId)){
+        qWarning() << "Error : Aiguille with ID" << aigId << "Already exits";
+    } else {
+        qDebug() << "Aiguille" << aigId << "added to the maquette";
+        aiguilles[myAiguille->getId()] = myAiguille;
+    }
+
+}
+
+void MaquetteHandler::SETUP_SIGNALS(){
+    //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL SIGNALS
+    addSignalToMaquette(new LightSignal(1, SAVLR));
+    addSignalToMaquette(new LightSignal(2, SAVLR));
+    addSignalToMaquette(new LightSignal(3, CSAVLRRR));
+    addSignalToMaquette(new LightSignal(4, CSAVLRRR));
+    addSignalToMaquette(new LightSignal(5, CSAVLRR));
+    addSignalToMaquette(new LightSignal(6, CSAVLRR));
+    addSignalToMaquette(new LightSignal(7,SAVL));
+    addSignalToMaquette(new LightSignal(8,SAVLR));
+    addSignalToMaquette(new LightSignal(9,SAVLR));
+    addSignalToMaquette(new LightSignal(10,CSAVLRRR));
+    addSignalToMaquette(new LightSignal(11,CSAVLRRR));
+    addSignalToMaquette(new LightSignal(12,CSAVLRR));
+    addSignalToMaquette(new LightSignal(13,CSAVLRR));
+    addSignalToMaquette(new LightSignal(15,SAVL));
+}
+
+void MaquetteHandler::SETUP_AIGUILLES(){
+    //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL AIGUILLES
+    addAiguilleToMaquette(new Aiguille(1));
+    addAiguilleToMaquette(new Aiguille(2));
+    addAiguilleToMaquette(new Aiguille(3));
+    addAiguilleToMaquette(new Aiguille(4));
+    addAiguilleToMaquette(new Aiguille(5));
+    addAiguilleToMaquette(new Aiguille(6));
+
 }

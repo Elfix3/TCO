@@ -11,22 +11,31 @@ MainController::MainController(QObject *parent)
     mySerialHandler = new SerialHandler(this);
 
     mySerialHandler->openSerial("COM3");
-    //dumbTestSetup();
-    /* LightSignal *sig1 = myMaquetteHandler->getAllSignals().value(1); 
-    SignalView *sig1v = new SignalView(sig1,myGui);
-    sig1v->move(600,600);
-    sig1v->setAngle(45); */
 
-    //Creation of all the views
+
+    Aiguille *aig1 = new Aiguille(1,GAUCHE);
+    AiguilleView *aig1Vw = new AiguilleView(aig1,myGui);
+    aig1Vw->move(400,110);
+
+    Aiguille *aig2 = new Aiguille(1);
+    AiguilleView *aig2Vw = new AiguilleView(aig2,myGui);
+    
+    aig2Vw->move(450,180);
+
+
+
+    LightSignal *sig1 = new LightSignal(1,CSAVLRRR);
+    SignalView *sig1Vw = new SignalView(sig1,myGui);
+    sig1Vw->move(300,300);
+    sig1->setAspect(RR);
     
 
     /* for(auto it = myMaquetteHandler->getAllSignals().begin(); it != myMaquetteHandler->getAllSignals().end();it++){
         myGui->set
     }
  */
-    
 
-
+    //dumbTestSetup();
     // Connectez le bouton de myGui au slot manageButton
     
     
@@ -74,30 +83,69 @@ void MainController::showControl(){
 }
 
 void MainController::dumbTestSetup(){
-    LightSignal *signalTest1 = new LightSignal(99,SAVL);
+    LightSignal *signalTest1 = new LightSignal(1,SAVL);
     SignalView *signalViewTest1 = new SignalView(signalTest1,myGui);
-    signalViewTest1->move(200,200);
+    signalViewTest1->setAngle(270);
+    signalViewTest1->move(350,135);
 
-    LightSignal *signalTest2 = new LightSignal(999,SAVLR);
+    LightSignal *signalTest2 = new LightSignal(2,SAVLR);
     SignalView *signalViewTest2 = new SignalView(signalTest2,myGui);
-    signalViewTest2->move(300,300);
+    signalViewTest2->setAngle(48);
+    signalViewTest2->move(55,55);
 
-    LightSignal *signalTest3 = new LightSignal(9999,CSAVLRR);
+    LightSignal *signalTest3 = new LightSignal(3,CSAVLRR);
     SignalView *signalViewTest3 = new SignalView(signalTest3,myGui);
-    signalViewTest3->move(400,400);
+    signalViewTest3->setAngle(90);
+    signalViewTest3->move(800,0);
 
-    LightSignal *signalTest4 = new LightSignal(99999,CSAVLRRR);
+
+    LightSignal *signalTest4 = new LightSignal(4,CSAVLRRR);
     SignalView *signalViewTest4 = new SignalView(signalTest4,myGui);
-    signalViewTest4->move(500,500);
-    signalViewTest4->setAngle(120);
-    signalTest1->setAspect(RR);
-    signalTest2->setAspect(RR);
-    signalTest3->setAspect(RR);
-    signalTest4->setAspect(RR);
+    signalViewTest4->setAngle(90);
+    signalViewTest4->move(320,0);
+
+    //signalTest2->setAspect(VL);
+    //signalTest3->setAspect(C);
+    //signalTest4->setAspect(S);
+
+    LightSignal *signalTest1IPCS = new LightSignal(111,SAVL);
+    //SignalView *signalViewTest1IPCS = new SignalView(signalTest1IPCS,myGui);
+    //signalViewTest1IPCS->move(0,0);
+
+    LightSignal *signalTest2IPCS = new LightSignal(222,SAVLR);
+    SignalView *signalViewTest2IPCS = new SignalView(signalTest2IPCS,myGui);
+    signalViewTest2IPCS->setAngle(90);
+    signalViewTest2IPCS->move(320,150);
+
+    LightSignal *signalTest3IPCS = new LightSignal(333,CSAVLRR);
+    SignalView *signalViewTest3IPCS = new SignalView(signalTest3IPCS,myGui);
+    signalViewTest3IPCS->setAngle(270);
+    signalViewTest3IPCS->move(280,0);
+
+    LightSignal *signalTest4IPCS = new LightSignal(444,CSAVLRRR);
+    SignalView *signalViewTest4IPCS = new SignalView(signalTest4IPCS,myGui);
+    signalViewTest4IPCS->setAngle(270);
+    signalViewTest4IPCS->move(820,0);
+
+
+    signalTest2->setAspect(VL);
+    signalTest4->setAspect(A);
+    signalTest3->setAspect(S);
+
+    signalTest4IPCS->setAspect(C);
+    signalTest3IPCS->setAspect(C);
+
+    signalTest1->setAspect(VL);
+    signalTest2IPCS->setAspect(S);
+
+    //signalViewTest2->hide();
+}
+
+void MainController::minimalistTestSetup(){
+    LightSignal *s1 = new LightSignal(1,CSAVLRR);
 }
 
 void MainController::initSerial(){
-
 }
 
 

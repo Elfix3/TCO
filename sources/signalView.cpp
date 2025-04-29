@@ -4,74 +4,143 @@ SignalView::SignalView(LightSignal *signal, QWidget *parent)
     : QWidget(parent) , signal(signal), rotationAngle(0){
     
     //loadBackGround();
+    bool isIPCS = signal->getisIPCS();
     switch(signal->getType()){
         case SAVL :
-            setFixedSize(SAVL_width,SAVL_height);
-            background.load(":/images/SAVL.png");
-            originalSize = QSize(SAVL_width, SAVL_height);
 
-            //bulbs positions on the widget for SAVL
-            bulbs.append({QPoint(66,80), QColor(OFF)});
-            bulbs.append({QPoint(66,68), QColor(OFF)});
-            bulbs.append({QPoint(66,56), QColor(OFF)});
+            if(isIPCS){
+                setFixedSize(SAVL_width,SAVL_height);
+                background.load(":/images/SAVLipcs.png");
+                originalSize = QSize(SAVL_IPCS_width, SAVL_IPCS_height);
+                
+                //bulbs positions on the widget for SAVL_IPCS
+                bulbs.append({QPoint(105,112), QColor(OFF)});
+                bulbs.append({QPoint(105,100), QColor(OFF)});
+                bulbs.append({QPoint(105,88), QColor(OFF)});
+            } else {
+                setFixedSize(SAVL_width,SAVL_height);
+                background.load(":/images/SAVL.png");
+                originalSize = QSize(SAVL_width, SAVL_height);
+
+                //bulbs positions on the widget for SAVL
+                bulbs.append({QPoint(81,96), QColor(OFF)});
+                bulbs.append({QPoint(81,84), QColor(OFF)});
+                bulbs.append({QPoint(81,72), QColor(OFF)});
+
+            }
+            
+
 
             break;
         case SAVLR :
-            setFixedSize(SAVLR_width,SAVLR_height);
-            background.load(":/images/SAVLR.png");
-            originalSize = QSize(SAVLR_width, SAVLR_height);
 
-            bulbs.append({QPoint(64,90), QColor(OFF)});
-            bulbs.append({QPoint(64,78), QColor(OFF)});
-            bulbs.append({QPoint(64,66), QColor(OFF)});
+            if(isIPCS){
+                setFixedSize(SAVLR_width,SAVLR_height);
+                background.load(":/images/SAVLRipcs.png");
+                originalSize = QSize(SAVLR_IPCS_width, SAVLR_IPCS_height);
 
-            bulbs.append({QPoint(64,50), QColor(OFF)});
-            bulbs.append({QPoint(83,50), QColor(OFF)});
+                bulbs.append({QPoint(119,105), QColor(OFF)});
+                bulbs.append({QPoint(119,93), QColor(OFF)});
+                bulbs.append({QPoint(119,81), QColor(OFF)});
+
+                bulbs.append({QPoint(119,64), QColor(OFF)});
+                bulbs.append({QPoint(139,64), QColor(OFF)});
+            } else {
+                setFixedSize(SAVLR_width,SAVLR_height);
+                background.load(":/images/SAVLR.png");
+                originalSize = QSize(SAVLR_width, SAVLR_height);
+
+                bulbs.append({QPoint(79,105), QColor(OFF)});
+                bulbs.append({QPoint(79,93), QColor(OFF)});
+                bulbs.append({QPoint(79,81), QColor(OFF)});
+
+                bulbs.append({QPoint(79,64), QColor(OFF)});
+                bulbs.append({QPoint(99,64), QColor(OFF)});
+                
+            }
             break;
+            
         case CSAVLRR :
-            setFixedSize(CSAVLRRR_width,CSAVLRRR_height);
-            background.load(":/images/CSAVLRRR.png");
-            originalSize = QSize(CSAVLRRR_width, CSAVLRRR_height);
+            if(isIPCS){
+                setFixedSize(CSAVLRRR_width,CSAVLRRR_height);
+                background.load(":/images/CSAVLRRRipcs.png");
+                originalSize = QSize(CSAVLRRR_IPCS_width, CSAVLRRR_IPCS_height);
 
-            bulbs.append({QPoint(54,102), QColor(BLACK)});
+                bulbs.append({QPoint(109,115), QColor(OFF)});
 
-            bulbs.append({QPoint(68,99), QColor(OFF)});
-            bulbs.append({QPoint(68,89), QColor(OFF)});
-            bulbs.append({QPoint(68,79), QColor(OFF)});
+                bulbs.append({QPoint(124,112), QColor(OFF)});
+                bulbs.append({QPoint(124,102), QColor(OFF)});
+                bulbs.append({QPoint(124,92), QColor(OFF)});
 
-            bulbs.append({QPoint(68,62), QColor(OFF)});
-            
-            
-            bulbs.append({QPoint(89,62), QColor(OFF)});
-            
-            bulbs.append({QPoint(89,42), QColor(OFF)});
+                bulbs.append({QPoint(124,75), QColor(OFF)});
+
+                bulbs.append({QPoint(145,76), QColor(OFF)});
+
+                bulbs.append({QPoint(145,56), QColor(OFF)});
+            } else {      
+                setFixedSize(CSAVLRRR_width,CSAVLRRR_height);
+                background.load(":/images/CSAVLRRR.png");
+                originalSize = QSize(CSAVLRRR_width, CSAVLRRR_height);
+
+                bulbs.append({QPoint(70,115), QColor(OFF)});
+
+                bulbs.append({QPoint(85,112), QColor(OFF)});
+                bulbs.append({QPoint(85,102), QColor(OFF)});
+                bulbs.append({QPoint(85,92), QColor(OFF)});
+
+                bulbs.append({QPoint(85,75), QColor(OFF)});
+                
 
 
-
-            //bulbs.append({QPoint(64,90), QColor(OFF)});
-            //bulbs.append({QPoint(64,90), QColor(OFF)});
-            break;
+                bulbs.append({QPoint(106,76), QColor(OFF)});
+                
+                bulbs.append({QPoint(106,56), QColor(OFF)});
+        
+            }
+        break;
         case CSAVLRRR :
-            setFixedSize(CSAVLRRR_width,CSAVLRRR_height);
-            background.load(":/images/CSAVLRRR.png");
-            originalSize = QSize(CSAVLRRR_width, CSAVLRRR_height);
 
-            bulbs.append({QPoint(54,102), QColor(BLACK)});
+            if(isIPCS){
+                setFixedSize(CSAVLRRR_width,CSAVLRRR_height);
+                background.load(":/images/CSAVLRRRipcs.png");
+                originalSize = QSize(CSAVLRRR_IPCS_width, CSAVLRRR_IPCS_height);
 
-            bulbs.append({QPoint(68,99), QColor(OFF)});
-            bulbs.append({QPoint(68,89), QColor(OFF)});
-            bulbs.append({QPoint(68,79), QColor(OFF)});
+                bulbs.append({QPoint(109,115), QColor(OFF)});
 
-            bulbs.append({QPoint(68,62), QColor(OFF)});
-            bulbs.append({QPoint(68,53), QColor(OFF)});
-            
-            bulbs.append({QPoint(89,62), QColor(OFF)});
-            bulbs.append({QPoint(89,52), QColor(OFF)});
-            bulbs.append({QPoint(89,42), QColor(OFF)});
+                bulbs.append({QPoint(124,112), QColor(OFF)});
+                bulbs.append({QPoint(124,102), QColor(OFF)});
+                bulbs.append({QPoint(124,92), QColor(OFF)});
+
+                bulbs.append({QPoint(124,75), QColor(OFF)});
+                bulbs.append({QPoint(124,66), QColor(OFF)});
+
+
+                bulbs.append({QPoint(145,76), QColor(OFF)});
+                bulbs.append({QPoint(145,66), QColor(OFF)});
+                bulbs.append({QPoint(145,56), QColor(OFF)});
+            } else {
+                setFixedSize(CSAVLRRR_width,CSAVLRRR_height);
+                background.load(":/images/CSAVLRRR.png");
+                originalSize = QSize(CSAVLRRR_width, CSAVLRRR_height);
+
+                bulbs.append({QPoint(70,115), QColor(OFF)});
+
+                bulbs.append({QPoint(85,112), QColor(OFF)});
+                bulbs.append({QPoint(85,102), QColor(OFF)});
+                bulbs.append({QPoint(85,92), QColor(OFF)});
+
+                bulbs.append({QPoint(85,75), QColor(OFF)});
+                bulbs.append({QPoint(85,66), QColor(OFF)});
+
+
+                bulbs.append({QPoint(106,76), QColor(OFF)});
+                bulbs.append({QPoint(106,66), QColor(OFF)});
+                bulbs.append({QPoint(106,56), QColor(OFF)});
 
             //bulbs.append({QPoint(54,102), QColor(OFF)});
-
+            }
             break;
+        
         default :
            break;
         onSignalUpdate();
@@ -82,7 +151,7 @@ SignalView::SignalView(LightSignal *signal, QWidget *parent)
 
     connect(signal, &LightSignal::signalUpdated, this, &SignalView::onSignalUpdate);
     //setFixedSize(SAVL_width*3,SAVL_height*3);
-    setFixedSize(150,150);
+    setFixedSize(180,180);
 }
 
 SignalView::~SignalView(){
@@ -110,7 +179,6 @@ void SignalView::onSignalUpdate(){
     SignalType type = signal->getType();
     switch(signal->getAspect()){
         case VL :
-            qDebug()<< "Ici";
             if(type == CSAVLRR || type == CSAVLRRR){
                 bulbs[0].color = QColor(WHITE); //oeilleton
                 bulbs[3].color = QColor(GREEN);
@@ -184,6 +252,8 @@ void SignalView::paintEvent(QPaintEvent* event)
     QTransform transform;
     transform.translate(width() / 2, height() / 2);
     transform.rotate(rotationAngle);
+
+
     transform.translate(-width() / 2, -height() / 2);
     painter.setTransform(transform);
 
@@ -199,12 +269,13 @@ void SignalView::paintEvent(QPaintEvent* event)
 
     painter.restore();
 
-    //debug purposes
-    painter.setPen(QPen(Qt::red, 2));
-    painter.setBrush(Qt::NoBrush);
-    painter.drawRect(0, 0, width()-1, height()-1);
+    if(border){
     
-    
+        painter.setPen(QPen(Qt::red, 2));
+        painter.setBrush(Qt::NoBrush);
+        painter.drawRect(0, 0, width()-1, height()-1);
+    }
+        
 }
 
 
@@ -221,8 +292,11 @@ void SignalView::drawBulbs(QPainter &painter) {
             
             painter.setBrush(bulbs[i].color);
             painter.setPen(Qt::NoPen);
-            painter.drawEllipse(bulbs[i].position, 2, 2);
+            painter.drawEllipse(bulbs[i].position, 4, 4);
 
+            painter.setBrush(Qt::NoBrush);
+            painter.setPen(QPen(Qt::white, 1.5)); // Pen blanc, épaisseur 2 pixels
+            painter.drawEllipse(bulbs[i].position, 4, 4);
 
         } else {
             painter.setBrush(bulbs[i].color);
