@@ -25,8 +25,8 @@ class AiguilleView : public QWidget{
 
         QVector<Bulb> bulbs;
 
-        const int aiguille_width = 21;
-        const int aiguille_height = 43;
+        const int aiguille_width = 20;
+        const int aiguille_height = 42;
 
 
         void drawBulbs(QPainter &painter);

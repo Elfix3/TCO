@@ -1,8 +1,8 @@
 #include "gui.h"
 #include <iostream>
 
-#include "maquetteHandler.h"
-#include "lightSignal.h"
+
+
 Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
     //importe l'interface depuis le fichier .gui
     ui->setupUi(this);
@@ -18,13 +18,39 @@ Gui::~Gui(){
     delete ui;
 }
 
+
+
 Ui::GUI *Gui::getUI(){
     return ui;
 }
 
-void Gui::addSignalView(LightSignal *SignalView)
-{
+void Gui::loadMaquette(MaquetteHandler *handler){
+    
+    for(LightSignal* signal : handler->getAllSignals()){
+        short id = signal->getId();
+        if(signalPositions.contains(id)){
+            SignalView *view = new SignalView(signal,this);
+            view->setAngle(signalPositions[id].angle);
+            view->move(signalPositions[id].position);
+        } else {
+            qWarning() << "Error : no placement available for signal " << id;
+        }
+    }
+   
+    //pour toutes les aiguilles crée les vues
+    for(Aiguille *aiguille : handler->getAllAiguilles()){
+        short id = aiguille->getId();
+        if(aiguillePositions.contains(id)){
+            AiguilleView *view = new AiguilleView(aiguille,this);
+            view->move(aiguillePositions[id].position);
+        } else {
+            qWarning() << "Error : no placement avaiable for aiguille " << id;
+        }
+    }
 }
+
+
+
 
 void Gui::resizeEvent(QResizeEvent *event) {
    //pretty much useless
@@ -38,17 +64,3 @@ void Gui::buttonPressed() {
 
 
 
-
-/* void Gui::changeEvent(QEvent *event) {
-    if (event->type() == QEvent::WindowStateChange) {
-        if (this->isMaximized()) {
-            qDebug() << "Fenêtre en plein écran | Taille :" << this->size();
-
-        } else if (this->isFullScreen()) {
-            qDebug() << "Mode plein écran (sans bordure) | Taille :" << this->size();
-        } else {
-            qDebug() << "Fenêtre restaurée | Taille :" << this->size();
-        }
-    }
-    QMainWindow::changeEvent(event); // Important : appeler l'implémentation parente
-} */

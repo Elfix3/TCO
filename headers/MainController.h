@@ -25,7 +25,7 @@ class MainController : public QObject {
     
         void showGui();
         void showControl();
-        void initSerial();
+        void RESET();
 
     private slots:
 
@@ -41,8 +41,7 @@ class MainController : public QObject {
         
         //all my tests setups
         void dumbTestSetup();
-        void minimalistTestSetup();
-
+        
 };
 
 

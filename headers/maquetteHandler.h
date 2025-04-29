@@ -16,7 +16,7 @@ class MaquetteHandler : public QObject {
         explicit MaquetteHandler(QObject *parent = nullptr);
         //~MaquetteHandler();
         QMap<int,LightSignal*> getAllSignals();
-
+        QMap<int,Aiguille*> getAllAiguilles();
         
         void processCommand(QString command);
         

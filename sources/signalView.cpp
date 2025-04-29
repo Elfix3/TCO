@@ -143,7 +143,7 @@ SignalView::SignalView(LightSignal *signal, QWidget *parent)
         
         default :
            break;
-        onSignalUpdate();
+        
     }
     /* background = background.scaled(this->size(), 
     Qt::IgnoreAspectRatio,  // ← C'est la clé
@@ -152,6 +152,7 @@ SignalView::SignalView(LightSignal *signal, QWidget *parent)
     connect(signal, &LightSignal::signalUpdated, this, &SignalView::onSignalUpdate);
     //setFixedSize(SAVL_width*3,SAVL_height*3);
     setFixedSize(180,180);
+    onSignalUpdate();
 }
 
 SignalView::~SignalView(){

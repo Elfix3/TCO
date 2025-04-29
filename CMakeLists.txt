@@ -36,6 +36,5 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI_SOURCES} ${QRC_SOURCES
 
 
 
-
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets Qt6::SerialPort)
 target_include_directories(${PROJECT_NAME} PRIVATE headers ${CMAKE_CURRENT_BINARY_DIR})

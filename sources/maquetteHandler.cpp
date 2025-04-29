@@ -5,12 +5,17 @@ MaquetteHandler::MaquetteHandler(QObject *parent)
     : QObject(parent)
 {
     SETUP_AIGUILLES();
-    //SETUP_SIGNALS();
-
+    SETUP_SIGNALS();
+    lightSignals[15]->setAspect(VL);
+    lightSignals[12]->setAspect(C);
 }
 
 QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){
     return lightSignals;
+}
+
+QMap<int, Aiguille *> MaquetteHandler::getAllAiguilles(){
+    return aiguilles;
 }
 
 bool MaquetteHandler::connectSignalsById(int previousId,int nextId){

@@ -11,32 +11,12 @@ MainController::MainController(QObject *parent)
     mySerialHandler = new SerialHandler(this);
 
     mySerialHandler->openSerial("COM3");
+    myGui->loadMaquette(myMaquetteHandler);
 
-
-    Aiguille *aig1 = new Aiguille(1,GAUCHE);
-    AiguilleView *aig1Vw = new AiguilleView(aig1,myGui);
-    aig1Vw->move(400,110);
-
-    Aiguille *aig2 = new Aiguille(1);
-    AiguilleView *aig2Vw = new AiguilleView(aig2,myGui);
-    
-    aig2Vw->move(450,180);
-
-
-
-    LightSignal *sig1 = new LightSignal(1,CSAVLRRR);
-    SignalView *sig1Vw = new SignalView(sig1,myGui);
-    sig1Vw->move(300,300);
-    sig1->setAspect(RR);
-    
-
-    /* for(auto it = myMaquetteHandler->getAllSignals().begin(); it != myMaquetteHandler->getAllSignals().end();it++){
-        myGui->set
-    }
- */
+   
 
     //dumbTestSetup();
-    // Connectez le bouton de myGui au slot manageButton
+
     
     
     bool connection = true;
@@ -66,12 +46,11 @@ MainController::~MainController(){
 
 void MainController::manageButton(){
     //ON/OFF behavior for a button on arduino internal LED
-    buttonState = !buttonState;
-    if(buttonState){
-        mySerialHandler->writeData("ON\n");
-    } else {
-        mySerialHandler->writeData("OFF\n");
-    }
+    
+}
+
+void MainController::RESET(){
+
 }
 
 void MainController::showGui(){
@@ -141,11 +120,6 @@ void MainController::dumbTestSetup(){
     //signalViewTest2->hide();
 }
 
-void MainController::minimalistTestSetup(){
-    LightSignal *s1 = new LightSignal(1,CSAVLRR);
-}
 
-void MainController::initSerial(){
-}
 
 

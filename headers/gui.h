@@ -15,14 +15,18 @@
 #include <QTransform>
 
 #include "ui_gui.h"
+#include "maquetteHandler.h"
 #include "signalView.h"
 #include "aiguilleView.h"
+#include "lightSignal.h"
 
 
-#define DEFAULT_WIDTH       1920
-#define DEFAULT_HEIGHT      1080 
 
 
+struct PositionAngle{
+    QPoint position;
+    int angle;
+};
 
 class Gui : public QMainWindow {
     public:
@@ -31,7 +35,8 @@ class Gui : public QMainWindow {
         Ui::GUI* getUI();
     
 
-        void addSignalView(LightSignal *SignalView);
+
+        void loadMaquette(MaquetteHandler* handler);
         
     protected :
         //void changeEvent(QEvent *event);
@@ -39,7 +44,20 @@ class Gui : public QMainWindow {
         
     private:
         Ui::GUI *ui;
-        QMap <int,SignalView*> signalViews;
+        
+
+        QMap<int, PositionAngle> signalPositions = {
+        {1,PositionAngle{QPoint(30,190),22}}, //OK
+        {2,PositionAngle{QPoint(158,390),140}}, //OK
+        {9,PositionAngle{QPoint(1178,500),210}} //OK
+
+        };
+        
+        QMap<int, PositionAngle> aiguillePositions = {
+        {1,PositionAngle{QPoint(438,130),0}}, //certified OK
+        };
+
+        
 
     signals:
         void sendSerialData(const QString &data);

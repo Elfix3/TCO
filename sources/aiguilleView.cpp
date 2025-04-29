@@ -5,11 +5,11 @@ AiguilleView::AiguilleView(Aiguille *aiguille, QWidget *parent)
         setFixedSize(aiguille_width,aiguille_height);
         background.load(":images/aiguille.png");
         if(aiguille->getDirection() == DROITE){
-            bulbs.append({QPoint(11,10),QColor(OFF)}); //right Direction
-            bulbs.append({QPoint(11,32),QColor(YELLOW)}); //left Direction
+            bulbs.append({QPoint(10,8),QColor(OFF)}); //right Direction
+            bulbs.append({QPoint(10,34),QColor(YELLOW)}); //left Direction
         } else {
-            bulbs.append({QPoint(11,10),QColor(YELLOW)}); //right Direction
-            bulbs.append({QPoint(11,32),QColor(OFF)}); 
+            bulbs.append({QPoint(10,8),QColor(YELLOW)}); //right Direction
+            bulbs.append({QPoint(10,34),QColor(OFF)}); 
         }
 
 }
