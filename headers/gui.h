@@ -54,7 +54,8 @@ class Gui : public QMainWindow {
         };
         
         QMap<int, PositionAngle> aiguillePositions = {
-        {1,PositionAngle{QPoint(438,130),0}}, //certified OK
+        {1,PositionAngle{QPoint(438,130),0}}, //OK for placement... id ???
+        {2,PositionAngle{QPoint(480,188),180}}, //OK for placement... id ???
         };
 
         

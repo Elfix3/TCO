@@ -42,6 +42,10 @@ void Gui::loadMaquette(MaquetteHandler *handler){
         short id = aiguille->getId();
         if(aiguillePositions.contains(id)){
             AiguilleView *view = new AiguilleView(aiguille,this);
+            if(aiguillePositions[id].angle == 180){
+                qDebug() << "Flip !!";
+                view->flipAiguille();
+            }
             view->move(aiguillePositions[id].position);
         } else {
             qWarning() << "Error : no placement avaiable for aiguille " << id;

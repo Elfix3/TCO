@@ -22,3 +22,13 @@ const Aiguille *Aiguille::getConjAiguille(){
 const LightSignal *Aiguille::getPreviousSignal(){
     return previousSignal;
 }
+
+void Aiguille::setDirection(Direction newDir){
+    if(currentDirection!=newDir){
+        qDebug()<< "Aiguille" << id << "is set to"<< (newDir==DROITE ? "DROITE" : "GAUCHE");
+        currentDirection = newDir;
+        emit aiguilleUpdate();
+    } else {
+        qWarning() << "Set direction not successfull ";
+    }
+}

@@ -1,21 +1,26 @@
 #include "aiguilleView.h"
 
 AiguilleView::AiguilleView(Aiguille *aiguille, QWidget *parent)
-    : QWidget(parent),aiguille(aiguille){
+    : QWidget(parent),aiguille(aiguille), isFlipped(false){
         setFixedSize(aiguille_width,aiguille_height);
         background.load(":images/aiguille.png");
         if(aiguille->getDirection() == DROITE){
-            bulbs.append({QPoint(10,8),QColor(OFF)}); //right Direction
+            bulbs.append({QPoint(10,8),QColor(IDLE)}); //right Direction
             bulbs.append({QPoint(10,34),QColor(YELLOW)}); //left Direction
         } else {
             bulbs.append({QPoint(10,8),QColor(YELLOW)}); //right Direction
-            bulbs.append({QPoint(10,34),QColor(OFF)}); 
+            bulbs.append({QPoint(10,34),QColor(IDLE)}); 
         }
-
+    connect(aiguille, &Aiguille::aiguilleUpdate, this, &AiguilleView::onAiguilleUpdate);
 }
 
 AiguilleView::~AiguilleView()
 {
+}
+
+void AiguilleView::flipAiguille(){
+    isFlipped = !isFlipped;
+    onAiguilleUpdate();
 }
 
 void AiguilleView::paintEvent(QPaintEvent *event){
@@ -45,5 +50,19 @@ void AiguilleView::drawBulbs(QPainter &painter){
 }
 
 void AiguilleView::onAiguilleUpdate(){
+    qDebug() << "cmoi";
+    Direction dir = aiguille->getDirection();
+    
+    if((isFlipped && dir == DROITE) || (!isFlipped && dir == GAUCHE)){
+        bulbs[0].color = QColor(YELLOW);
+        bulbs[1].color = QColor(IDLE);
+    } else {
+        bulbs[0].color = QColor(IDLE);
+        bulbs[1].color = QColor(YELLOW);
+    }
+    
+    
 
+    
+    //mystère et boule de gomme...
 }

@@ -6,8 +6,9 @@ MaquetteHandler::MaquetteHandler(QObject *parent)
 {
     SETUP_AIGUILLES();
     SETUP_SIGNALS();
-    lightSignals[15]->setAspect(VL);
-    lightSignals[12]->setAspect(C);
+    
+    aiguilles[1]->setDirection(GAUCHE);
+    aiguilles[2]->setDirection(GAUCHE);
 }
 
 QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){

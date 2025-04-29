@@ -24,7 +24,8 @@ enum Direction {DROITE,GAUCHE};
             const Aiguille* getConjAiguille();
             const  LightSignal* getPreviousSignal();
             
-
+            //setters
+            void setDirection(Direction dir);
         signals :
             void aiguilleUpdate();
 

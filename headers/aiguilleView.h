@@ -14,6 +14,7 @@ class AiguilleView : public QWidget{
         explicit AiguilleView(Aiguille *aiguille, QWidget *parent = nullptr);
         ~AiguilleView();
     
+        void flipAiguille();
     protected:
         void paintEvent(QPaintEvent *event) override;
     private slots :
@@ -22,8 +23,9 @@ class AiguilleView : public QWidget{
     private :
         Aiguille *aiguille;
         QPixmap background;
-
+        
         QVector<Bulb> bulbs;
+        bool isFlipped;
 
         const int aiguille_width = 20;
         const int aiguille_height = 42;
