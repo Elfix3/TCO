@@ -12,6 +12,8 @@ Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
     
 
     
+
+    
 }
 
 Gui::~Gui(){

@@ -1,5 +1,5 @@
 #include "maquetteHandler.h"
-
+#include <QMessageBox>
 
 MaquetteHandler::MaquetteHandler(QObject *parent)
     : QObject(parent)
@@ -7,6 +7,8 @@ MaquetteHandler::MaquetteHandler(QObject *parent)
     SETUP_AIGUILLES();
     SETUP_SIGNALS();
     SET_ALL_VL();
+
+    //very important, sets up all the connections for my maquette
     connectSetup();
 
     //SET_ALL_DIR_RIGHT();
@@ -99,8 +101,8 @@ void MaquetteHandler::processCommand(QString command){
         lightSignals[1]->getPrevious()->setAspect(A);
         lightSignals[1]->getPrevious()->getPrevious()->setAspect(VL);
 
-        SET_ALL_DIR(DROITE);
         
+       
         
 
     } else if(command == "/C2"){
@@ -108,8 +110,9 @@ void MaquetteHandler::processCommand(QString command){
         lightSignals[3]->getPrevious()->setAspect(A);
         lightSignals[3]->getPrevious()->getPrevious()->setAspect(VL);
         
-        SET_ALL_DIR(GAUCHE);
-
+        aiguilles[1]->setDirection(GAUCHE);
+        aiguilles[1]->getConjAiguille()->setDirection(GAUCHE);
+        
     } else if (command == "/C3"){
         lightSignals[5]->setAspect(S);
         lightSignals[5]->getPrevious()->setAspect(A);

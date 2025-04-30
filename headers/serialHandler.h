@@ -34,7 +34,7 @@ class SerialHandler : public QObject{
         void handleError(QSerialPort::SerialPortError error);
         
     private:
-        QSerialPort *mySerialPort;
+        QSerialPort *mySerialPort; //need to create another SP to manage 2 arduinos
         QByteArray mySerialBuffer;
     
 };
