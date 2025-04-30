@@ -15,11 +15,11 @@ int Aiguille::getId(){
 Direction Aiguille::getDirection(){
     return currentDirection;
 }
-const Aiguille *Aiguille::getConjAiguille(){
+Aiguille *Aiguille::getConjAiguille(){
     return aiguilleConj;
 }
 
-const LightSignal *Aiguille::getPreviousSignal(){
+LightSignal *Aiguille::getPreviousSignal(){
     return previousSignal;
 }
 
@@ -31,4 +31,8 @@ void Aiguille::setDirection(Direction newDir){
     } else {
         qWarning() << "Set direction not successfull ";
     }
+}
+
+void Aiguille::setConj(Aiguille *conj){
+    aiguilleConj = conj;
 }

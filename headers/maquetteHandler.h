@@ -31,6 +31,7 @@ class MaquetteHandler : public QObject {
 
             
             bool connectSignalsById(int next, int previous);
+            bool connectAiguilleConj(int aig, int conj);
             bool connectSetup(int setup=1);
 
 
@@ -40,6 +41,9 @@ class MaquetteHandler : public QObject {
             //Setup  functions to call in constructor
             void SETUP_SIGNALS();
             void SETUP_AIGUILLES();
+
+            void SET_ALL_VL();
+            void SET_ALL_DIR(Direction dir);
 
 };
 

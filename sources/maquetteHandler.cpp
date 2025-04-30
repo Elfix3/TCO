@@ -6,9 +6,10 @@ MaquetteHandler::MaquetteHandler(QObject *parent)
 {
     SETUP_AIGUILLES();
     SETUP_SIGNALS();
-    
-    aiguilles[1]->setDirection(GAUCHE);
-    aiguilles[2]->setDirection(GAUCHE);
+    SET_ALL_VL();
+    connectSetup();
+
+    //SET_ALL_DIR_RIGHT();
 }
 
 QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){
@@ -21,11 +22,11 @@ QMap<int, Aiguille *> MaquetteHandler::getAllAiguilles(){
 
 bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
     if(!lightSignals.contains(previousId)){
-        qWarning() << "Error : Id"<<previousId<<"not found";
+        qWarning() << "Error : signal with Id"<<previousId<<"not found";
         return false;
     }
     if(!lightSignals.contains(nextId)){
-        qWarning() << "Error : Id"<<nextId<<"not found";
+        qWarning() << "Error : signal with Id"<<nextId<<"not found";
         return false;
     }
     LightSignal* prev = lightSignals[previousId];
@@ -34,6 +35,23 @@ bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
     next->setPrevious(prev);
     return true;
 
+}
+
+bool MaquetteHandler::connectAiguilleConj(int aigId, int conjId)
+{
+    if(!aiguilles.contains(aigId)){
+        qWarning() << "Error : aiguille with Id"<<aigId<<"not found";
+        return false;
+    }
+    if(!aiguilles.contains(conjId)){
+        qWarning() << "Error : aiguille with Id"<<conjId<<"not found";
+        return false;
+    }
+    Aiguille *aig = aiguilles[aigId];
+    Aiguille *conj = aiguilles[conjId];
+    aig->setConj(conj);
+    conj->setConj(aig);
+    return true;
 }
 
 bool MaquetteHandler::connectSetup(int setup){
@@ -56,7 +74,9 @@ bool MaquetteHandler::connectSetup(int setup){
         connectSignalsById(6,8) &&
         connectSignalsById(8,10) &&
         connectSignalsById(10,12) &&
-        connectSignalsById(12,2);
+        connectSignalsById(12,2) &&
+    
+        connectAiguilleConj(1,2);
     }
     if(setup == -1) {
         qDebug() << "TestSetup";
@@ -72,19 +92,31 @@ bool MaquetteHandler::connectSetup(int setup){
 } */
 
 void MaquetteHandler::processCommand(QString command){
-    
+    //réception de la donnée du capteur
     if(command == "/C1"){
-        qDebug("VL");
-        lightSignals[1]->setAspect(VL);
-        emit sendCommand("VL\n");
-    } else if(command == "/C2"){
-        qDebug("A");
-        emit sendCommand("S\n");
+        
         lightSignals[1]->setAspect(S);
+        lightSignals[1]->getPrevious()->setAspect(A);
+        lightSignals[1]->getPrevious()->getPrevious()->setAspect(VL);
+
+        SET_ALL_DIR(DROITE);
+        
+        
+
+    } else if(command == "/C2"){
+        lightSignals[3]->setAspect(S);
+        lightSignals[3]->getPrevious()->setAspect(A);
+        lightSignals[3]->getPrevious()->getPrevious()->setAspect(VL);
+        
+        SET_ALL_DIR(GAUCHE);
+
     } else if (command == "/C3"){
-        qDebug("S");
-        emit sendCommand("A\n");
-        lightSignals[1]->setAspect(A);
+        lightSignals[5]->setAspect(S);
+        lightSignals[5]->getPrevious()->setAspect(A);
+        lightSignals[5]->getPrevious()->getPrevious()->setAspect(VL);
+
+        aiguilles[1]->setDirection(DROITE);
+        aiguilles[1]->getConjAiguille()->setDirection(DROITE);
         
     }
 }
@@ -123,29 +155,49 @@ void MaquetteHandler::addAiguilleToMaquette(Aiguille *myAiguille){
 
 void MaquetteHandler::SETUP_SIGNALS(){
     //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL SIGNALS
-    addSignalToMaquette(new LightSignal(1, SAVLR));
-    addSignalToMaquette(new LightSignal(2, SAVLR));
-    addSignalToMaquette(new LightSignal(3, CSAVLRRR));
-    addSignalToMaquette(new LightSignal(4, CSAVLRRR));
-    addSignalToMaquette(new LightSignal(5, CSAVLRR));
-    addSignalToMaquette(new LightSignal(6, CSAVLRR));
-    addSignalToMaquette(new LightSignal(7,SAVL));
-    addSignalToMaquette(new LightSignal(8,SAVLR));
-    addSignalToMaquette(new LightSignal(9,SAVLR));
-    addSignalToMaquette(new LightSignal(10,CSAVLRRR));
-    addSignalToMaquette(new LightSignal(11,CSAVLRRR));
-    addSignalToMaquette(new LightSignal(12,CSAVLRR));
-    addSignalToMaquette(new LightSignal(13,CSAVLRR));
-    addSignalToMaquette(new LightSignal(15,SAVL));
+    addSignalToMaquette(new LightSignal(1, SAVLR,this));
+    addSignalToMaquette(new LightSignal(2, SAVLR,this));
+    addSignalToMaquette(new LightSignal(3, CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(4, CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(5, CSAVLRR,this));
+    addSignalToMaquette(new LightSignal(6, CSAVLRR,this));
+    addSignalToMaquette(new LightSignal(7,SAVL,this));
+    addSignalToMaquette(new LightSignal(8,SAVLR,this));
+    addSignalToMaquette(new LightSignal(9,SAVLR,this));
+    addSignalToMaquette(new LightSignal(10,CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(11,CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(12,CSAVLRR,this));
+    addSignalToMaquette(new LightSignal(13,CSAVLRR,this));
+    addSignalToMaquette(new LightSignal(15,SAVL,this));
+
+    //Add IPCS
 }
 
 void MaquetteHandler::SETUP_AIGUILLES(){
     //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL AIGUILLES
-    addAiguilleToMaquette(new Aiguille(1));
-    addAiguilleToMaquette(new Aiguille(2));
-    addAiguilleToMaquette(new Aiguille(3));
-    addAiguilleToMaquette(new Aiguille(4));
-    addAiguilleToMaquette(new Aiguille(5));
-    addAiguilleToMaquette(new Aiguille(6));
+    addAiguilleToMaquette(new Aiguille(1,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(2,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(3,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(4,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(5,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(6,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(7,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(8,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(9,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(10,GAUCHE,this));
 
+}
+
+void MaquetteHandler::SET_ALL_VL(){
+    for(LightSignal *sig : lightSignals){
+        sig->setAspect(VL);
+    }
+}
+
+
+void MaquetteHandler::SET_ALL_DIR(Direction dir){
+    //usefull ??
+    for(Aiguille *aig : aiguilles){
+        aig->setDirection(dir);
+    }
 }

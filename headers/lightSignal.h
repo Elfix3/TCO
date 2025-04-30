@@ -43,8 +43,8 @@ class LightSignal : public QObject{
         int getId();
         SignalType getType();
         Aspect getAspect();
-        const LightSignal* getPrevious();
-        const LightSignal* getNext();
+        LightSignal* getPrevious();
+        LightSignal* getNext();
         bool getisIPCS();
 
         //setters

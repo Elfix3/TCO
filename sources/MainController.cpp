@@ -10,7 +10,7 @@ MainController::MainController(QObject *parent)
     myMaquetteHandler = new MaquetteHandler(this);
     mySerialHandler = new SerialHandler(this);
 
-    mySerialHandler->openSerial("COM3");
+    mySerialHandler->openSerial("COM5");
     myGui->loadMaquette(myMaquetteHandler);
 
    
@@ -27,8 +27,8 @@ MainController::MainController(QObject *parent)
         //myMaquetteHandler->getAllSignals().value(1)->info();
         connect(mySerialHandler, &SerialHandler::dataReceived, myMaquetteHandler, &MaquetteHandler::processCommand);
 
-        connect(myMaquetteHandler, &MaquetteHandler::sendCommand,
-        mySerialHandler, &SerialHandler::writeData);
+        //Connect
+        connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
 
 
         //connect(mySerialHandler, &SerialHandler::dataReceived, 

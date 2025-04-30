@@ -82,19 +82,17 @@ SignalView::SignalView(LightSignal *signal, QWidget *parent)
                 background.load(":/images/CSAVLRRR.png");
                 originalSize = QSize(CSAVLRRR_width, CSAVLRRR_height);
 
-                bulbs.append({QPoint(70,115), QColor(OFF)});
+                bulbs.append({QPoint(51,115), QColor(OFF)});
 
-                bulbs.append({QPoint(85,112), QColor(OFF)});
-                bulbs.append({QPoint(85,102), QColor(OFF)});
-                bulbs.append({QPoint(85,92), QColor(OFF)});
+                bulbs.append({QPoint(67,114), QColor(OFF)});
+                bulbs.append({QPoint(67,104), QColor(OFF)});
+                bulbs.append({QPoint(67,94), QColor(OFF)});
 
-                bulbs.append({QPoint(85,75), QColor(OFF)});
+                bulbs.append({QPoint(67,77), QColor(OFF)});
+               
+                bulbs.append({QPoint(88,78), QColor(OFF)});
                 
-
-
-                bulbs.append({QPoint(106,76), QColor(OFF)});
-                
-                bulbs.append({QPoint(106,56), QColor(OFF)});
+                bulbs.append({QPoint(88,58), QColor(OFF)});
         
             }
         break;
@@ -105,7 +103,7 @@ SignalView::SignalView(LightSignal *signal, QWidget *parent)
                 background.load(":/images/CSAVLRRRipcs.png");
                 originalSize = QSize(CSAVLRRR_IPCS_width, CSAVLRRR_IPCS_height);
 
-                bulbs.append({QPoint(109,115), QColor(OFF)});
+                bulbs.append({QPoint(109,116), QColor(OFF)});
 
                 bulbs.append({QPoint(124,112), QColor(OFF)});
                 bulbs.append({QPoint(124,102), QColor(OFF)});
@@ -123,19 +121,19 @@ SignalView::SignalView(LightSignal *signal, QWidget *parent)
                 background.load(":/images/CSAVLRRR.png");
                 originalSize = QSize(CSAVLRRR_width, CSAVLRRR_height);
 
-                bulbs.append({QPoint(70,115), QColor(OFF)});
+                bulbs.append({QPoint(51,116), QColor(OFF)});
 
-                bulbs.append({QPoint(85,112), QColor(OFF)});
-                bulbs.append({QPoint(85,102), QColor(OFF)});
-                bulbs.append({QPoint(85,92), QColor(OFF)});
+                bulbs.append({QPoint(67,114), QColor(OFF)});
+                bulbs.append({QPoint(67,104), QColor(OFF)});
+                bulbs.append({QPoint(67,94), QColor(OFF)});
 
-                bulbs.append({QPoint(85,75), QColor(OFF)});
-                bulbs.append({QPoint(85,66), QColor(OFF)});
+                bulbs.append({QPoint(67,77), QColor(OFF)});
+                bulbs.append({QPoint(67,68), QColor(OFF)});
 
 
-                bulbs.append({QPoint(106,76), QColor(OFF)});
-                bulbs.append({QPoint(106,66), QColor(OFF)});
-                bulbs.append({QPoint(106,56), QColor(OFF)});
+                bulbs.append({QPoint(88,78), QColor(OFF)});
+                bulbs.append({QPoint(88,68), QColor(OFF)});
+                bulbs.append({QPoint(88,58), QColor(OFF)});
 
             //bulbs.append({QPoint(54,102), QColor(OFF)});
             }

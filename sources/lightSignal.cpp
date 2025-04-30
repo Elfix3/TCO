@@ -45,10 +45,10 @@ SignalType LightSignal::getType(){
 Aspect LightSignal::getAspect(){
     return currentAspect;
 }
-const LightSignal *LightSignal::getPrevious(){
+LightSignal *LightSignal::getPrevious(){
     return previousSignal;
 }
-const LightSignal *LightSignal::getNext(){
+LightSignal *LightSignal::getNext(){
     return nextSignal;
 }
 bool LightSignal::getisIPCS(){

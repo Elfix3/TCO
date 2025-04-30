@@ -4,14 +4,14 @@ AiguilleView::AiguilleView(Aiguille *aiguille, QWidget *parent)
     : QWidget(parent),aiguille(aiguille), isFlipped(false){
         setFixedSize(aiguille_width,aiguille_height);
         background.load(":images/aiguille.png");
-        if(aiguille->getDirection() == DROITE){
-            bulbs.append({QPoint(10,8),QColor(IDLE)}); //right Direction
-            bulbs.append({QPoint(10,34),QColor(YELLOW)}); //left Direction
-        } else {
-            bulbs.append({QPoint(10,8),QColor(YELLOW)}); //right Direction
-            bulbs.append({QPoint(10,34),QColor(IDLE)}); 
-        }
+        
+        bulbs.append({QPoint(10,8),QColor(OFF)}); //right Direction
+        bulbs.append({QPoint(10,34),QColor(OFF)}); //left Direction
+        
+
     connect(aiguille, &Aiguille::aiguilleUpdate, this, &AiguilleView::onAiguilleUpdate);
+    
+    onAiguilleUpdate();
 }
 
 AiguilleView::~AiguilleView()
@@ -36,7 +36,7 @@ void AiguilleView::paintEvent(QPaintEvent *event){
 }
 
 void AiguilleView::drawBulbs(QPainter &painter){
-    for(const Bulb &bulb : bulbs){
+    for(Bulb &bulb : bulbs){
         painter.setBrush(bulb.color);
         painter.setPen(Qt::NoPen);
         painter.drawEllipse(bulb.position, 4, 4); // Un petit cercle rayon 5px
@@ -50,18 +50,18 @@ void AiguilleView::drawBulbs(QPainter &painter){
 }
 
 void AiguilleView::onAiguilleUpdate(){
-    qDebug() << "cmoi";
     Direction dir = aiguille->getDirection();
     
     if((isFlipped && dir == DROITE) || (!isFlipped && dir == GAUCHE)){
         bulbs[0].color = QColor(YELLOW);
-        bulbs[1].color = QColor(IDLE);
+        bulbs[1].color = QColor(OFF);
     } else {
-        bulbs[0].color = QColor(IDLE);
+        bulbs[0].color = QColor(OFF);
         bulbs[1].color = QColor(YELLOW);
+        
     }
     
-    
+    update();
 
     
     //mystère et boule de gomme...

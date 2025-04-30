@@ -15,17 +15,18 @@ enum Direction {DROITE,GAUCHE};
     class Aiguille : public QObject{
         Q_OBJECT
         public :
-            explicit Aiguille(int id, Direction dir=DROITE, QObject *parent = nullptr);
+            explicit Aiguille(int id, Direction dir=GAUCHE, QObject *parent = nullptr);
             ~Aiguille();
 
             //getters
             int getId();
             Direction getDirection();
-            const Aiguille* getConjAiguille();
-            const  LightSignal* getPreviousSignal();
+            Aiguille* getConjAiguille();
+            LightSignal* getPreviousSignal();
             
             //setters
             void setDirection(Direction dir);
+            void setConj(Aiguille *conj);
         signals :
             void aiguilleUpdate();
 

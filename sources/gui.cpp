@@ -43,7 +43,6 @@ void Gui::loadMaquette(MaquetteHandler *handler){
         if(aiguillePositions.contains(id)){
             AiguilleView *view = new AiguilleView(aiguille,this);
             if(aiguillePositions[id].angle == 180){
-                qDebug() << "Flip !!";
                 view->flipAiguille();
             }
             view->move(aiguillePositions[id].position);
