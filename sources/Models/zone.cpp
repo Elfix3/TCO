@@ -16,6 +16,7 @@ void Zone::state(bool state){
     //désactivation du relais précédent TOUJOURS
     //mise à jour des signaux (tout le bal donc) et TOUJOURS
     //si feu suivant différent de sémaphore ou carré, activer le relais
+    //ET IPCS ????????
 }
 
 void Zone::toggleState(){
