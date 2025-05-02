@@ -4,6 +4,7 @@
 //file includes
 #include "lightSignal.h"
 #include "aiguille.h"
+#include "zone.h"
 
 //Qt includes
 #include <QObject>
@@ -18,7 +19,7 @@ class MaquetteHandler : public QObject {
         QMap<int,LightSignal*> getAllSignals();
         QMap<int,Aiguille*> getAllAiguilles();
         
-        void processCommand(QString command);
+        void zoneUpdateFromSensor(const QString &command);
         
         signals:
             void sendCommand(const QString &command);
@@ -26,7 +27,7 @@ class MaquetteHandler : public QObject {
         private:
             QMap <int,LightSignal*> lightSignals; //Qmap with all my lightSignals
             QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
-            //Qmap with relais or zones ? équivalent ???
+            QMap <QString,Zone*> zones; //Qmap with relais or zones ? équivalent ???
 
 
             

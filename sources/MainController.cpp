@@ -11,29 +11,22 @@ MainController::MainController(QObject *parent)
     mySerialHandler = new SerialHandler(this);
 
     //mySerialHandler->openSerial("COM5");
-    myGui->loadMaquette(myMaquetteHandler);
+    //myGui->loadMaquette(myMaquetteHandler);
 
    
 
-    //dumbTestSetup();
-
     
-    
-    bool connection = true;
-    if(connection){
-        /* connect(myGui->getUI()->myButton, &QPushButton::clicked,  // Supposons que getButton() retourne le QPushButton
-            this, &MainController::manageButton); */
+    //Main controller has the purpose to link all the class between them with the slot signal system
+    //All the connection explained below :
 
-        //myMaquetteHandler->getAllSignals().value(1)->info();
-        connect(mySerialHandler, &SerialHandler::dataReceived, myMaquetteHandler, &MaquetteHandler::processCommand);
+    //Connection of the data recieived signal with the zoneUpdateFromSensor from maquette handler
+    connect(mySerialHandler, &SerialHandler::dataReceived, myMaquetteHandler, &MaquetteHandler::zoneUpdateFromSensor);
 
-        //Connect
-        connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
+    //
+    connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
         
 
-        //connect(mySerialHandler, &SerialHandler::dataReceived, 
-        //myControl, &Control::updateComboBox);
-    }
+        
     
 }
 
@@ -56,8 +49,8 @@ void MainController::RESET(){
 void MainController::showGui(){
     myGui->show();
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(myGui, "Confirmation", "Voulez-vous continuer ?",
-        QMessageBox::Yes | QMessageBox::No);
+    /* reply = QMessageBox::question(myGui, "Confirmation", "Voulez-vous continuer ?",
+        QMessageBox::Yes | QMessageBox::No); */
 }
 
 void MainController::showControl(){

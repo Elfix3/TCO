@@ -93,35 +93,20 @@ bool MaquetteHandler::connectSetup(int setup){
     }
 } */
 
-void MaquetteHandler::processCommand(QString command){
-    //réception de la donnée du capteur
-    if(command == "/C1"){
-        
-        lightSignals[1]->setAspect(S);
-        lightSignals[1]->getPrevious()->setAspect(A);
-        lightSignals[1]->getPrevious()->getPrevious()->setAspect(VL);
+void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
+    //COMMAND to process : type /Z-12B END
+    //In this case, looks for the zone 12B and updates it
+    
+    if(command.startsWith("/Z-")&&command.endsWith(" END")){
+        qDebug() << "Processing of the command : ";
+        QString zone = command.mid(1,command.length()-5);
+        ///////Extraction du nom de la zone à mettre à jour
 
-        
-       
-        
-
-    } else if(command == "/C2"){
-        lightSignals[3]->setAspect(S);
-        lightSignals[3]->getPrevious()->setAspect(A);
-        lightSignals[3]->getPrevious()->getPrevious()->setAspect(VL);
-        
-        aiguilles[1]->setDirection(GAUCHE);
-        aiguilles[1]->getConjAiguille()->setDirection(GAUCHE);
-        
-    } else if (command == "/C3"){
-        lightSignals[5]->setAspect(S);
-        lightSignals[5]->getPrevious()->setAspect(A);
-        lightSignals[5]->getPrevious()->getPrevious()->setAspect(VL);
-
-        aiguilles[1]->setDirection(DROITE);
-        aiguilles[1]->getConjAiguille()->setDirection(DROITE);
-        
+    } else {
+        qWarning() << "Error : incorrect command from arduino, no relais update";
+        return;
     }
+
 }
 
 /* void MaquetteHandler::setUpOrder(){
