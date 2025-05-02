@@ -137,7 +137,14 @@ void MaquetteHandler::addSignalToMaquette(LightSignal *mySignal){
         qWarning() << "Error : Signal with ID" << sigId << "Already exits";
     } else {
 
-        qDebug() << "Signal"<<sigId<< "with type"<<mySignal->toString(mySignal->getType()).c_str()<<"added to the maquette";
+        //qDebug() << "Signal"<<sigId<< "with type"<<mySignal->toString(mySignal->getType()).c_str()<<"added to the maquette" << "\t\t"<< (mySignal->getisIPCS() ? "[IPCS]":"[Normal sens]");
+        
+    QString typeStr = QString::fromStdString(mySignal->toString(mySignal->getType()));
+    QString sensStr = mySignal->getisIPCS() ? "[IPCS]" : "[Normal sens]";
+    qDebug() << "Signal" << sigId
+         << "with type" << typeStr
+         << "added to the maquette"
+         << "\t\t" << qPrintable(sensStr.leftJustified(13, ' '));
         lightSignals[mySignal->getId()] = mySignal;
     }
 }
@@ -158,23 +165,39 @@ void MaquetteHandler::addAiguilleToMaquette(Aiguille *myAiguille){
 
 void MaquetteHandler::SETUP_SIGNALS(){
     //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL SIGNALS
-    addSignalToMaquette(new LightSignal(1, SAVLR,this));
-    addSignalToMaquette(new LightSignal(2, SAVLR,this));
+    addSignalToMaquette(new LightSignal(1, SAVLR,this)); //voie 1 selon le sens de circulation
     addSignalToMaquette(new LightSignal(3, CSAVLRRR,this));
-    addSignalToMaquette(new LightSignal(4, CSAVLRRR,this));
     addSignalToMaquette(new LightSignal(5, CSAVLRR,this));
-    addSignalToMaquette(new LightSignal(6, CSAVLRR,this));
     addSignalToMaquette(new LightSignal(7,SAVL,this));
-    addSignalToMaquette(new LightSignal(8,SAVLR,this));
     addSignalToMaquette(new LightSignal(9,SAVLR,this));
-    addSignalToMaquette(new LightSignal(10,CSAVLRRR,this));
     addSignalToMaquette(new LightSignal(11,CSAVLRRR,this));
-    addSignalToMaquette(new LightSignal(12,CSAVLRR,this));
     addSignalToMaquette(new LightSignal(13,CSAVLRR,this));
     addSignalToMaquette(new LightSignal(15,SAVL,this));
+    
+    addSignalToMaquette(new LightSignal(2, SAVLR,this)); //voie 2 selon le sens de circulation
+    addSignalToMaquette(new LightSignal(4, CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(8,SAVLR,this));
+    addSignalToMaquette(new LightSignal(6, CSAVLRR,this));
+    addSignalToMaquette(new LightSignal(10,CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(12,CSAVLRR,this));
 
     //Add IPCS
-}
+    addSignalToMaquette(new LightSignal(17,SAVL,this)); //voie 1 selon le contre sens
+    addSignalToMaquette(new LightSignal(19,SAVLR,this));
+    addSignalToMaquette(new LightSignal(21,CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(23,CSAVLRR,this));
+    addSignalToMaquette(new LightSignal(25,SAVL,this));
+    addSignalToMaquette(new LightSignal(27,SAVLR,this));
+    addSignalToMaquette(new LightSignal(29,CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(31,CSAVLRR,this));
+
+    addSignalToMaquette(new LightSignal(14,SAVLR,this)); // voie 2 selon le contre sens
+    addSignalToMaquette(new LightSignal(16,CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(18,CSAVLRR,this));
+    addSignalToMaquette(new LightSignal(20,SAVLR,this));
+    addSignalToMaquette(new LightSignal(22,CSAVLRRR,this));
+    addSignalToMaquette(new LightSignal(24,CSAVLRR,this));
+}   
 
 void MaquetteHandler::SETUP_AIGUILLES(){
     //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL AIGUILLES

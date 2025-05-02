@@ -2,7 +2,7 @@
 
 LightSignal::LightSignal(int id, SignalType type, QObject *parent)
  :QObject(parent), id(id), type(type), currentAspect(IDLE), isIPCS(false){
-     if(id>15){
+     if(id>15 || id == 14){
          isIPCS = true;
         }
     //qDebug() <<"Signal" << id << "created" << (isIPCS ? "in IPCS" :"");
