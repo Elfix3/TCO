@@ -11,6 +11,11 @@ Zone::~Zone()
 void Zone::state(bool state){
     currentState = state;
     previousZone->currentState = state;
+    //logique à implémenter !!!!!!!!!
+
+    //désactivation du relais précédent TOUJOURS
+    //mise à jour des signaux (tout le bal donc) et TOUJOURS
+    //si feu suivant différent de sémaphore ou carré, activer le relais
 }
 
 void Zone::toggleState(){
