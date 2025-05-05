@@ -11,7 +11,7 @@ MainController::MainController(QObject *parent)
     mySerialHandler = new SerialHandler(this);
 
     //mySerialHandler->openSerial("COM5");
-    //myGui->loadMaquette(myMaquetteHandler);
+    myGui->loadMaquette(myMaquetteHandler);
 
    
 
@@ -21,6 +21,8 @@ MainController::MainController(QObject *parent)
 
     //Connection of the data recieived signal with the zoneUpdateFromSensor from maquette handler
     connect(mySerialHandler, &SerialHandler::dataReceived, myMaquetteHandler, &MaquetteHandler::zoneUpdateFromSensor);
+
+    //Connection of the 
 
     //
     connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
