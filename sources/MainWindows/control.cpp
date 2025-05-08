@@ -3,7 +3,7 @@
 Control::Control(QWidget *parent) : QMainWindow(parent), ui(new Ui::CONTROL) {
     ui->setupUi(this);
 
-    
+
     
 }
 
@@ -11,6 +11,9 @@ Control::~Control() {
     delete ui;
 }
 
+void Control::onComboBoxIndexChanged()
+{
+}
 
 void Control::updateComboBox(const QString &data){
     /* if(data=="/C1"){

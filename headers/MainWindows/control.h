@@ -20,7 +20,7 @@ class Control : public QMainWindow {
         void updateComboBox(const QString &data);
     private slots :
         void slotMethod();
-        //void onComboBoxSelectionChanged(int index);
+        void onComboBoxIndexChanged();
 
 };
 
