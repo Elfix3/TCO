@@ -13,16 +13,24 @@ Control::~Control() {
 }
 
 void Control::SetupConnections(){
-    //Signals
+    //This function is very important and links the GUI elements to the internal slots of the control class.
+    //Then the slots are sending signals to the other classes
+
+    //comboBoxes and Signals
+   
     const auto combos = findChildren<QComboBox*>(QRegularExpression("comboSig\\d+"));
-    
     for (QComboBox* combo : combos) {
         connect(combo, QOverload<int>::of(&QComboBox::currentIndexChanged),
-                this, &Control::onComboChange);
+                this, [=](int) {
+                    QString name = combo->objectName(); // comboSig42
+                    int id = name.mid(QString("comboSig").length()).toInt();
+                    Aspect asp = combo->currentData().value<Aspect>();
+                    emit sendSignalUpdate(id, asp);  // ton signal personnalisé
+                });
     }
 
     //Switches
-
+     
     //Zones
 }
  
@@ -83,25 +91,25 @@ void Control::loadSignalQvariant(){
 
 }
 
-void Control::onComboChange(int index){
-    Q_UNUSED(index); // On n'utilise pas directement l'index
-    
-    QComboBox* combo = qobject_cast<QComboBox*>(sender());
-    if (combo){
-        
-        qDebug("changement");
-        QString comboName = combo->objectName();
-        int signalId = comboName.mid(8).toInt(); // "comboSig123" → 123
-
-        // 2. Récupère la nouvelle valeur
-        Aspect newAspect = combo->currentData().value<Aspect>();
-
-        // 3. Émet le signal
-        emit signalUpdateFromCombo(signalId, newAspect);
+void Control::updateSigComboBox(int signalId, Aspect newAspect){
+    QComboBox* combo = findChild<QComboBox*>(QString("comboSig%1").arg(signalId));
+    if (!combo) {
+        qWarning() << "ComboBox for signal ID" << signalId << "not found.";
+        return;
     }
 
-    
-    
+    // Trouve l’index correspondant au nouvel aspect
+    int index = combo->findData(QVariant::fromValue(newAspect));
+    if (index < 0) {
+        qWarning() << "Aspect not found in combo box for signal ID" << signalId;
+        return;
+    }
+
+    // Empêche temporairement le signal d’être émis
+    combo->blockSignals(true);
+    combo->setCurrentIndex(index);
+    combo->blockSignals(false);
+
 }
 
 

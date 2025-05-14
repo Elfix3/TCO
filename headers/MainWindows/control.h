@@ -30,14 +30,18 @@ class Control : public QMainWindow {
         
     
     signals:
-        void signalUpdateFromCombo(int signalId, Aspect newAspect);
+        //this signals allows the sending of the newAspectChange to the maquetteHandler
+        void sendSignalUpdate(int signalId, Aspect newAspect);
+
+
+
+        //void sendAiguilleUpdate(); //// KEJGBKJEGOEGJBEKGB TROP DE TRUCS A FAIRE
+        //void sendZoneUpdate();
+
 
     public slots :
-        //void slotMethod();
-
-    private slots :
-        void onComboChange(int index);
-
+        void updateSigComboBox(int signalId, Aspect newAspect);
+        
 
 };
 

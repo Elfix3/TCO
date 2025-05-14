@@ -24,7 +24,8 @@ class MaquetteHandler : public QObject {
         void updateSignalFromCombo(int id, Aspect newAspect);
         
         signals:
-            void sendCommand(const QString &command);
+            void sendCommand(const QString &command); //??
+            void lightSignalChanged(int id, Aspect newAspect);
         
         private:
             QMap <int,LightSignal*> lightSignals; //Qmap with all my lightSignals

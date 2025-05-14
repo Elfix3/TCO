@@ -60,7 +60,7 @@ void LightSignal::setAspect(Aspect newAspect){
     if(newAspect != currentAspect && isValidAspect(newAspect)){
         qDebug() << "Signal" << id << "is set to"<<toString(newAspect).c_str();
         currentAspect = newAspect;
-        emit signalUpdated();
+        emit signalUpdated(id, newAspect);
     } else {
         qWarning() << "Set aspect not successfull";
     }

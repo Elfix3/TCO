@@ -28,10 +28,15 @@ MainController::MainController(QObject *parent)
     //connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
     
 
-    connect(myControl,&Control::signalUpdateFromCombo,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo);
+    //mise à jour d'un signal de combo vers modèle
+    connect(myControl,&Control::sendSignalUpdate,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo);
+    
+    //mise à jour d'un signal de modèle vers combo
+    connect(myMaquetteHandler,&MaquetteHandler::lightSignalChanged,myControl,&Control::updateSigComboBox);
+
 
         
-    
+    myMaquetteHandler->getAllSignals()[23]->setAspect(C);
 }
 
 MainController::~MainController(){

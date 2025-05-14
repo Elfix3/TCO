@@ -59,7 +59,7 @@ class LightSignal : public QObject{
         bool isValidAspect(Aspect aspect);
         
     signals:
-        void signalUpdated();
+        void signalUpdated(int id, Aspect newAspect);
 
     protected :
 

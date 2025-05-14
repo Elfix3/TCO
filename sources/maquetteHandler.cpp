@@ -12,6 +12,10 @@ MaquetteHandler::MaquetteHandler(QObject *parent)
     connectSetup();
 
     //SET_ALL_DIR_RIGHT();
+
+    for(LightSignal *sig :lightSignals){
+        connect(sig,&LightSignal::signalUpdated,this,&MaquetteHandler::lightSignalChanged);
+    }
 }
 
 QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){
@@ -86,12 +90,6 @@ bool MaquetteHandler::connectSetup(int setup){
     }
     return false;
 }
-
-/* void MaquetteHandler::INIT_VL(){
-    foreach(LightSignal *signal, lightSignals){
-        signal->setAspect(VL);
-    }
-} */
 
 void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
     //COMMAND to process : type /Z-12B END
@@ -207,7 +205,7 @@ void MaquetteHandler::SETUP_AIGUILLES(){
 
 void MaquetteHandler::SET_ALL_VL(){
     for(LightSignal *sig : lightSignals){
-        sig->setAspect(S);
+        sig->setAspect(VL);
     }
 }
 
