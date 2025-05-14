@@ -109,6 +109,10 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
 
 }
 
+void MaquetteHandler::updateSignalFromCombo(int id, Aspect newAspect){
+    lightSignals[id]->setAspect(newAspect);
+}
+
 /* void MaquetteHandler::setUpOrder(){
     //here we set the different relationships beetween all the signals
 } */
@@ -203,7 +207,7 @@ void MaquetteHandler::SETUP_AIGUILLES(){
 
 void MaquetteHandler::SET_ALL_VL(){
     for(LightSignal *sig : lightSignals){
-        sig->setAspect(VL);
+        sig->setAspect(S);
     }
 }
 

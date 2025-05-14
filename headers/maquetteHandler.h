@@ -19,7 +19,9 @@ class MaquetteHandler : public QObject {
         QMap<int,LightSignal*> getAllSignals();
         QMap<int,Aiguille*> getAllAiguilles();
         
+        //slots
         void zoneUpdateFromSensor(const QString &command);
+        void updateSignalFromCombo(int id, Aspect newAspect);
         
         signals:
             void sendCommand(const QString &command);

@@ -6,13 +6,13 @@ MainController::MainController(QObject *parent)
 {
     std::cout<<"<----Controller created---->\n"<<std::endl;
     myGui = new Gui();
-    //myControl = new Control();
-    //myMaquetteHandler = new MaquetteHandler(this);
+    myControl = new Control();
+    myMaquetteHandler = new MaquetteHandler(this);
     mySerialHandler = new SerialHandler(this);
 
    
-    //myGui->loadMaquette(myMaquetteHandler);
-
+    myGui->loadMaquette(myMaquetteHandler);
+    myControl->loadMaquette(myMaquetteHandler);
    
 
     
@@ -26,7 +26,9 @@ MainController::MainController(QObject *parent)
 
     //
     //connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
-        
+    
+
+    connect(myControl,&Control::signalUpdateFromCombo,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo);
 
         
     

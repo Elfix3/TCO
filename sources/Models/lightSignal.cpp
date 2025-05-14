@@ -91,6 +91,9 @@ std::string LightSignal::toString(SignalType someType){
     return allTypes[(someType-3)/2].toStdString();
 }
 bool LightSignal::isValidAspect(Aspect aspect){
+    if(aspect == IDLE){
+        return true;
+    }
     if((type == SAVL || type == CSAVLRR) && aspect == R  ){
         //try to update as ralentissement
         qWarning() << "Error : no" <<toString(aspect).c_str() << "on a"<<toString(type).c_str()<<"signal";

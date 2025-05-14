@@ -27,7 +27,7 @@ Ui::GUI *Gui::getUI(){
 }
 
 void Gui::loadMaquette(MaquetteHandler *handler){
-    
+    //pour tous les signaux crée les vues
     for(LightSignal* signal : handler->getAllSignals()){
         short id = signal->getId();
         if(signalPositions.contains(id)){
@@ -52,6 +52,8 @@ void Gui::loadMaquette(MaquetteHandler *handler){
             qWarning() << "Error : no placement avaiable for aiguille " << id;
         }
     }
+
+    //pour toutes les zones ??
 }
 
 

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1010</width>
+    <width>1017</width>
     <height>574</height>
    </rect>
   </property>
@@ -15,10 +15,10 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="AlimTAB">
        <attribute name="title">
@@ -1078,160 +1078,30 @@
         <string>Signaux</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_7">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="font">
-           <font>
-            <pointsize>17</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Sens normal :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="label_43">
-          <property name="font">
-           <font>
-            <pointsize>17</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Contre sens :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QGroupBox" name="groupBox_9">
+        <item row="2" column="0">
+         <widget class="QGroupBox" name="groupBox_10">
           <property name="title">
            <string/>
           </property>
-          <layout class="QGridLayout" name="gridLayout_37">
-           <item row="2" column="0">
-            <widget class="QFrame" name="frame_94">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <item>
-               <widget class="QLabel" name="label_58">
-                <property name="text">
-                 <string>Signal 3</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QComboBox" name="comboSig3">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QFrame" name="frame_95">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_57">
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig9">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_59">
-                <property name="text">
-                 <string>Signal 9</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
+          <layout class="QGridLayout" name="gridLayout_38">
            <item row="3" column="1">
-            <widget class="QFrame" name="frame_96">
+            <widget class="QFrame" name="frame_104">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QGridLayout" name="gridLayout_58">
+             <layout class="QGridLayout" name="gridLayout_103">
               <item row="0" column="0">
-               <widget class="QLabel" name="label_100">
+               <widget class="QLabel" name="label_104">
                 <property name="text">
-                 <string>Signal 13</string>
+                 <string>Signal 10</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig13">
+               <widget class="QComboBox" name="comboSig10">
                 <item>
                  <property name="text">
                   <string>Voie libre</string>
@@ -1260,6 +1130,11 @@
                 <item>
                  <property name="text">
                   <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -1268,23 +1143,23 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QFrame" name="frame_97">
+            <widget class="QFrame" name="frame_107">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QGridLayout" name="gridLayout_100">
+             <layout class="QGridLayout" name="gridLayout_106">
               <item row="0" column="0">
-               <widget class="QLabel" name="label_101">
+               <widget class="QLabel" name="label_107">
                 <property name="text">
-                 <string>Signal 15</string>
+                 <string>Signal 12</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig15">
+               <widget class="QComboBox" name="comboSig12">
                 <item>
                  <property name="text">
                   <string>Voie libre</string>
@@ -1307,118 +1182,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
                   <string>Rappel Ralentissement</string>
                  </property>
                 </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QFrame" name="frame_98">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_59">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_60">
-                <property name="text">
-                 <string>Signal 7</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig7">
                 <item>
                  <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QFrame" name="frame_99">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_60">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_61">
-                <property name="text">
-                 <string>Signal 11</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig11">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -1427,16 +1196,16 @@
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QFrame" name="frame_100">
+            <widget class="QFrame" name="frame_103">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QGridLayout" name="gridLayout_61">
+             <layout class="QGridLayout" name="gridLayout_102">
               <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig5">
+               <widget class="QComboBox" name="comboSig4">
                 <item>
                  <property name="text">
                   <string>Voie libre</string>
@@ -1467,36 +1236,41 @@
                   <string>Rappel Ralentissement</string>
                  </property>
                 </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QLabel" name="label_62">
+               <widget class="QLabel" name="label_103">
                 <property name="text">
-                 <string>Signal 5</string>
+                 <string>Signal 4</string>
                 </property>
                </widget>
               </item>
              </layout>
             </widget>
            </item>
-           <item row="1" column="0">
-            <widget class="QFrame" name="frame_101">
+           <item row="2" column="0">
+            <widget class="QFrame" name="frame_102">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QGridLayout" name="gridLayout_62">
+             <layout class="QGridLayout" name="gridLayout_101">
               <item row="0" column="0">
-               <widget class="QLabel" name="label_63">
+               <widget class="QLabel" name="label_102">
                 <property name="text">
-                 <string>Signal 1</string>
+                 <string>Signal 2</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig1">
+               <widget class="QComboBox" name="comboSig2">
                 <item>
                  <property name="text">
                   <string>Voie libre</string>
@@ -1517,20 +1291,126 @@
                   <string>Ralentissement</string>
                  </property>
                 </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QFrame" name="frame_105">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_104">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_105">
+                <property name="text">
+                 <string>Signal 6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboSig6">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QFrame" name="frame_106">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_105">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_106">
+                <property name="text">
+                 <string>Signal 8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboSig8">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
                </widget>
               </item>
              </layout>
             </widget>
            </item>
            <item row="0" column="0" colspan="2">
-            <widget class="QLabel" name="label_39">
+            <widget class="QLabel" name="label_40">
              <property name="font">
               <font>
                <pointsize>15</pointsize>
               </font>
              </property>
              <property name="text">
-              <string>Voie 1</string>
+              <string>Voie 2</string>
              </property>
             </widget>
            </item>
@@ -1583,12 +1463,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Ralentissement</string>
+                  <string>Rappel Ralentissement</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -1624,17 +1504,7 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -1684,17 +1554,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
                   <string>Ralentissement</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -1742,12 +1607,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Ralentissement</string>
+                  <string>Rappel Ralentissement</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -1790,17 +1655,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
                   <string>Ralentissement</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -1856,6 +1716,11 @@
                   <string>Rappel Ralentissement</string>
                  </property>
                 </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
                </widget>
               </item>
              </layout>
@@ -1896,17 +1761,7 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -1955,6 +1810,11 @@
                   <string>Rappel Ralentissement</string>
                  </property>
                 </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item row="0" column="0">
@@ -1976,345 +1836,6 @@
              </property>
              <property name="text">
               <string>Voie 1</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QGroupBox" name="groupBox_10">
-          <property name="title">
-           <string/>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_38">
-           <item row="3" column="1">
-            <widget class="QFrame" name="frame_104">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_103">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_104">
-                <property name="text">
-                 <string>Signal 10</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig10">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QFrame" name="frame_107">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_106">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_107">
-                <property name="text">
-                 <string>Signal 12</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig12">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QFrame" name="frame_103">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_102">
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig4">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_103">
-                <property name="text">
-                 <string>Signal 4</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QFrame" name="frame_102">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_101">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_102">
-                <property name="text">
-                 <string>Signal 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig2">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QFrame" name="frame_105">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_104">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_105">
-                <property name="text">
-                 <string>Signal 6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig6">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QFrame" name="frame_106">
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_105">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_106">
-                <property name="text">
-                 <string>Signal 8</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboSig8">
-                <item>
-                 <property name="text">
-                  <string>Voie libre</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Avertissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Sémaphore</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Ralentissement</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rappel Ralentissement</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="0" column="0" colspan="2">
-            <widget class="QLabel" name="label_40">
-             <property name="font">
-              <font>
-               <pointsize>15</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Voie 2</string>
              </property>
             </widget>
            </item>
@@ -2368,6 +1889,11 @@
                   <string>Rappel Ralentissement</string>
                  </property>
                 </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item row="0" column="0">
@@ -2415,17 +1941,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
                   <string>Ralentissement</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -2473,12 +1994,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Ralentissement</string>
+                  <string>Rappel Ralentissement</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -2526,12 +2047,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Ralentissement</string>
+                  <string>Rappel Ralentissement</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -2574,17 +2095,12 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Carré</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
                   <string>Ralentissement</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Rappel Ralentissement</string>
+                  <string>Inactif</string>
                  </property>
                 </item>
                </widget>
@@ -2640,6 +2156,11 @@
                   <string>Rappel Ralentissement</string>
                  </property>
                 </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
                </widget>
               </item>
              </layout>
@@ -2660,17 +2181,828 @@
           </layout>
          </widget>
         </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_43">
+          <property name="font">
+           <font>
+            <pointsize>17</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Contre sens :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <pointsize>17</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Sens normal :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox_9">
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_39">
+             <property name="font">
+              <font>
+               <pointsize>15</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Voie 1</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QFrame" name="frame_101">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_8">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_63">
+                <property name="text">
+                 <string>Signal 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboSig1">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QFrame" name="frame_95">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_27">
+              <item>
+               <widget class="QLabel" name="label_59">
+                <property name="text">
+                 <string>Signal 9</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboSig9">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QFrame" name="frame_94">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLabel" name="label_58">
+                <property name="text">
+                 <string>Signal 3</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboSig3">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QFrame" name="frame_99">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_26">
+              <item>
+               <widget class="QLabel" name="label_61">
+                <property name="text">
+                 <string>Signal 11</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboSig11">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QFrame" name="frame_100">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_61">
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboSig5">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_62">
+                <property name="text">
+                 <string>Signal 5</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QFrame" name="frame_96">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_25">
+              <item>
+               <widget class="QLabel" name="label_100">
+                <property name="text">
+                 <string>Signal 13</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboSig13">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Carré</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rappel Ralentissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QFrame" name="frame_98">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_59">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_60">
+                <property name="text">
+                 <string>Signal 7</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboSig7">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QFrame" name="frame_97">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_24">
+              <item>
+               <widget class="QLabel" name="label_101">
+                <property name="text">
+                 <string>Signal 15</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboSig15">
+                <item>
+                 <property name="text">
+                  <string>Voie libre</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Avertissement</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sémaphore</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Inactif</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
        </layout>
-      </widget>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>SignauxV2</string>
-       </attribute>
       </widget>
       <widget class="QWidget" name="AiguillesTAB">
        <attribute name="title">
         <string>Aiguilles</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="2" column="0">
+         <widget class="QFrame" name="frame_15">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_26">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_29">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QFrame" name="frame_19">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_31">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_32">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QFrame" name="frame_38">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_20">
+           <item>
+            <widget class="QLabel" name="label_47">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_45">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_47">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QFrame" name="frame">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_2">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QFrame" name="frame_39">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_21">
+           <item>
+            <widget class="QLabel" name="label_48">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_50">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_53">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QFrame" name="frame_37">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_19">
+           <item>
+            <widget class="QLabel" name="label_46">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_43">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_44">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QFrame" name="frame_33">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_15">
+           <item>
+            <widget class="QLabel" name="label_37">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_33">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_34">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QFrame" name="frame_36">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_18">
+           <item>
+            <widget class="QLabel" name="label_45">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_39">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_41">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QFrame" name="frame_34">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_16">
+           <item>
+            <widget class="QLabel" name="label_38">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_35">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_36">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QFrame" name="frame_35">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_17">
+           <item>
+            <widget class="QLabel" name="label_44">
+             <property name="text">
+              <string>Aig1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_37">
+             <property name="text">
+              <string>Gauche</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_38">
+             <property name="text">
+              <string>Droite</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Policy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>320</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="2" rowspan="2">
+         <widget class="QFrame" name="frame_40">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_22">
+           <item>
+            <widget class="QLabel" name="label_49">
+             <property name="text">
+              <string>Quelque chose ici</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

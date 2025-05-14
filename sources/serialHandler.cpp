@@ -63,8 +63,11 @@ SerialHandler::SerialHandler(QObject *parent)
             errorMessage = "No arduino detected";
         }
         qDebug() << errorMessage.toStdString().c_str();
-        QMessageBox::critical(nullptr,"Error : ",errorMessage,QMessageBox::Ok,QMessageBox::Ok);
-        qFatal("End of the program");
+
+        //to disable at app use :)
+
+        //QMessageBox::critical(nullptr,"Error : ",errorMessage,QMessageBox::Ok,QMessageBox::Ok);
+        //qFatal("End of the program");
     }
     
     else {
