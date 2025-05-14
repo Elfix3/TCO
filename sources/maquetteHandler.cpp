@@ -122,6 +122,8 @@ void MaquetteHandler::addSignalToMaquette(LightSignal *mySignal){
         qWarning() << "Error : Signal with ID" << sigId << "Already exits";
     } else {
 
+        
+
         //qDebug() << "Signal"<<sigId<< "with type"<<mySignal->toString(mySignal->getType()).c_str()<<"added to the maquette" << "\t\t"<< (mySignal->getisIPCS() ? "[IPCS]":"[Normal sens]");
         
     QString typeStr = QString::fromStdString(mySignal->toString(mySignal->getType()));

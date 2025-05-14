@@ -69,6 +69,7 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "text_encoding": "cpp",
-        "qmessagebox": "cpp"
+        "qmessagebox": "cpp",
+        "codecvt": "cpp"
     }
 }

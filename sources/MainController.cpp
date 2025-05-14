@@ -6,12 +6,12 @@ MainController::MainController(QObject *parent)
 {
     std::cout<<"<----Controller created---->\n"<<std::endl;
     myGui = new Gui();
-    myControl = new Control();
-    myMaquetteHandler = new MaquetteHandler(this);
+    //myControl = new Control();
+    //myMaquetteHandler = new MaquetteHandler(this);
     mySerialHandler = new SerialHandler(this);
 
-    //mySerialHandler->openSerial("COM5");
-    myGui->loadMaquette(myMaquetteHandler);
+   
+    //myGui->loadMaquette(myMaquetteHandler);
 
    
 
@@ -20,12 +20,12 @@ MainController::MainController(QObject *parent)
     //All the connection explained below :
 
     //Connection of the data recieived signal with the zoneUpdateFromSensor from maquette handler
-    connect(mySerialHandler, &SerialHandler::dataReceived, myMaquetteHandler, &MaquetteHandler::zoneUpdateFromSensor);
+    //connect(mySerialHandler, &SerialHandler::dataReceived, myMaquetteHandler, &MaquetteHandler::zoneUpdateFromSensor);
 
     //Connection of the 
 
     //
-    connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
+    //connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
         
 
         

@@ -11,16 +11,18 @@ class Control : public QMainWindow {
     public:
         explicit Control(QWidget *parent = nullptr);
         ~Control();
-    
+
     private:
         Ui::CONTROL *ui;
-    
+
+
     
     public slots:
         void updateComboBox(const QString &data);
     private slots :
         void slotMethod();
-        void onComboBoxIndexChanged();
+        void onSignalComboChanged();
+
 
 };
 

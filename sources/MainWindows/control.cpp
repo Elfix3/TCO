@@ -3,17 +3,32 @@
 Control::Control(QWidget *parent) : QMainWindow(parent), ui(new Ui::CONTROL) {
     ui->setupUi(this);
 
-
-    
+    //setting up the connections :
+    /* QList<QComboBox *> allComboBoxes = findChildren<QComboBox*>();
+    QRegularExpression re("comboSig\\d+)");
+    for(QComboBox* combo : allCombosBoxes) {
+        QRegularExpressionMatch match = re.match(combo->objectName());
+        if(match.hasMatch()) {
+            // Extraire l'ID numérique
+            int signalId = match.captured(1).toInt();
+            
+            // Connecter le signal
+            connect(combo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+                   [this, signalId](int index) {
+                       onSignalComboIndexChanged(signalId, index);
+                   });
+        }
+    } */
 }
 
 Control::~Control() {
     delete ui;
 }
 
-void Control::onComboBoxIndexChanged()
-{
+void Control::onSignalComboChanged(){
+    
 }
+
 
 void Control::updateComboBox(const QString &data){
     /* if(data=="/C1"){
