@@ -59,9 +59,6 @@ void SerialHandler::INIT(){
         delete tempPort;
     }
 
-    //if(!mySerialA) qFatal() << "No arduino A detected";
-    //if(!mySerialB) qFatal() << "No arduino B detected";
-
     //problem in the detection
     if(!mySerialA || !mySerialB){
         QString errorMessage;
@@ -83,6 +80,9 @@ void SerialHandler::INIT(){
     
     else {
         qDebug() << "\n<----Sucessfull initialization of serial A and B communication---->";
+    
+        connect(mySerialA,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoA);
+        connect(mySerialB,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoB);
     } 
 }
 
@@ -99,21 +99,31 @@ void SerialHandler::closeSerial(){
     }
 }
 
-void SerialHandler::writeData(const QString &data, Arduino myArduino){
+void SerialHandler::readDataFromArduinoA(){
+    readData(mySerialA);
+}
 
+void SerialHandler::readDataFromArduinoB(){
+    readData(mySerialB);
+}
+
+
+
+
+void SerialHandler::writeData(const QString &data, Arduino myArduino){
     //conversion of the data
     QByteArray byteArray = data.toUtf8();
-
+    
+    //sends to arduino A
     if(myArduino == Ard_A && mySerialA && mySerialA->isOpen()){
         if(mySerialA->write(byteArray)==-1){
             emit errorOccurred("Error : incorrect writing on the serial port A");
         }
     }
 
+    //sends to arduino B
     else if(myArduino == Ard_B && mySerialB && mySerialB->isOpen()){
-        
-        if(mySerialB->write(byteArray)==-1){
-            
+        if(mySerialB->write(byteArray)==-1){    
             emit errorOccurred("Error : incorrect writing on the serial port A");
         }
     }
@@ -121,18 +131,19 @@ void SerialHandler::writeData(const QString &data, Arduino myArduino){
 } 
 
 QString SerialHandler::readData(QSerialPort *mySerialPort) {
-    QByteArray data = mySerialPort->readAll();
-    mySerialBuffer.append(data);
+    QByteArray *buffer = (mySerialPort == mySerialA) ? &bufferA : &bufferB;
+    buffer->append(mySerialPort->readAll());
 
-    int endIndex = mySerialBuffer.indexOf("\r\n");
+    int endIndex = buffer->indexOf("\r\n");
     if (endIndex != -1) {
         // Extraire le message complet
-        QByteArray message = mySerialBuffer.left(endIndex);
-        mySerialBuffer.remove(0, endIndex + 2); // Enlever le message + \r\n
+        QByteArray message = buffer->left(endIndex);
+        buffer->remove(0, endIndex + 2); // Enlever le message + \r\n
 
         // Nettoyer et convertir en QString
         QString strData = QString(message.trimmed());
         //qDebug() << (strData == "Patapim");
+        qDebug() << strData;
         emit dataReceived(strData);
         return strData;
     }
@@ -184,3 +195,5 @@ void SerialHandler::sendCommandZone(QString name, bool state){
         writeData(command,Ard_B);
     }
 }
+
+

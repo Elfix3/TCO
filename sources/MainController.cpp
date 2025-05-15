@@ -46,9 +46,7 @@ MainController::MainController(QObject *parent)
 
     //myMaquetteHandler->getAllSignals()[1]->setAspect(VL);
     //myMaquetteHandler->getAllSignals()[2]->setAspect(S);
-    myMaquetteHandler->getAllZones()["1A"]->setState(true);
-    myMaquetteHandler->getAllZones()["1A"]->setState(false);
-
+    
 }
 
 

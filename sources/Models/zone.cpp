@@ -14,6 +14,8 @@ void Zone::setState(bool state){
         qDebug() << "Zone"<<name<<"is now"<<(state==true ? "powered" : "unpowered");
         currentState = state;
         emit powerChanged();
+    } else {
+        qWarning() << "Set state not successfull";
     }
     //logique à implémenter !!!!!!!!!
 
@@ -25,6 +27,7 @@ void Zone::setState(bool state){
 
 void Zone::toggleState(){
     currentState = !currentState;
+    emit powerChanged();
 }
 
 void Zone::setPreviousZone(Zone* z){

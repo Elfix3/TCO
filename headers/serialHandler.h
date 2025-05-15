@@ -31,13 +31,16 @@ class SerialHandler : public QObject{
         //write some data, 
         void writeData(const QString &data, Arduino myArduino);
 
-        
+        //usefull ??? maybe not
         QString readData(QSerialPort *mySerialPort);
 
     public slots :
         void sendCommandSignal(int id, Aspect aspect);
         void sendCommandAiguille(int id, Direction dir);
         void sendCommandZone(QString name, bool state);
+
+        void readDataFromArduinoA();
+        void readDataFromArduinoB();
 
     signals:
         void dataReceived(const QString &data);
@@ -52,8 +55,9 @@ class SerialHandler : public QObject{
     private:
         QSerialPort *mySerialA; //need to create another SP to manage 2 arduinos
         QSerialPort *mySerialB;
-        QByteArray mySerialBuffer;
-    
+
+        QByteArray bufferA;
+        QByteArray bufferB;
 
 
         //Signals on A and signals on B
