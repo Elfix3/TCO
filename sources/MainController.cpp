@@ -22,11 +22,11 @@ MainController::MainController(QObject *parent)
 
 
     
-
+    
     //myMaquetteHandler->getAllAiguilles()[3]->setDirection(DROITE);
     //myGui = new Gui(); 
     //load la GUI ici 
-    //myGui->loadMaquette(myMaquetteHandler);
+    myGui->loadMaquette(myMaquetteHandler);
     //myGui->loadMaquette(myMaquetteHandler);
     //myControl->loadMaquette(myMaquetteHandler);
 
@@ -38,11 +38,14 @@ MainController::MainController(QObject *parent)
     //connect(mySerialHandler, &SerialHandler::dataReceived, myMaquetteHandler, &MaquetteHandler::zoneUpdateFromSensor);
 
 
+    //connects the sensor command reception with the zone update
+    connect(mySerialHandler,&SerialHandler::commandReady,myMaquetteHandler,&MaquetteHandler::zoneUpdateFromSensor);
     
     //connects the object update with the command sending
     connect(myMaquetteHandler,&MaquetteHandler::aiguilleChanged,mySerialHandler,&SerialHandler::sendCommandAiguille);
     connect(myMaquetteHandler,&MaquetteHandler::signalChanged,mySerialHandler, &SerialHandler::sendCommandSignal);
     connect(myMaquetteHandler,&MaquetteHandler::zoneChanged, mySerialHandler,&SerialHandler::sendCommandZone);
+
 
     //myMaquetteHandler->getAllSignals()[1]->setAspect(VL);
     //myMaquetteHandler->getAllSignals()[2]->setAspect(S);

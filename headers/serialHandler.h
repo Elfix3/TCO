@@ -24,26 +24,28 @@ class SerialHandler : public QObject{
         ~SerialHandler();
 
         void INIT();
-
-        
         void closeSerial();
 
-        //write some data, 
-        void writeData(const QString &data, Arduino myArduino);
+        
+        void readDataFromArduinoA(); //when data is avilable on Arduino A, reads it
+        void readDataFromArduinoB(); //when data is available on Arduino B, reads it
+        void processBuffer(QByteArray &buffer); //fills the dedicated buffer for A and B, to process command, sends signal data recieved.
 
-        //usefull ??? maybe not
-        QString readData(QSerialPort *mySerialPort);
+
+        void writeData(const QString &data, Arduino myArduino); //writes on a specific Arduino (BOTH NOT IMPLEMENTED)
+
+
+        
 
     public slots :
         void sendCommandSignal(int id, Aspect aspect);
         void sendCommandAiguille(int id, Direction dir);
         void sendCommandZone(QString name, bool state);
 
-        void readDataFromArduinoA();
-        void readDataFromArduinoB();
+        
 
     signals:
-        void dataReceived(const QString &data);
+        void commandReady(const QString &data);
         void errorOccurred(const QString &error);
         //void portOpened(bool status);
 

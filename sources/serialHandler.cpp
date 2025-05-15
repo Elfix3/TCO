@@ -100,14 +100,30 @@ void SerialHandler::closeSerial(){
 }
 
 void SerialHandler::readDataFromArduinoA(){
-    readData(mySerialA);
+    bufferA.append(mySerialA->readAll());
+    processBuffer(bufferA);
 }
 
 void SerialHandler::readDataFromArduinoB(){
-    readData(mySerialB);
+    bufferB.append(mySerialB->readAll());
+    processBuffer(bufferB);
 }
 
-
+void SerialHandler::processBuffer(QByteArray &buffer){
+    int endIndex;
+    while ((endIndex = buffer.indexOf("\r\n")) != -1) {
+        QString message = QString(buffer.left(endIndex).trimmed());
+        buffer.remove(0, endIndex + 2);
+        
+        if(message.startsWith("/")){
+            qDebug() << message;
+            emit commandReady(message);
+        } else {
+            qWarning() << "Error : invalid command, must start with /";
+        }
+            
+    }
+}
 
 
 void SerialHandler::writeData(const QString &data, Arduino myArduino){
@@ -130,26 +146,7 @@ void SerialHandler::writeData(const QString &data, Arduino myArduino){
 
 } 
 
-QString SerialHandler::readData(QSerialPort *mySerialPort) {
-    QByteArray *buffer = (mySerialPort == mySerialA) ? &bufferA : &bufferB;
-    buffer->append(mySerialPort->readAll());
 
-    int endIndex = buffer->indexOf("\r\n");
-    if (endIndex != -1) {
-        // Extraire le message complet
-        QByteArray message = buffer->left(endIndex);
-        buffer->remove(0, endIndex + 2); // Enlever le message + \r\n
-
-        // Nettoyer et convertir en QString
-        QString strData = QString(message.trimmed());
-        //qDebug() << (strData == "Patapim");
-        qDebug() << strData;
-        emit dataReceived(strData);
-        return strData;
-    }
-
-    return QString();
-}
 
 /* void SerialHandler::handleReadyRead(){
     const QByteArray data = mySerialPort->readAll();

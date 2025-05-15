@@ -131,7 +131,11 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
     //COMMAND to process : type /Z-12B END
     //In this case, looks for the zone 12B and updates it
     
-    if(command.startsWith("/Z-")&&command.endsWith(" END")){
+
+    if(command=="/Capteur A declenche"){
+        lightSignals[1]->setAspect(S);
+    }
+    /* if(command.startsWith("/Z-")&&command.endsWith(" END")){
         qDebug() << "Processing of the command : ";
         QString zone = command.mid(1,command.length()-5);
         ///////Extraction du nom de la zone à mettre à jour
@@ -139,7 +143,7 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
     } else {
         qWarning() << "Error : incorrect command from arduino, no relais update";
         return;
-    }
+    } */
 
 }
 
