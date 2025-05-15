@@ -43,7 +43,7 @@ QMap<QString, Zone *> MaquetteHandler::getAllZones(){
 
 void MaquetteHandler::handleObjectUpdate(){
     QObject* obj = sender();
-
+    qDebug() << "object update";
     if(!obj)return; //nullptr
 
     if(LightSignal *sig = qobject_cast<LightSignal*>(obj)){ //tries to cast the objet to a signal
@@ -157,7 +157,7 @@ void MaquetteHandler::addSignalToMaquette(LightSignal *mySignal){
     if(sigId<1){
         qWarning() << "Error : Incorrect Signal ID must be greater than 0";
     } else if(lightSignals.contains(sigId)){
-        qWarning() << "Error : Signal with ID" << sigId << "Already exits";
+        qWarning() << "Error : Signal with ID" << sigId << "already exits";
     } else {
         
         //qDebug() << "Signal"<<sigId<< "with type"<<mySignal->toString(mySignal->getType()).c_str()<<"added to the maquette" << "\t\t"<< (mySignal->getisIPCS() ? "[IPCS]":"[Normal sens]");
@@ -183,7 +183,7 @@ void MaquetteHandler::addAiguilleToMaquette(Aiguille *myAiguille){
     if(aigId<1){
         qWarning() << "Error : Incorrect aiguille ID must be greater than 0";
     } else if(aiguilles.contains(aigId)){
-        qWarning() << "Error : Aiguille with ID" << aigId << "Already exits";
+        qWarning() << "Error : Aiguille with ID" << aigId << "  already exits";
     } else{
         if(debugAiguille) qDebug() << "Aiguille" << aigId << "added to the maquette";
         
@@ -194,9 +194,20 @@ void MaquetteHandler::addAiguilleToMaquette(Aiguille *myAiguille){
 }
 
 void MaquetteHandler::addZoneToMaquette(Zone *zone){
-    //checks the validity of a zone name MUST BE DONE
-    zones[zone->getName()] = zone; 
-    connect(zone,&Zone::powerChanged,this,&MaquetteHandler::handleObjectUpdate);
+    QString name = zone->getName();
+
+    QRegularExpression regex("^\\d+[AB]$");
+    QRegularExpressionMatch match = regex.match(name);
+    if(!match.hasMatch()){
+        qWarning() << "Error : " << name << "is not a valid name";
+    } else if(zones.contains(name)){
+        qWarning() << "Error : Zone with name : " << name << "already exists";
+    } else {
+        if(debugZone) qDebug() << "Zone with name" << name << "added to the maquette";
+        
+        zones[zone->getName()] = zone; 
+        connect(zone,&Zone::powerChanged,this,&MaquetteHandler::handleObjectUpdate);
+    }
 }
 
 

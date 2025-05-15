@@ -175,7 +175,7 @@ void SerialHandler::sendCommandAiguille(int id, Direction direction){
 }
 
 void SerialHandler::sendCommandZone(QString name, bool state){
-    QString command = "Z_"+name+(state==1 ? "ON" : "OFF");
+    QString command = "/Z_"+name+"_"+(state==1 ? "ON" : "OFF");
     if(nameZoneOnArdA.contains(name) && !namezoneOnArdB.contains(name)){
         qDebug() << "Command sent on Arduino A : " << command;
         writeData(command,Ard_A);

@@ -11,7 +11,7 @@ MainController::MainController(QObject *parent)
     //mySerialHandler = new SerialHandler(this);
     std::cout<<"<----Serial Handler---->\n"<<std::endl;
     mySerialHandler = new SerialHandler();
-    //mySerialHandler->INIT();
+    mySerialHandler->INIT();
     
     myGui = new Gui();
     //Handlers
@@ -46,9 +46,11 @@ MainController::MainController(QObject *parent)
 
     //myMaquetteHandler->getAllSignals()[1]->setAspect(VL);
     //myMaquetteHandler->getAllSignals()[2]->setAspect(S);
+    myMaquetteHandler->getAllZones()["1A"]->setState(true);
+    myMaquetteHandler->getAllZones()["1A"]->setState(false);
 
-    qDebug() << myMaquetteHandler->getAllZones()["4"]->getName();
 }
+
 
 MainController::~MainController(){
     delete myControl;

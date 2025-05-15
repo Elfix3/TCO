@@ -11,6 +11,7 @@
 //Qt includes
 #include <QObject>
 #include <QMap>
+#include <QRegularExpression>
 
 class MaquetteHandler : public QObject {
     Q_OBJECT

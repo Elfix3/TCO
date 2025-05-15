@@ -14,7 +14,7 @@ class Zone : public QObject{
         ~Zone();
 
         //setters
-        void state(bool state);
+        void setState(bool state);
         void toggleState(); //if on goes off and if off goes on
         void setPreviousZone(Zone* z);
         void setNextZone(Zone *z);

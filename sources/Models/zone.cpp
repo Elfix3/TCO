@@ -9,9 +9,12 @@ Zone::Zone(QString name, QObject *parent)
 Zone::~Zone(){
 }
 
-void Zone::state(bool state){
-    currentState = state;
-    previousZone->currentState = state;
+void Zone::setState(bool state){
+    if(currentState!=state){
+        qDebug() << "Zone"<<name<<"is now"<<(state==true ? "powered" : "unpowered");
+        currentState = state;
+        emit powerChanged();
+    }
     //logique à implémenter !!!!!!!!!
 
     //désactivation du relais précédent TOUJOURS
