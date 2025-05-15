@@ -132,8 +132,11 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
     //In this case, looks for the zone 12B and updates it
     
 
-    if(command=="/Capteur A declenche"){
-        lightSignals[1]->setAspect(S);
+    if(command.startsWith("/C_")){
+        Zone *zoneToUpdate = zones[command.mid(3)];
+        if(zoneToUpdate!=nullptr){
+            zoneToUpdate->setState(true);
+        }
     }
     /* if(command.startsWith("/Z-")&&command.endsWith(" END")){
         qDebug() << "Processing of the command : ";

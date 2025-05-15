@@ -30,14 +30,14 @@ void SerialHandler::INIT(){
 
             //sends Id request for the device identification;
             tempPort->write("ID_REQUEST\n");
-
+           
+            
             //waites for the response of the arduino
             if (tempPort->waitForReadyRead(300)) {
                 QByteArray response = tempPort->readAll();
                 while (tempPort->waitForReadyRead(50)) {
                     response += tempPort->readAll(); //identification response QByteArray
                 }
-
 
                 if(response.contains("Arduino_A") && !mySerialA){
                     mySerialA = tempPort; //Arduino plaque A found
@@ -83,7 +83,10 @@ void SerialHandler::INIT(){
     
         connect(mySerialA,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoA);
         connect(mySerialB,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoB);
-    } 
+    }
+
+    //for test purposes to delete :
+    connect(mySerialA,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoA);
 }
 
 
@@ -100,6 +103,7 @@ void SerialHandler::closeSerial(){
 }
 
 void SerialHandler::readDataFromArduinoA(){
+    
     bufferA.append(mySerialA->readAll());
     processBuffer(bufferA);
 }
@@ -107,6 +111,8 @@ void SerialHandler::readDataFromArduinoA(){
 void SerialHandler::readDataFromArduinoB(){
     bufferB.append(mySerialB->readAll());
     processBuffer(bufferB);
+
+    
 }
 
 void SerialHandler::processBuffer(QByteArray &buffer){

@@ -12,6 +12,7 @@
 #include <QSerialPortInfo>
 #include <QDebug>
 #include <QMessageBox>
+#include <QThread>
 
 enum Arduino {Ard_A,Ard_B,BOTH};
 
