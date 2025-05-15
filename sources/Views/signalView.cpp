@@ -147,7 +147,7 @@ SignalView::SignalView(LightSignal *signal, QWidget *parent)
     Qt::IgnoreAspectRatio,  // ← C'est la clé
     Qt::SmoothTransformation); */
 
-    connect(signal, &LightSignal::signalUpdated, this, &SignalView::onSignalUpdate);
+    connect(signal, &LightSignal::aspectChanged, this, &SignalView::onSignalUpdate);
     //setFixedSize(SAVL_width*3,SAVL_height*3);
     setFixedSize(180,180);
     onSignalUpdate();

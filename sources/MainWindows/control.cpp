@@ -4,8 +4,9 @@
 Control::Control(QWidget *parent) : QMainWindow(parent), ui(new Ui::CONTROL) {
     ui->setupUi(this);
     
+    loadSignalQvariant();
     
-    SetupConnections();
+   SetupConnections();
 }
 
 Control::~Control() {
@@ -39,7 +40,7 @@ void Control::SetupConnections(){
 
 void Control::loadMaquette(MaquetteHandler *maquette){
     //initialise les combobox pour les signaux :
-    loadSignalQvariant(); //maps the text to the actual aspect of the signal
+     //maps the text to the actual aspect of the signal
 
 
     for(LightSignal* signal : maquette->getAllSignals()){

@@ -1,11 +1,16 @@
 #include "lightSignal.h"
 
+static QStringList allTypes = {"SAVL","SAVLR","CSAVLRR","CSAVLRRR"};
+static QStringList allAspects = {"IDLE","VL","A","S","C","R","RR"};
+
+
 LightSignal::LightSignal(int id, SignalType type, QObject *parent)
  :QObject(parent), id(id), type(type), currentAspect(IDLE), isIPCS(false){
      if(id>15 || id == 14){
          isIPCS = true;
         }
     //qDebug() <<"Signal" << id << "created" << (isIPCS ? "in IPCS" :"");
+
 }
 
 LightSignal::~LightSignal(){
@@ -60,7 +65,7 @@ void LightSignal::setAspect(Aspect newAspect){
     if(newAspect != currentAspect && isValidAspect(newAspect)){
         qDebug() << "Signal" << id << "is set to"<<toString(newAspect).c_str();
         currentAspect = newAspect;
-        emit signalUpdated(id, newAspect);
+        emit aspectChanged();
     } else {
         qWarning() << "Set aspect not successfull";
     }

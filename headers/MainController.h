@@ -3,8 +3,8 @@
 
 
 //this file has the purpose to link all the other components of this app
-
-
+#define NO_DEBUG 0
+#define DEBUG 1
 
 //file includes
 #include "gui.h"
@@ -25,23 +25,13 @@ class MainController : public QObject {
     
         void showGui();
         void showControl();
-        void RESET();
-
-    private slots:
-
-        void manageButton();
+        
 
     private:
         Gui *myGui;
         Control *myControl;
         MaquetteHandler *myMaquetteHandler;
         SerialHandler *mySerialHandler;
-
-        bool buttonState = false;
-        
-        //all my tests setups
-        void dumbTestSetup();
-        
 };
 
 

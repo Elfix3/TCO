@@ -5,15 +5,30 @@ MainController::MainController(QObject *parent)
     : QObject(parent)
 {
     std::cout<<"<----Controller created---->\n"<<std::endl;
+    
+    
+    //QMainWindows
+    //mySerialHandler = new SerialHandler(this);
+    std::cout<<"<----Serial Handler---->\n"<<std::endl;
+    mySerialHandler = new SerialHandler();
+    //mySerialHandler->INIT();
+    
     myGui = new Gui();
-    myControl = new Control();
+    //Handlers
+    
+    std::cout<<"\n\n<----Maquette Handler---->\n"<<std::endl;
     myMaquetteHandler = new MaquetteHandler(this);
-    mySerialHandler = new SerialHandler(this);
+    myMaquetteHandler->INIT();
 
-   
-    myGui->loadMaquette(myMaquetteHandler);
-    myControl->loadMaquette(myMaquetteHandler);
-   
+
+    
+
+    //myMaquetteHandler->getAllAiguilles()[3]->setDirection(DROITE);
+    //myGui = new Gui(); 
+    //load la GUI ici 
+    //myGui->loadMaquette(myMaquetteHandler);
+    //myGui->loadMaquette(myMaquetteHandler);
+    //myControl->loadMaquette(myMaquetteHandler);
 
     
     //Main controller has the purpose to link all the class between them with the slot signal system
@@ -22,21 +37,17 @@ MainController::MainController(QObject *parent)
     //Connection of the data recieived signal with the zoneUpdateFromSensor from maquette handler
     //connect(mySerialHandler, &SerialHandler::dataReceived, myMaquetteHandler, &MaquetteHandler::zoneUpdateFromSensor);
 
-    //Connection of the 
 
-    //
-    //connect(myMaquetteHandler, &MaquetteHandler::sendCommand,mySerialHandler, &SerialHandler::writeData);
     
+    //connects the object update with the command sending
+    connect(myMaquetteHandler,&MaquetteHandler::aiguilleChanged,mySerialHandler,&SerialHandler::sendCommandAiguille);
+    connect(myMaquetteHandler,&MaquetteHandler::signalChanged,mySerialHandler, &SerialHandler::sendCommandSignal);
+    connect(myMaquetteHandler,&MaquetteHandler::zoneChanged, mySerialHandler,&SerialHandler::sendCommandZone);
 
-    //mise à jour d'un signal de combo vers modèle
-    connect(myControl,&Control::sendSignalUpdate,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo);
-    
-    //mise à jour d'un signal de modèle vers combo
-    connect(myMaquetteHandler,&MaquetteHandler::lightSignalChanged,myControl,&Control::updateSigComboBox);
+    //myMaquetteHandler->getAllSignals()[1]->setAspect(VL);
+    //myMaquetteHandler->getAllSignals()[2]->setAspect(S);
 
-
-        
-    myMaquetteHandler->getAllSignals()[23]->setAspect(C);
+    qDebug() << myMaquetteHandler->getAllZones()["4"]->getName();
 }
 
 MainController::~MainController(){
@@ -46,27 +57,14 @@ MainController::~MainController(){
     delete mySerialHandler;
 }
 
-void MainController::manageButton(){
-    //ON/OFF behavior for a button on arduino internal LED
-    
-}
 
-void MainController::RESET(){
-
-}
 
 void MainController::showGui(){
     myGui->show();
-    QMessageBox::StandardButton reply;
-    /* reply = QMessageBox::question(myGui, "Confirmation", "Voulez-vous continuer ?",
-        QMessageBox::Yes | QMessageBox::No); */
 }
 
 void MainController::showControl(){
     myControl->show();
-}
-
-void MainController::dumbTestSetup(){
 }
 
 

@@ -10,7 +10,7 @@
 class Zone : public QObject{
     Q_OBJECT
     public :
-        Zone();
+        explicit Zone(QString name, QObject *parent = nullptr);
         ~Zone();
 
         //setters
@@ -24,7 +24,8 @@ class Zone : public QObject{
         QString getName();
         bool isZoneEnabled();
         
-
+    signals :
+        void powerChanged();
     private :
         QString name;
         bool currentState;

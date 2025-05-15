@@ -17,6 +17,8 @@ class Control : public QMainWindow {
         explicit Control(QWidget *parent = nullptr);
         ~Control();
         
+        void INIT();
+
         void SetupConnections();
 
         void loadMaquette(MaquetteHandler* maquette);

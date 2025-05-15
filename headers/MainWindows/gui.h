@@ -34,7 +34,7 @@ class Gui : public QMainWindow {
         ~Gui();
         Ui::GUI* getUI();
     
-
+        void INIT();
 
         void loadMaquette(MaquetteHandler* handler);
         

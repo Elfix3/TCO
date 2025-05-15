@@ -49,17 +49,20 @@ class LightSignal : public QObject{
 
         //setters
         void setAspect(Aspect newAspect);
-        void setId(int id); //useless
+        void setId(int id); //uselessmais 
         void setPrevious(LightSignal* previous);
         void setNext(LightSignal* next);
 
         //miscellaneaous
-        std::string toString(Aspect someAspect);
+        static std::string toString(Aspect someAspect);
+        
+
         std::string toString(SignalType someType);
+        
         bool isValidAspect(Aspect aspect);
         
     signals:
-        void signalUpdated(int id, Aspect newAspect);
+        void aspectChanged();
 
     protected :
 
@@ -75,8 +78,7 @@ class LightSignal : public QObject{
 
 
         //used for dispalay purposes
-        QStringList allTypes = {"SAVL","SAVLR","CSAVLRR","CSAVLRRR"};
-        QStringList allAspects = {"IDLE","VL","A","S","C","R","RR"};
+        
 
 
 };

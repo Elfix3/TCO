@@ -1,15 +1,26 @@
 #include "serialHandler.h"
 
 SerialHandler::SerialHandler(QObject *parent)
-    : QObject(parent),mySerialA(nullptr),mySerialB(nullptr)
-{
+    : QObject(parent),mySerialA(nullptr),mySerialB(nullptr){  
+}
+
+
+SerialHandler::~SerialHandler(){
+    closeSerial(); //closes all the serial communication before deleting internal pointers
+    delete mySerialA;
+    delete mySerialB;
+}
+
+void SerialHandler::INIT(){
+    
     //finds every serialPort found on the device
     QList<QSerialPortInfo> ports = QSerialPortInfo::availablePorts();
-
+    
     for(const QSerialPortInfo &port : ports){
         QSerialPort *tempPort = new QSerialPort(port,this);
         //tries to open each serialPort on the device
         if(tempPort->open(QIODevice::ReadWrite)){
+            
             //sets the port communication foor
             tempPort->setBaudRate(9600);
             tempPort->setParity(QSerialPort::NoParity);
@@ -72,15 +83,8 @@ SerialHandler::SerialHandler(QObject *parent)
     
     else {
         qDebug() << "\n<----Sucessfull initialization of serial A and B communication---->";
-    }   
+    } 
 }
-
-SerialHandler::~SerialHandler(){
-    closeSerial(); //closes all the serial communication before deleting internal pointers
-    delete mySerialA;
-    delete mySerialB;
-}
-
 
 
 void SerialHandler::closeSerial(){
@@ -95,33 +99,25 @@ void SerialHandler::closeSerial(){
     }
 }
 
-void SerialHandler::writeData(const QString &data){
-    //automatically decides to which arduino the command shoud be sent
-    qDebug() << "Write data Called";
+void SerialHandler::writeData(const QString &data, Arduino myArduino){
+
+    //conversion of the data
     QByteArray byteArray = data.toUtf8();
-    if(data == "/C1\n"){
-        if(mySerialA->write(byteArray) == -1){
-            emit errorOccurred("Error : incorrect writing on serial port");
+
+    if(myArduino == Ard_A && mySerialA && mySerialA->isOpen()){
+        if(mySerialA->write(byteArray)==-1){
+            emit errorOccurred("Error : incorrect writing on the serial port A");
         }
     }
 
-    if(data == "/C2\n"){
-        if(mySerialB->write(byteArray) == -1){
-            emit errorOccurred("Error : incorrect writing on serial port");
+    else if(myArduino == Ard_B && mySerialB && mySerialB->isOpen()){
+        
+        if(mySerialB->write(byteArray)==-1){
+            
+            emit errorOccurred("Error : incorrect writing on the serial port A");
         }
     }
-    
-    /* qDebug()<< "Write  data  called";
-    if(!mySerialPort->isOpen()){
-        emit errorOccurred("Error : serial port not open");
-        return;
-    }
 
-    QByteArray byteArray = data.toUtf8();
-    
-    if(mySerialPort->write(byteArray) == -1){
-        emit errorOccurred("Error : incorrect writing on serial port");
-    } */
 } 
 
 QString SerialHandler::readData(QSerialPort *mySerialPort) {
@@ -155,4 +151,36 @@ void SerialHandler::handleError(QSerialPort::SerialPortError error)
         return;
 
     emit errorOccurred("Erreur occured : " + mySerialPort->errorString()); */
+}
+
+void SerialHandler::sendCommandSignal(int id, Aspect aspect){
+    QString command = "/sig_" + QString::number(id) + "_" + QString::fromStdString(LightSignal::toString(aspect))+ "\n";
+    if(idSignalsOnArdA.contains(id) && !idSignalsOnArdB.contains(id)){//signal id detected on arduino A
+        writeData(command,Ard_A);
+        qDebug() << "Command sent on Arduino A: " << command;
+    } else if(!idSignalsOnArdA.contains(id) && idSignalsOnArdB.contains(id)){
+        qDebug() << "Command sent on Arduino B: " << command;
+        writeData(command,Ard_B);
+    } else {
+        qWarning() << "Error : signal " <<id << "not found on the arduinos, no command has been sent";
+    }
+
+}
+
+void SerialHandler::sendCommandAiguille(int id, Direction direction){
+    QString command = "/aig_" + QString::number(id) + "_" +(direction==DROITE ? "DROITE": "GAUCHE")+ "\n";
+    qDebug() << "Command sent on Arduino B :" <<command;
+    writeData(command,Ard_B);
+    
+}
+
+void SerialHandler::sendCommandZone(QString name, bool state){
+    QString command = "Z_"+name+(state==1 ? "ON" : "OFF");
+    if(nameZoneOnArdA.contains(name) && !namezoneOnArdB.contains(name)){
+        qDebug() << "Command sent on Arduino A : " << command;
+        writeData(command,Ard_A);
+    } else if(!nameZoneOnArdA.contains(name) && namezoneOnArdB.contains(name)){
+        qDebug() << "Command sent on Arduino B : " << command;
+        writeData(command,Ard_B);
+    }
 }

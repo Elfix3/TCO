@@ -2,20 +2,31 @@
 #include <QMessageBox>
 
 MaquetteHandler::MaquetteHandler(QObject *parent)
-    : QObject(parent)
-{
-    SETUP_AIGUILLES();
+    : QObject(parent){
+}
+
+MaquetteHandler::~MaquetteHandler(){
+    qDeleteAll(lightSignals);
+    qDeleteAll(aiguilles);
+    qDeleteAll(zones);
+}
+
+void MaquetteHandler::INIT(){
+    //create all the objets
     SETUP_SIGNALS();
-    SET_ALL_VL();
-
-    //very important, sets up all the connections for my maquette
-    connectSetup();
-
-    //SET_ALL_DIR_RIGHT();
-
-    for(LightSignal *sig :lightSignals){
-        connect(sig,&LightSignal::signalUpdated,this,&MaquetteHandler::lightSignalChanged);
+    SETUP_AIGUILLES();
+    SETUP_ZONES();
+    
+    //connects them up();
+    if(!connectSetup()){
+        qFatal("Error in the connect setup");
+    } else {
+        qDebug("Sucessfull connection setup");
     }
+
+
+    //sets them in their initial aspect (to define)
+
 }
 
 QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){
@@ -26,9 +37,36 @@ QMap<int, Aiguille *> MaquetteHandler::getAllAiguilles(){
     return aiguilles;
 }
 
+QMap<QString, Zone *> MaquetteHandler::getAllZones(){
+    return zones;
+}
+
+void MaquetteHandler::handleObjectUpdate(){
+    QObject* obj = sender();
+
+    if(!obj)return; //nullptr
+
+    if(LightSignal *sig = qobject_cast<LightSignal*>(obj)){ //tries to cast the objet to a signal
+        emit signalChanged(sig->getId(),sig->getAspect());
+    } else if(Aiguille *aig = qobject_cast<Aiguille*>(obj)){ //tries to cast the object to an aiguille
+        emit aiguilleChanged(aig->getId(), aig->getDirection());
+    } else if(Zone *z = qobject_cast<Zone*>(obj)){ //tries to cast the object to a zone
+        emit zoneChanged(z->getName(), z->isZoneEnabled());
+    } else {
+        qWarning("Error : unrecognized object type");
+    }
+
+}
+
 bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
+    if(nextId == previousId){
+        qWarning("Error : cannot connect a signal to itself");
+        return false;
+    }
+    
     if(!lightSignals.contains(previousId)){
         qWarning() << "Error : signal with Id"<<previousId<<"not found";
+        qWarning("here");
         return false;
     }
     if(!lightSignals.contains(nextId)){
@@ -40,11 +78,9 @@ bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
     prev->setNext(next);
     next->setPrevious(prev);
     return true;
-
 }
 
-bool MaquetteHandler::connectAiguilleConj(int aigId, int conjId)
-{
+bool MaquetteHandler::connectAiguilleConj(int aigId, int conjId){
     if(!aiguilles.contains(aigId)){
         qWarning() << "Error : aiguille with Id"<<aigId<<"not found";
         return false;
@@ -123,19 +159,22 @@ void MaquetteHandler::addSignalToMaquette(LightSignal *mySignal){
     } else if(lightSignals.contains(sigId)){
         qWarning() << "Error : Signal with ID" << sigId << "Already exits";
     } else {
-
         
-
         //qDebug() << "Signal"<<sigId<< "with type"<<mySignal->toString(mySignal->getType()).c_str()<<"added to the maquette" << "\t\t"<< (mySignal->getisIPCS() ? "[IPCS]":"[Normal sens]");
         
-    QString typeStr = QString::fromStdString(mySignal->toString(mySignal->getType()));
-    QString sensStr = mySignal->getisIPCS() ? "[IPCS]" : "[Normal sens]";
-    qDebug() << "Signal" << sigId
-         << "with type" << typeStr
-         << "added to the maquette"
-         << "\t\t" << qPrintable(sensStr.leftJustified(13, ' '));
+        if(debugSignal){ QString typeStr = QString::fromStdString(mySignal->toString(mySignal->getType()));
+        QString sensStr = mySignal->getisIPCS() ? "[IPCS]" : "[Normal sens]";
+        qDebug() << "Signal" << sigId
+            << "with type" << typeStr
+            << "added to the maquette"
+            << "\t\t" << qPrintable(sensStr.leftJustified(13, ' '));
+        }
+        //adds the signal to the maquetteHandler
         lightSignals[mySignal->getId()] = mySignal;
+        //connects the update Signal to the handleUpdate slot
+        connect(mySignal,&LightSignal::aspectChanged,this,&MaquetteHandler::handleObjectUpdate);
     }
+    
 }
 
 void MaquetteHandler::addAiguilleToMaquette(Aiguille *myAiguille){
@@ -145,12 +184,21 @@ void MaquetteHandler::addAiguilleToMaquette(Aiguille *myAiguille){
         qWarning() << "Error : Incorrect aiguille ID must be greater than 0";
     } else if(aiguilles.contains(aigId)){
         qWarning() << "Error : Aiguille with ID" << aigId << "Already exits";
-    } else {
-        qDebug() << "Aiguille" << aigId << "added to the maquette";
+    } else{
+        if(debugAiguille) qDebug() << "Aiguille" << aigId << "added to the maquette";
+        
         aiguilles[myAiguille->getId()] = myAiguille;
+        connect(myAiguille,&Aiguille::positionChanged,this,&MaquetteHandler::handleObjectUpdate);
     }
 
 }
+
+void MaquetteHandler::addZoneToMaquette(Zone *zone){
+    //checks the validity of a zone name MUST BE DONE
+    zones[zone->getName()] = zone; 
+    connect(zone,&Zone::powerChanged,this,&MaquetteHandler::handleObjectUpdate);
+}
+
 
 void MaquetteHandler::SETUP_SIGNALS(){
     //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL SIGNALS
@@ -200,6 +248,39 @@ void MaquetteHandler::SETUP_AIGUILLES(){
     addAiguilleToMaquette(new Aiguille(8,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(9,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(10,GAUCHE,this));
+
+}
+
+void MaquetteHandler::SETUP_ZONES(){
+    addZoneToMaquette(new Zone("1A")); //voie 1 selon le sens de circulation
+    addZoneToMaquette(new Zone("1B"));
+    addZoneToMaquette(new Zone("3A"));
+    addZoneToMaquette(new Zone("3B"));
+    addZoneToMaquette(new Zone("5A"));
+    addZoneToMaquette(new Zone("5B"));
+    addZoneToMaquette(new Zone("7A"));
+    addZoneToMaquette(new Zone("7B"));
+    addZoneToMaquette(new Zone("9A"));
+    addZoneToMaquette(new Zone("9B"));
+    addZoneToMaquette(new Zone("11A"));
+    addZoneToMaquette(new Zone("11B"));
+    addZoneToMaquette(new Zone("13A"));
+    addZoneToMaquette(new Zone("13B"));
+    addZoneToMaquette(new Zone("15A"));
+    addZoneToMaquette(new Zone("15B"));
+
+    addZoneToMaquette(new Zone("2A")); //voie 2 selon le sens de circulation
+    addZoneToMaquette(new Zone("2B"));
+    addZoneToMaquette(new Zone("4A"));
+    addZoneToMaquette(new Zone("4B"));
+    addZoneToMaquette(new Zone("6A"));
+    addZoneToMaquette(new Zone("6B"));
+    addZoneToMaquette(new Zone("8A"));
+    addZoneToMaquette(new Zone("8B"));
+    addZoneToMaquette(new Zone("10A"));
+    addZoneToMaquette(new Zone("10B"));
+    addZoneToMaquette(new Zone("12A"));
+    addZoneToMaquette(new Zone("12B"));
 
 }
 

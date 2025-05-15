@@ -1,11 +1,12 @@
 #include "zone.h"
 
-Zone::Zone()
-{
+
+Zone::Zone(QString name, QObject *parent)
+    :QObject(parent), name(name), currentState(false){
+        //qDebug() << "Creation of  zone " << "Z -" << name << (currentState ? "POWERED " : "NOT POWERED");
 }
 
-Zone::~Zone()
-{
+Zone::~Zone(){
 }
 
 void Zone::state(bool state){

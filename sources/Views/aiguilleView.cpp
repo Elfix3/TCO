@@ -9,7 +9,7 @@ AiguilleView::AiguilleView(Aiguille *aiguille, QWidget *parent)
         bulbs.append({QPoint(10,34),QColor(OFF)}); //left Direction
         
 
-    connect(aiguille, &Aiguille::aiguilleUpdate, this, &AiguilleView::onAiguilleUpdate);
+    connect(aiguille, &Aiguille::positionChanged, this, &AiguilleView::onAiguilleUpdate);
     
     onAiguilleUpdate();
 }
