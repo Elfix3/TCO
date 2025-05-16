@@ -3,4 +3,4 @@ Il fait partie intégrante de mon projet de fin d'études, et est fait pour comm
 (cf repo github qui devrait être en public d'ici quelques mois
 
 Il utilise Qt pour créer l'interface graphique, CMake pour le build et fonctionne avec au moins C++ 11
-_Note : La CMakeLists.txt n'a pas été générée par des outils comme Qt Creator elle a été écrite par mes soins, ouvert à toute recommendation pour l'améliorer_
+_Note : La CMakeLists.txt n'a pas été générée par des outils comme Qt Creator elle a été écrite par mes soins, ouvert à toute recommandation pour l'améliorer_
