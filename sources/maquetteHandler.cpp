@@ -164,10 +164,6 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
 
 }
 
-void MaquetteHandler::setUserChange(){
-    updateFromUser = true;
-}
-
 void MaquetteHandler::updateSignalFromCombo(int id, Aspect newAspect){
     lightSignals[id]->setAspect(newAspect);
 }

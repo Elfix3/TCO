@@ -34,7 +34,6 @@ class MaquetteHandler : public QObject {
         void zoneUpdateFromSensor(const QString &command); //updates the internal state  of the maquette
         void handleObjectUpdate(); //sends the correct signals for any object change
 
-        void setUserChange();
         void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
         
         signals:
@@ -47,20 +46,19 @@ class MaquetteHandler : public QObject {
         
         
         private:
+            //all my objects
             QMap <int,LightSignal*> lightSignals; //Qmap with all my lightSignals
             QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
             QMap <QString,Zone*> zones; //Qmap with all my zones
 
-            bool updateFromUser = false;
 
-
-            //ADD
+            //ADD objects functions
             void addSignalToMaquette(LightSignal *mySignal);
             void addAiguilleToMaquette(Aiguille *myAiguille);
             void addZoneToMaquette(Zone* zone);
             
 
-            //CREATE OBJECTS
+            //CREATE objects with the add
             void SETUP_SIGNALS();
             void SETUP_AIGUILLES();
             void SETUP_ZONES();
