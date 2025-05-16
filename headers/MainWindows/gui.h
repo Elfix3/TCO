@@ -86,7 +86,7 @@ class Gui : public QMainWindow {
         
 
     signals:
-        void sendSerialData(const QString &data);
+        //void sendSerialData(const QString &data);
         
     private slots :
         void slotMethod();

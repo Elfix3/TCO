@@ -41,7 +41,7 @@ class SerialHandler : public QObject{
     public slots :
         void sendCommandSignal(int id, Aspect aspect);
         void sendCommandAiguille(int id, Direction dir);
-        void sendCommandZone(QString name, bool state);
+        void sendCommandZone(QString name, bool stater);
 
         
 

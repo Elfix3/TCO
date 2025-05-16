@@ -47,8 +47,9 @@ MainController::MainController(QObject *parent)
     connect(myMaquetteHandler,&MaquetteHandler::signalChanged,myControl,&Control::updateSignalOnControl);
     connect(myMaquetteHandler,&MaquetteHandler::zoneChanged,myControl,&Control::updateZoneOnControl);
     
+    //detects when the change comes from the user
+    connect(myControl,&Control::signalChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo);
     
-    connect(myControl,&Control::sendSignalUpdate,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo);
     /* myMaquetteHandler->getAllSignals()[1]->setAspect(A);
     myMaquetteHandler->getAllSignals()[2]->setAspect(S);
     myMaquetteHandler->getAllZones()["5A"]->setState(true);

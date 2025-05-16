@@ -4,7 +4,6 @@
 ZoneView::ZoneView(Zone *zone,QWidget *parent)
     :QWidget(parent),zone(zone){
         setFixedSize(zone_view_size,zone_view_size);
-        qDebug() << "cstrct called";
 
         connect(zone,&Zone::powerChanged,this,&ZoneView::onZoneUpdate);
 }

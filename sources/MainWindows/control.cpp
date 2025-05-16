@@ -17,15 +17,18 @@ void Control::SetupConnections(){
     //Then the slots are sending signals to the other classes
 
     //comboBoxes and Signals
-   
     const auto combos = findChildren<QComboBox*>(QRegularExpression("comboSig\\d+"));
     for (QComboBox* combo : combos) {
+        
         connect(combo, QOverload<int>::of(&QComboBox::currentIndexChanged),
                 this, [=](int) {
                     QString name = combo->objectName(); // comboSig42
                     int id = name.mid(QString("comboSig").length()).toInt();
                     Aspect asp = combo->currentData().value<Aspect>();
-                    emit sendSignalUpdate(id, asp);  // ton signal personnalisé
+                    isUserUpdate = true;
+                    emit signalChangedFromControl(id,asp);
+                    isUserUpdate =false;
+                    qDebug()<< isUserUpdate;
                 });
     }
 
@@ -93,6 +96,11 @@ void Control::loadSignalQvariant(){
 
 
 void Control::updateSignalOnControl(int id, Aspect newAspect){
+    if(isUserUpdate){
+        qDebug() <<"User update, no need to update again";
+        return;
+    }
+
     QComboBox* combo = findChild<QComboBox*>(QString("comboSig%1").arg(id));
     if (!combo) {
         qWarning() << "ComboBox for signal ID" << id << "not found.";
@@ -110,6 +118,7 @@ void Control::updateSignalOnControl(int id, Aspect newAspect){
 }
 
 void Control::updateZoneOnControl(QString name, bool state){
+    
     QFrame *frame= findChild<QFrame*>(QString("Z%1").arg(name));
     if (!frame) {
         qWarning() << "Frame Z" << name << "non trouvée";
@@ -138,7 +147,7 @@ void Control::updateZoneOnControl(QString name, bool state){
 }
 
 void Control::updateAiguilleOnControl(int id, Direction newDir){
-
+    //probaably stoopid function
 }
 
 /* void Control::updateSigComboBox(int signalId, Aspect newAspect){

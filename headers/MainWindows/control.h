@@ -26,19 +26,22 @@ class Control : public QMainWindow {
     private:
         Ui::CONTROL *ui;
 
+
+        bool isUserUpdate = false; //alows the distinction beetween a user update and a 
+        
+        
+        
+        
         void loadSignalQvariant();
         //loadAiguillesQVAR ?
         //loadZoneQVAR ?
         
     
     signals:
-        //this signals allows the sending of the newAspectChange to the maquetteHandler
-        void sendSignalUpdate(int signalId, Aspect newAspect);
-        
-        
-        //void aiguilleChangedFromControl(int id, Direction newDir);
-        //void signalChangedFromControl(int id, Aspect newAspect);
-        //void zoneChangedFromControl(QString name, bool state);
+    
+        void aiguilleChangedFromControl(int id, Direction newDir);
+        void signalChangedFromControl(int id, Aspect newAspect);
+        void zoneChangedFromControl(QString name, bool state);
 
         //void sendAiguilleUpdate(); //// KEJGBKJEGOEGJBEKGB TROP DE TRUCS A FAIRE
         //void sendZoneUpdate();

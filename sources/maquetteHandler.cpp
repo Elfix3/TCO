@@ -56,9 +56,7 @@ void MaquetteHandler::updateAll(){
 
 void MaquetteHandler::handleObjectUpdate(){
     QObject* obj = sender();
-    
     if(!obj)return; //nullptr
-
     if(LightSignal *sig = qobject_cast<LightSignal*>(obj)){ //tries to cast the objet to a signal
         emit signalChanged(sig->getId(),sig->getAspect());
     } else if(Aiguille *aig = qobject_cast<Aiguille*>(obj)){ //tries to cast the object to an aiguille
@@ -68,6 +66,7 @@ void MaquetteHandler::handleObjectUpdate(){
     } else {
         qWarning("Error : unrecognized object type");
     }
+
 
 }
 
@@ -149,7 +148,9 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
         Zone *zoneToUpdate = zones[command.mid(3)];
         if(zoneToUpdate!=nullptr){
             zoneToUpdate->setState(true);
+            lightSignals[3]->setAspect(C);
         }
+        
     }
     /* if(command.startsWith("/Z-")&&command.endsWith(" END")){
         qDebug() << "Processing of the command : ";
@@ -163,9 +164,12 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
 
 }
 
+void MaquetteHandler::setUserChange(){
+    updateFromUser = true;
+}
+
 void MaquetteHandler::updateSignalFromCombo(int id, Aspect newAspect){
     lightSignals[id]->setAspect(newAspect);
-    qDebug() << "here";
 }
 
 /* void MaquetteHandler::setUpOrder(){
