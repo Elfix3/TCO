@@ -24,9 +24,9 @@ void MaquetteHandler::INIT(){
         qDebug("Sucessfull connection setup");
     }
 
-
-    //sets them in their initial aspect (to define)
-
+    //
+    SET_ALL_VL();
+    
 }
 
 QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){
@@ -41,9 +41,22 @@ QMap<QString, Zone *> MaquetteHandler::getAllZones(){
     return zones;
 }
 
+void MaquetteHandler::updateAll(){
+    //sends all the signals to update the maquette
+    for(LightSignal *sig : lightSignals){
+        sig->emitUpdateSig();
+    }
+    for(Aiguille *aig : aiguilles){
+        aig->emitUpdateAig();
+    }
+    for(Zone *z : zones){
+        z->emitUpdateZone();
+    }
+}
+
 void MaquetteHandler::handleObjectUpdate(){
     QObject* obj = sender();
-    qDebug() << "object update";
+    
     if(!obj)return; //nullptr
 
     if(LightSignal *sig = qobject_cast<LightSignal*>(obj)){ //tries to cast the objet to a signal
@@ -152,6 +165,7 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
 
 void MaquetteHandler::updateSignalFromCombo(int id, Aspect newAspect){
     lightSignals[id]->setAspect(newAspect);
+    qDebug() << "here";
 }
 
 /* void MaquetteHandler::setUpOrder(){

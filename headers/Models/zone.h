@@ -24,6 +24,8 @@ class Zone : public QObject{
         QString getName();
         bool isZoneEnabled();
         
+
+        void emitUpdateZone();
     signals :
         void powerChanged();
     private :

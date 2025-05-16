@@ -20,14 +20,14 @@ class MaquetteHandler : public QObject {
         explicit MaquetteHandler(QObject *parent = nullptr);
         ~MaquetteHandler();
 
-        
         void INIT();
-
 
         //Getters
         QMap<int,LightSignal*> getAllSignals();
         QMap<int,Aiguille*> getAllAiguilles();
         QMap<QString,Zone*> getAllZones();
+
+        void updateAll(); //sends the update signal for anyObject on the maquette
 
     public slots:
 
@@ -51,20 +51,23 @@ class MaquetteHandler : public QObject {
             QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
             QMap <QString,Zone*> zones; //Qmap with all my zones
 
-            //Setup  functions
-            void SETUP_SIGNALS();
-            void SETUP_AIGUILLES();
-            void SETUP_ZONES();
 
-            //all adding functions for my maquette objets (connects with the handle update slot)
+            //ADD
             void addSignalToMaquette(LightSignal *mySignal);
             void addAiguilleToMaquette(Aiguille *myAiguille);
             void addZoneToMaquette(Zone* zone);
             
+
+            //CREATE OBJECTS
+            void SETUP_SIGNALS();
+            void SETUP_AIGUILLES();
+            void SETUP_ZONES();
+
+
+            //CONNECT OBJECTS
             bool connectSignalsById(int next, int previous);
             bool connectAiguilleConj(int aig, int conj);
             bool connectSetup(int setup=1);
-
 
             
             

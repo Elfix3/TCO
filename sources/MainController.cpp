@@ -1,4 +1,5 @@
 #include "MainController.h"
+#include "zoneView.h"
 #include <iostream>
 
 MainController::MainController(QObject *parent)
@@ -14,6 +15,7 @@ MainController::MainController(QObject *parent)
     mySerialHandler->INIT();
     
     myGui = new Gui();
+    myControl = new Control();
     //Handlers
     
     std::cout<<"\n\n<----Maquette Handler---->\n"<<std::endl;
@@ -21,13 +23,7 @@ MainController::MainController(QObject *parent)
     myMaquetteHandler->INIT();
 
 
-    
-    
-    //myMaquetteHandler->getAllAiguilles()[3]->setDirection(DROITE);
-    //myGui = new Gui(); 
-    //load la GUI ici 
     myGui->loadMaquette(myMaquetteHandler);
-    //myGui->loadMaquette(myMaquetteHandler);
     //myControl->loadMaquette(myMaquetteHandler);
 
     
@@ -46,10 +42,21 @@ MainController::MainController(QObject *parent)
     connect(myMaquetteHandler,&MaquetteHandler::signalChanged,mySerialHandler, &SerialHandler::sendCommandSignal);
     connect(myMaquetteHandler,&MaquetteHandler::zoneChanged, mySerialHandler,&SerialHandler::sendCommandZone);
 
-
-    //myMaquetteHandler->getAllSignals()[1]->setAspect(VL);
-    //myMaquetteHandler->getAllSignals()[2]->setAspect(S);
+    //connects the object update with the control elements
+    connect(myMaquetteHandler,&MaquetteHandler::aiguilleChanged,myControl,&Control::updateAiguilleOnControl);
+    connect(myMaquetteHandler,&MaquetteHandler::signalChanged,myControl,&Control::updateSignalOnControl);
+    connect(myMaquetteHandler,&MaquetteHandler::zoneChanged,myControl,&Control::updateZoneOnControl);
     
+    
+    connect(myControl,&Control::sendSignalUpdate,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo);
+    /* myMaquetteHandler->getAllSignals()[1]->setAspect(A);
+    myMaquetteHandler->getAllSignals()[2]->setAspect(S);
+    myMaquetteHandler->getAllZones()["5A"]->setState(true);
+    myMaquetteHandler->getAllZones()["8B"]->setState(true);
+
+    myMaquetteHandler->getAllZones()["8B"]->setState(false); */
+    
+    myMaquetteHandler->updateAll();
 }
 
 

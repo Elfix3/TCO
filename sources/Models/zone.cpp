@@ -50,3 +50,7 @@ QString Zone::getName(){
 bool Zone::isZoneEnabled(){
     return currentState;
 }
+
+void Zone::emitUpdateZone(){
+ emit powerChanged();
+}

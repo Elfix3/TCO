@@ -37,3 +37,7 @@ void Aiguille::setDirection(Direction newDir){
 void Aiguille::setConj(Aiguille *conj){
     aiguilleConj = conj;
 }
+
+void Aiguille::emitUpdateAig(){
+    emit positionChanged();
+}

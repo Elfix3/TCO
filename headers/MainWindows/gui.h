@@ -19,7 +19,7 @@
 #include "signalView.h"
 #include "aiguilleView.h"
 #include "lightSignal.h"
-
+#include "zoneView.h"
 
 
 
@@ -76,8 +76,12 @@ class Gui : public QMainWindow {
         {7,PositionAngle{QPoint(480,590),180}},
         {8,PositionAngle{QPoint(805,648),0}},
         {9,PositionAngle{QPoint(874,578),0}},
-        {10,PositionAngle{QPoint(940,648),180}},
-    };
+        {10,PositionAngle{QPoint(940,648),180}},  
+        };
+
+        QMap<QString,QPoint> zonePositions = {
+            
+        };
 
         
 

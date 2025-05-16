@@ -61,6 +61,8 @@ class LightSignal : public QObject{
         
         bool isValidAspect(Aspect aspect);
         
+
+        void emitUpdateSig();
     signals:
         void aspectChanged();
 

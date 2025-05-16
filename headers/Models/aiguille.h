@@ -27,6 +27,8 @@ enum Direction {DROITE,GAUCHE};
             //setters
             void setDirection(Direction dir);
             void setConj(Aiguille *conj);
+
+            void emitUpdateAig();
         signals :
             void positionChanged();
 

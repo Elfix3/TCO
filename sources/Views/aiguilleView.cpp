@@ -64,5 +64,4 @@ void AiguilleView::onAiguilleUpdate(){
     update();
 
     
-    //mystère et boule de gomme...
 }

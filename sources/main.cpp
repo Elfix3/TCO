@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     
     
 
-    //myController.showControl();
+    myController.showControl();
     myController.showGui();
     return app.exec();
 }

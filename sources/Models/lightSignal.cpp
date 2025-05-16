@@ -111,3 +111,7 @@ bool LightSignal::isValidAspect(Aspect aspect){
     //no warning if is valid
     return true;
 }
+
+void LightSignal::emitUpdateSig(){
+    emit aspectChanged();
+}

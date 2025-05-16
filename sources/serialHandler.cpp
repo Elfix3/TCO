@@ -21,7 +21,7 @@ void SerialHandler::INIT(){
         //tries to open each serialPort on the device
         if(tempPort->open(QIODevice::ReadWrite)){
             
-            //sets the port communication foor
+            //sets the port communication for
             tempPort->setBaudRate(9600);
             tempPort->setParity(QSerialPort::NoParity);
             tempPort->setDataBits(QSerialPort::Data8);

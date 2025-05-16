@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="AlimTAB">
        <attribute name="title">
@@ -34,59 +34,14 @@
            <enum>QFrame::Shadow::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_36">
-           <item row="0" column="3" colspan="2">
-            <widget class="QLabel" name="label_36">
-             <property name="font">
-              <font>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Activer signalisation</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4">
-            <widget class="QRadioButton" name="radioButton_5">
-             <property name="text">
-              <string>Non</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>On</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QPushButton" name="pushButton_2">
-             <property name="text">
-              <string>Off</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_35">
-             <property name="font">
-              <font>
-               <pointsize>14</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Tous :</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
+           <item row="3" column="3">
             <widget class="QRadioButton" name="radioButton_3">
              <property name="text">
               <string>Oui</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
+           <item row="3" column="2">
             <spacer name="horizontalSpacer">
              <property name="orientation">
               <enum>Qt::Orientation::Horizontal</enum>
@@ -102,6 +57,58 @@
              </property>
             </spacer>
            </item>
+           <item row="3" column="1">
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="text">
+              <string>Off</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>On</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="4">
+            <widget class="QRadioButton" name="radioButton_5">
+             <property name="text">
+              <string>Non</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="3" colspan="2">
+            <widget class="QLabel" name="label_36">
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Activer le BAL</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_35">
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Tous :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="text">
+              <string>Reset</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
@@ -112,7 +119,7 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_4">
            <item row="1" column="0">
-            <widget class="QFrame" name="frame_23">
+            <widget class="QFrame" name="Z2A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -145,7 +152,7 @@
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QFrame" name="frame_21">
+            <widget class="QFrame" name="Z6A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -178,7 +185,7 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QFrame" name="frame_20">
+            <widget class="QFrame" name="Z2B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -211,7 +218,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QFrame" name="frame_22">
+            <widget class="QFrame" name="Z4B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -244,7 +251,7 @@
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QFrame" name="frame_29">
+            <widget class="QFrame" name="Z10B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -277,7 +284,7 @@
             </widget>
            </item>
            <item row="4" column="0">
-            <widget class="QFrame" name="frame_25">
+            <widget class="QFrame" name="Z8A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -310,7 +317,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QFrame" name="frame_24">
+            <widget class="QFrame" name="Z6B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -343,7 +350,7 @@
             </widget>
            </item>
            <item row="6" column="0">
-            <widget class="QFrame" name="frame_31">
+            <widget class="QFrame" name="Z12A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -376,7 +383,7 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QFrame" name="frame_28">
+            <widget class="QFrame" name="Z4A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -409,7 +416,7 @@
             </widget>
            </item>
            <item row="5" column="0">
-            <widget class="QFrame" name="frame_30">
+            <widget class="QFrame" name="Z10A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -454,7 +461,7 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QFrame" name="frame_26">
+            <widget class="QFrame" name="Z8B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -487,7 +494,7 @@
             </widget>
            </item>
            <item row="6" column="1">
-            <widget class="QFrame" name="frame_27">
+            <widget class="QFrame" name="Z12B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -529,7 +536,7 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="1" column="0">
-            <widget class="QFrame" name="frame_3">
+            <widget class="QFrame" name="Z1A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -562,7 +569,7 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QFrame" name="frame_2">
+            <widget class="QFrame" name="Z1B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -595,7 +602,7 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QFrame" name="frame_4">
+            <widget class="QFrame" name="Z3A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -628,7 +635,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QFrame" name="frame_8">
+            <widget class="QFrame" name="Z3B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -661,7 +668,7 @@
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QFrame" name="frame_11">
+            <widget class="QFrame" name="Z5A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -694,7 +701,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QFrame" name="frame_7">
+            <widget class="QFrame" name="Z5B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -727,7 +734,7 @@
             </widget>
            </item>
            <item row="4" column="0">
-            <widget class="QFrame" name="frame_5">
+            <widget class="QFrame" name="Z7A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -760,7 +767,7 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QFrame" name="frame_9">
+            <widget class="QFrame" name="Z7B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -793,7 +800,7 @@
             </widget>
            </item>
            <item row="5" column="0">
-            <widget class="QFrame" name="frame_12">
+            <widget class="QFrame" name="Z9A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -826,7 +833,7 @@
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QFrame" name="frame_10">
+            <widget class="QFrame" name="Z9B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -859,7 +866,7 @@
             </widget>
            </item>
            <item row="6" column="0">
-            <widget class="QFrame" name="frame_6">
+            <widget class="QFrame" name="Z11A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -892,7 +899,7 @@
             </widget>
            </item>
            <item row="6" column="1">
-            <widget class="QFrame" name="frame_14">
+            <widget class="QFrame" name="Z11B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -925,7 +932,7 @@
             </widget>
            </item>
            <item row="7" column="0">
-            <widget class="QFrame" name="frame_18">
+            <widget class="QFrame" name="Z13A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -958,7 +965,7 @@
             </widget>
            </item>
            <item row="7" column="1">
-            <widget class="QFrame" name="frame_16">
+            <widget class="QFrame" name="Z13B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -991,7 +998,7 @@
             </widget>
            </item>
            <item row="8" column="0">
-            <widget class="QFrame" name="frame_13">
+            <widget class="QFrame" name="Z15A">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -1024,7 +1031,7 @@
             </widget>
            </item>
            <item row="8" column="1">
-            <widget class="QFrame" name="frame_17">
+            <widget class="QFrame" name="Z15B">
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>

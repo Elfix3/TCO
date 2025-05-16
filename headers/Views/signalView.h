@@ -23,6 +23,7 @@ struct Bulb {
 #define GREEN           0x00FF00
 #define WHITE           0xFFFFFF
 #define BLACK           0x000001
+#define Z_ENABLED       0xFF4751
 
 
 

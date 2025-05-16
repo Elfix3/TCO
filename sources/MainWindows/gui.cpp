@@ -8,7 +8,7 @@ Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
     ui->setupUi(this);
 
 
-    this->setWindowTitle("Tableau de commande optique"); //Title of gui
+    this->setWindowTitle("Tableau de contrôle optique"); //Title of gui
     
 
     
@@ -53,7 +53,15 @@ void Gui::loadMaquette(MaquetteHandler *handler){
         }
     }
 
-    //pour toutes les zones ??
+    int start = 40;
+
+    //you should place the zoneView widget correctly if it's not definitive solution
+    for(Zone *zone : handler->getAllZones()){
+        QString name = zone->getName();
+        //verification if position is available ??
+        ZoneView *view = new ZoneView(zone,this);
+        view->move(QPoint(40,start+=15));
+    }
 }
 
 

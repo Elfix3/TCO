@@ -4,9 +4,8 @@
 Control::Control(QWidget *parent) : QMainWindow(parent), ui(new Ui::CONTROL) {
     ui->setupUi(this);
     
-    loadSignalQvariant();
-    
-   SetupConnections();
+    loadSignalQvariant(); //maps the combobox text to a Aspect Argument
+    SetupConnections();
 }
 
 Control::~Control() {
@@ -30,9 +29,6 @@ void Control::SetupConnections(){
                 });
     }
 
-    //Switches
-     
-    //Zones
 }
  
 
@@ -65,7 +61,6 @@ void Control::loadMaquette(MaquetteHandler *maquette){
 void Control::loadSignalQvariant(){
     //CALL THIS FUNCTION ONCE !!
 
-
     //Maps the text to the selected QVariant
     const QMap<QString, Aspect> textToAspect = {
         {"Voie libre", VL},
@@ -78,6 +73,8 @@ void Control::loadSignalQvariant(){
     };
     const QList<QComboBox*> combos = findChildren<QComboBox*>(QRegularExpression("comboSig\\d+"));
     
+
+
     for (QComboBox* combo : combos) {
         // Associez les QVariant à chaque item selon son texte
         for (int i = 0; i < combo->count(); i++) {
@@ -90,9 +87,61 @@ void Control::loadSignalQvariant(){
         }
     }
 
+
+
 }
 
-void Control::updateSigComboBox(int signalId, Aspect newAspect){
+
+void Control::updateSignalOnControl(int id, Aspect newAspect){
+    QComboBox* combo = findChild<QComboBox*>(QString("comboSig%1").arg(id));
+    if (!combo) {
+        qWarning() << "ComboBox for signal ID" << id << "not found.";
+        return;
+    }
+    int index = combo->findData(QVariant::fromValue(newAspect));
+    if (index < 0) {
+        qWarning() << "Aspect not found in combo box for signal ID" << id;
+        return;
+    }
+    // Empêche temporairement le signal d’être émis, utile ??????
+    combo->blockSignals(true);
+    combo->setCurrentIndex(index);
+    combo->blockSignals(false);
+}
+
+void Control::updateZoneOnControl(QString name, bool state){
+    QFrame *frame= findChild<QFrame*>(QString("Z%1").arg(name));
+    if (!frame) {
+        qWarning() << "Frame Z" << name << "non trouvée";
+        return;
+    }
+    QRadioButton *buttonOn = nullptr;
+    QRadioButton *buttonOff = nullptr;
+    for(QRadioButton* button : frame->findChildren<QRadioButton*>()){
+        if(button->text().trimmed().toLower() == "on"){
+            buttonOn = button;
+        }
+        if(button->text().trimmed().toLower() == "off"){
+            buttonOff = button;
+        }
+    }
+
+    if(!buttonOn || !buttonOff) {
+        qWarning() << "Button not correctly found";
+        return;
+    }
+    QSignalBlocker bk1(buttonOn);
+    QSignalBlocker bk2(buttonOff);
+    buttonOn->setChecked(state);
+    buttonOff->setChecked(!state);
+    
+}
+
+void Control::updateAiguilleOnControl(int id, Direction newDir){
+
+}
+
+/* void Control::updateSigComboBox(int signalId, Aspect newAspect){
     QComboBox* combo = findChild<QComboBox*>(QString("comboSig%1").arg(signalId));
     if (!combo) {
         qWarning() << "ComboBox for signal ID" << signalId << "not found.";
@@ -111,7 +160,7 @@ void Control::updateSigComboBox(int signalId, Aspect newAspect){
     combo->setCurrentIndex(index);
     combo->blockSignals(false);
 
-}
+} */
 
 
 /* void Control::updateComboBox(const QString &data){
