@@ -143,12 +143,15 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
     //COMMAND to process : type /Z-12B END
     //In this case, looks for the zone 12B and updates it
     
-
+    //qDebug("AAAAA");
     if(command.startsWith("/C_")){
-        Zone *zoneToUpdate = zones[command.mid(3)];
+        //qDebug() << "HAAAAAAA";
+        Zone *zoneToUpdate = zones[command.mid(4)];
         if(zoneToUpdate!=nullptr){
             zoneToUpdate->setState(true);
-            lightSignals[3]->setAspect(C);
+            //lightSignals[3]->setAspect(C);
+        } else {
+            qWarning() << "Error : undefined Zone";
         }
         
     }
