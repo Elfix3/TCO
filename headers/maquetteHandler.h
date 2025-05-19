@@ -37,13 +37,17 @@ class MaquetteHandler : public QObject {
         void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
         void updateZoneFromRadioButton(QString name, bool state);
         
+        void disableBAL();
+        void enableBAL();
 
         signals:
         
             void signalChanged(int id, Aspect newAspect); //if isFromUser, wont try to change the Control
             void aiguilleChanged(int id, Direction newDirection);
             void zoneChanged(QString name, bool state);
-            
+            void initBALstatus(bool isEnabled); //note BAL stands for Bloc Automatique Lumineux. It's responsible of enabling signalisation or not
+
+
             void sendCommand(const QString &command); //should we keep this
         
         
@@ -53,6 +57,7 @@ class MaquetteHandler : public QObject {
             QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
             QMap <QString,Zone*> zones; //Qmap with all my zones
 
+            bool IsBalActive = true; //enables or disables the BAL
 
             //ADD objects functions
             void addSignalToMaquette(LightSignal *mySignal);

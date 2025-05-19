@@ -52,6 +52,8 @@ void MaquetteHandler::updateAll(){
     for(Zone *z : zones){
         z->emitUpdateZone();
     }
+    emit initBALstatus(IsBalActive); // is supposed to be on by default :)
+
 }
 
 void MaquetteHandler::handleObjectUpdate(){
@@ -112,7 +114,7 @@ bool MaquetteHandler::connectSetup(int setup){
     if(setup==1){
         qDebug() << "Setting up of all the connections :";
         
-        //Voie 1
+        //Voie 1 SENS optimisable ?
         return connectSignalsById(1,3) &&
         connectSignalsById(3,5) &&
         connectSignalsById(5,7) &&
@@ -121,6 +123,8 @@ bool MaquetteHandler::connectSetup(int setup){
         connectSignalsById(11,13) &&
         connectSignalsById(13,15) &&
         connectSignalsById(15,1) &&
+
+        //voie 2 SENS
 
         //Voie 2
         connectSignalsById(2,4) &&
@@ -144,17 +148,20 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
     //In this case, looks for the zone 12B and updates it
     
     //qDebug("AAAAA");
-    if(command.startsWith("/C_")){
-        //qDebug() << "HAAAAAAA";
-        Zone *zoneToUpdate = zones[command.mid(4)];
-        if(zoneToUpdate!=nullptr){
-            zoneToUpdate->setState(true);
-            //lightSignals[3]->setAspect(C);
-        } else {
-            qWarning() << "Error : undefined Zone";
+    if(IsBalActive){
+        if(command.startsWith("/C_")){
+            //qDebug() << "HAAAAAAA";
+            Zone *zoneToUpdate = zones[command.mid(4)]; //removes /C_Z from the arduino command
+            if(zoneToUpdate!=nullptr){
+                zoneToUpdate->setState(true);
+                //lightSignals[3]->setAspect(C);
+            } else {
+                qWarning() << "Error : undefined Zone";
+            }
+            
         }
-        
     }
+    
     /* if(command.startsWith("/Z-")&&command.endsWith(" END")){
         qDebug() << "Processing of the command : ";
         QString zone = command.mid(1,command.length()-5);
@@ -174,6 +181,24 @@ void MaquetteHandler::updateSignalFromCombo(int id, Aspect newAspect){
 
 void MaquetteHandler::updateZoneFromRadioButton(QString name, bool state){
     zones[name]->setState(state);
+}
+
+void MaquetteHandler::disableBAL(){
+    if(IsBalActive){
+        qDebug() << "BAL disabled";
+        IsBalActive = false;
+    } else {
+        //qWarning() << "BAL is already inactive";
+    }
+}
+
+void MaquetteHandler::enableBAL(){
+    if(!IsBalActive){
+        qDebug() << "BAL enabled";
+        IsBalActive = true;
+    } else {
+        //qWarning() << "BAL is already active";
+    }
 }
 
 /* void MaquetteHandler::setUpOrder(){

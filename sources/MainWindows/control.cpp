@@ -34,27 +34,50 @@ void Control::SetupConnections(){
 
     //finds all the frames with the object name starting with Z for the zones
     const auto frames = findChildren<QFrame*>(QRegularExpression("^Z"));
-    
+
     for(QFrame *frame : frames){
-        QString zoneName = frame->objectName().mid(1);
+        QString zoneName = frame->objectName().mid(1); //removes the Z in front of the zone name
+        
+        //ptrs to store the qRadioButtons
+        QRadioButton* radioOn = nullptr;
+        QRadioButton* radioOff = nullptr; 
+
+        //finds all the radio buttons with On and Off texts in the zone frame
         for(QRadioButton *radio : frame->findChildren<QRadioButton*>()){
-            connect(radio,&QRadioButton::clicked,this,[=](){
-                QString radioText = radio->text().toLower();
-                isUserUpdate = true;
-                if(radioText == "on"){
-                    emit zoneChangedFromControl(zoneName,true);
-                    qDebug() << zoneName;
-                } else if(radioText == "off"){
-                    qDebug() << zoneName;
-                    emit zoneChangedFromControl(zoneName,false);
-                } else{
-                    qWarning() << "Error, no on off button detected";
-                }
-                isUserUpdate = false;
-            });
-            
+            if(radio->text().toLower() == "on"){
+                radioOn = radio;
+            } else if(radio->text().toLower() == "off"){
+                radioOff = radio;
+            }
         }
+        //connects the radioButtonOn press with its signal 
+        connect(radioOn,&QRadioButton::toggled,this,[=](bool checked){
+            if(!checked) return;
+            isUserUpdate = true;
+            emit zoneChangedFromControl(zoneName,true);
+            isUserUpdate = false;
+        });
+
+        //connects the radioButtonOff press with its signal 
+        connect(radioOff,&QRadioButton::toggled,this,[=](bool checked){
+            if(!checked);
+            isUserUpdate = true;
+            emit zoneChangedFromControl(zoneName,false);
+            isUserUpdate = false;
+        });
+
+        //connects the press of the QpushButton with the press of allOn and allOff buttons
+        connect(ui->allOn,&QPushButton::clicked,radioOn,&QRadioButton::clicked);
+        connect(ui->allOff,&QPushButton::clicked,radioOff,&QRadioButton::clicked);
     }
+
+    
+    connect(ui->BALdisabled,&QRadioButton::clicked,this,&Control::BALisDisabled);
+    connect(ui->BALEnabled,&QRadioButton::clicked,this,&Control::BALisEnabled);
+    
+    
+
+
 }
  
 
@@ -63,7 +86,8 @@ void Control::SetupConnections(){
 void Control::loadMaquette(MaquetteHandler *maquette){
     //initialise les combobox pour les signaux :
      //maps the text to the actual aspect of the signal
-
+/* 
+    useless ????
 
     for(LightSignal* signal : maquette->getAllSignals()){
         QComboBox* combo = findChild<QComboBox*>(QString("comboSig%1").arg(signal->getId()));
@@ -80,7 +104,7 @@ void Control::loadMaquette(MaquetteHandler *maquette){
             }
             combo->blockSignals(false);
         }
-    }
+    } */
 
 }
 
@@ -173,40 +197,16 @@ void Control::updateAiguilleOnControl(int id, Direction newDir){
     //probaably stoopid function
 }
 
-/* void Control::updateSigComboBox(int signalId, Aspect newAspect){
-    QComboBox* combo = findChild<QComboBox*>(QString("comboSig%1").arg(signalId));
-    if (!combo) {
-        qWarning() << "ComboBox for signal ID" << signalId << "not found.";
-        return;
+void Control::setUpBALstatus(bool status){
+    if(status){
+        ui->BALEnabled->blockSignals(true);
+        ui->BALEnabled->toggle();
+        ui->BALEnabled->blockSignals(false);
+    } else {
+        ui->BALdisabled->blockSignals(true);
+        ui->BALdisabled->toggle();
+        ui->BALdisabled->blockSignals(false);
     }
-
-    // Trouve l’index correspondant au nouvel aspect
-    int index = combo->findData(QVariant::fromValue(newAspect));
-    if (index < 0) {
-        qWarning() << "Aspect not found in combo box for signal ID" << signalId;
-        return;
-    }
-
-    // Empêche temporairement le signal d’être émis
-    combo->blockSignals(true);
-    combo->setCurrentIndex(index);
-    combo->blockSignals(false);
-
-} */
-
-
-/* void Control::updateComboBox(const QString &data){
-    /* if(data=="/C1"){
-        int index = ui->Sig1choice->findText("Voie libre");
-        if(index != -1) ui->Sig1choice->setCurrentIndex(index);
-    }
-    if(data=="/C2"){
-        int index = ui->Sig1choice->findText("Avertissement");
-        if(index != -1) ui->Sig1choice->setCurrentIndex(index);
-    }
-    if(data=="/C3"){
-        int index = ui->Sig1choice->findText("Sémaphore");
-        if(index != -1) ui->Sig1choice->setCurrentIndex(index);
-    } 
 }
- */ 
+
+

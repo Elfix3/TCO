@@ -47,7 +47,12 @@ MainController::MainController(QObject *parent)
     connect(myMaquetteHandler,&MaquetteHandler::signalChanged,myControl,&Control::updateSignalOnControl);
     connect(myMaquetteHandler,&MaquetteHandler::zoneChanged,myControl,&Control::updateZoneOnControl);
     
+    connect(myControl,&Control::BALisDisabled,myMaquetteHandler,&MaquetteHandler::disableBAL);
+    connect(myControl,&Control::BALisEnabled,myMaquetteHandler,&MaquetteHandler::enableBAL);
+    connect(myMaquetteHandler,&MaquetteHandler::initBALstatus,myControl,&Control::setUpBALstatus);
     //detects when the change comes from the user
+   
+
     connect(myControl,&Control::signalChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo); //normal names ???
     connect(myControl,&Control::zoneChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateZoneFromRadioButton);
     //aiguilles with popup?

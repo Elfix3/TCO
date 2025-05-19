@@ -26,7 +26,6 @@ class Control : public QMainWindow {
     private:
         Ui::CONTROL *ui;
 
-
         bool isUserUpdate = false; //alows the distinction beetween a user update and a 
         
         
@@ -43,6 +42,8 @@ class Control : public QMainWindow {
         void signalChangedFromControl(int id, Aspect newAspect);
         void zoneChangedFromControl(QString name, bool state);
 
+        void BALisDisabled();
+        void BALisEnabled();
         //void sendAiguilleUpdate(); //// KEJGBKJEGOEGJBEKGB TROP DE TRUCS A FAIRE
         //void sendZoneUpdate();
 
@@ -52,6 +53,8 @@ class Control : public QMainWindow {
         void updateSignalOnControl(int id, Aspect newAspect);
         void updateZoneOnControl(QString name, bool state);
         void updateAiguilleOnControl(int id, Direction newDir);
+
+        void setUpBALstatus(bool status);
 
 };
 
