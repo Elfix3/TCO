@@ -48,8 +48,9 @@ MainController::MainController(QObject *parent)
     connect(myMaquetteHandler,&MaquetteHandler::zoneChanged,myControl,&Control::updateZoneOnControl);
     
     //detects when the change comes from the user
-    connect(myControl,&Control::signalChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo);
-    
+    connect(myControl,&Control::signalChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo); //normal names ???
+    connect(myControl,&Control::zoneChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateZoneFromRadioButton);
+    //aiguilles with popup?
     /* myMaquetteHandler->getAllSignals()[1]->setAspect(A);
     myMaquetteHandler->getAllSignals()[2]->setAspect(S);
     myMaquetteHandler->getAllZones()["5A"]->setState(true);

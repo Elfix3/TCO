@@ -166,6 +166,11 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
 
 void MaquetteHandler::updateSignalFromCombo(int id, Aspect newAspect){
     lightSignals[id]->setAspect(newAspect);
+    qDebug() << "AM NOT USELESS  !!!";
+}
+
+void MaquetteHandler::updateZoneFromRadioButton(QString name, bool state){
+    zones[name]->setState(state);
 }
 
 /* void MaquetteHandler::setUpOrder(){

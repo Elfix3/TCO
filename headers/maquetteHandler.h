@@ -32,10 +32,12 @@ class MaquetteHandler : public QObject {
     public slots:
 
         void zoneUpdateFromSensor(const QString &command); //updates the internal state  of the maquette
-        void handleObjectUpdate(); //sends the correct signals for any object change
+        void handleObjectUpdate(); //sends the correct signals for any object change 
 
         void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
+        void updateZoneFromRadioButton(QString name, bool state);
         
+
         signals:
         
             void signalChanged(int id, Aspect newAspect); //if isFromUser, wont try to change the Control

@@ -16,7 +16,7 @@ void Control::SetupConnections(){
     //This function is very important and links the GUI elements to the internal slots of the control class.
     //Then the slots are sending signals to the other classes
 
-    //comboBoxes and Signals
+    //finds every combobox with the object name comboSig{id of the signal}
     const auto combos = findChildren<QComboBox*>(QRegularExpression("comboSig\\d+"));
     for (QComboBox* combo : combos) {
         
@@ -32,6 +32,29 @@ void Control::SetupConnections(){
                 });
     }
 
+    //finds all the frames with the object name starting with Z for the zones
+    const auto frames = findChildren<QFrame*>(QRegularExpression("^Z"));
+    
+    for(QFrame *frame : frames){
+        QString zoneName = frame->objectName().mid(1);
+        for(QRadioButton *radio : frame->findChildren<QRadioButton*>()){
+            connect(radio,&QRadioButton::clicked,this,[=](){
+                QString radioText = radio->text().toLower();
+                isUserUpdate = true;
+                if(radioText == "on"){
+                    emit zoneChangedFromControl(zoneName,true);
+                    qDebug() << zoneName;
+                } else if(radioText == "off"){
+                    qDebug() << zoneName;
+                    emit zoneChangedFromControl(zoneName,false);
+                } else{
+                    qWarning() << "Error, no on off button detected";
+                }
+                isUserUpdate = false;
+            });
+            
+        }
+    }
 }
  
 
