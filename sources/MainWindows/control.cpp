@@ -1,5 +1,5 @@
 #include "control.h"
-
+#include <QMessageBox>
 
 Control::Control(QWidget *parent) : QMainWindow(parent), ui(new Ui::CONTROL) {
     ui->setupUi(this);
@@ -75,7 +75,28 @@ void Control::SetupConnections(){
     connect(ui->BALdisabled,&QRadioButton::clicked,this,&Control::BALisDisabled);
     connect(ui->BALEnabled,&QRadioButton::clicked,this,&Control::BALisEnabled);
     
-    
+    QRadioButton *gauche = ui->gauche;
+    QRadioButton *droie = ui->droite;
+    connect(gauche,&QRadioButton::clicked,this,[this,gauche](){
+        if (gauche->isChecked()) {
+            // Création du popup de confirmation
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(this, "Confirmation", 
+                                        "Voulez-vous vraiment activer cette option ?",
+                                        QMessageBox::Yes|QMessageBox::No);
+            
+            if (reply == QMessageBox::Yes) {
+                // Action si confirmé
+                qDebug() << "Option activée";
+                //emit optionConfirmed(true);  // Exemple de signal émis
+            } else {
+                // Action si annulé
+                gauche->setChecked(false);  // On décoche si annulation
+                qDebug() << "Action annulée";
+                //emit optionConfirmed(false); 
+            }
+        }
+        });
 
 
 }
