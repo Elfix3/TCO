@@ -55,6 +55,8 @@ MainController::MainController(QObject *parent)
 
     connect(myControl,&Control::signalChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo); //normal names ???
     connect(myControl,&Control::zoneChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateZoneFromRadioButton);
+    connect(myControl,&Control::aiguilleChangedFromControl,myMaquetteHandler,);
+    
     //aiguilles with popup?
     /* myMaquetteHandler->getAllSignals()[1]->setAspect(A);
     myMaquetteHandler->getAllSignals()[2]->setAspect(S);

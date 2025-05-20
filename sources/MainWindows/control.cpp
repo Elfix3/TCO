@@ -52,8 +52,8 @@ void Control::SetupConnections(){
         }
         //connects the radioButtonOn press with its signal 
         connect(radioOn,&QRadioButton::toggled,this,[=](bool checked){
-            if(!checked) return;
-            isUserUpdate = true;
+            
+            isUserUpdate = true; 
             emit zoneChangedFromControl(zoneName,true);
             isUserUpdate = false;
         });
@@ -67,8 +67,8 @@ void Control::SetupConnections(){
         });
 
         //connects the press of the QpushButton with the press of allOn and allOff buttons
-        connect(ui->allOn,&QPushButton::clicked,radioOn,&QRadioButton::clicked);
-        connect(ui->allOff,&QPushButton::clicked,radioOff,&QRadioButton::clicked);
+        connect(ui->allOn,&QPushButton::clicked,radioOn,&QRadioButton::toggled);
+        connect(ui->allOff,&QPushButton::clicked,radioOff,&QRadioButton::toggled);
     }
 
     
