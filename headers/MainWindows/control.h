@@ -42,6 +42,9 @@ class Control : public QMainWindow {
         void signalChangedFromControl(int id, Aspect newAspect);
         void zoneChangedFromControl(QString name, bool state);
 
+        void sendAiguilleImpulse(int id, Direction newDir);
+
+
         void BALisDisabled();
         void BALisEnabled();
         //void sendAiguilleUpdate(); //// KEJGBKJEGOEGJBEKGB TROP DE TRUCS A FAIRE

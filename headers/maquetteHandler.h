@@ -36,7 +36,7 @@ class MaquetteHandler : public QObject {
 
         void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
         void updateZoneFromRadioButton(QString name, bool state);
-        
+        void updateAiguilleFromRadioButton(int id, Direction newDir);
         
         void disableBAL();
         void enableBAL();

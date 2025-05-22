@@ -38,7 +38,7 @@ MainController::MainController(QObject *parent)
     connect(mySerialHandler,&SerialHandler::commandReady,myMaquetteHandler,&MaquetteHandler::zoneUpdateFromSensor);
     
     //connects the object update with the command sending
-    connect(myMaquetteHandler,&MaquetteHandler::aiguilleChanged,mySerialHandler,&SerialHandler::sendCommandAiguille);
+    connect(myMaquetteHandler,&MaquetteHandler::aiguilleChanged,mySerialHandler,&SerialHandler::sendCommandAiguille); //not necessary in my opinion
     connect(myMaquetteHandler,&MaquetteHandler::signalChanged,mySerialHandler, &SerialHandler::sendCommandSignal);
     connect(myMaquetteHandler,&MaquetteHandler::zoneChanged, mySerialHandler,&SerialHandler::sendCommandZone);
 
@@ -46,6 +46,7 @@ MainController::MainController(QObject *parent)
     connect(myMaquetteHandler,&MaquetteHandler::aiguilleChanged,myControl,&Control::updateAiguilleOnControl);
     connect(myMaquetteHandler,&MaquetteHandler::signalChanged,myControl,&Control::updateSignalOnControl);
     connect(myMaquetteHandler,&MaquetteHandler::zoneChanged,myControl,&Control::updateZoneOnControl);
+
     
     connect(myControl,&Control::BALisDisabled,myMaquetteHandler,&MaquetteHandler::disableBAL);
     connect(myControl,&Control::BALisEnabled,myMaquetteHandler,&MaquetteHandler::enableBAL);
@@ -55,8 +56,9 @@ MainController::MainController(QObject *parent)
 
     connect(myControl,&Control::signalChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo); //normal names ???
     connect(myControl,&Control::zoneChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateZoneFromRadioButton);
-    //connect(myControl,&Control::aiguilleChangedFromControl,myMaquetteHandler,);
-    
+    connect(myControl,&Control::aiguilleChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateAiguilleFromRadioButton);
+    connect(myControl,&Control::sendAiguilleImpulse,mySerialHandler,&SerialHandler::sendCommandAiguille);
+
     //aiguilles with popup?
     /* myMaquetteHandler->getAllSignals()[1]->setAspect(A);
     myMaquetteHandler->getAllSignals()[2]->setAspect(S);

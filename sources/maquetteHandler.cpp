@@ -174,13 +174,20 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
 
 }
 
+
+// rework these baddies please, these bitches not doing their work correctly :(
+
 void MaquetteHandler::updateSignalFromCombo(int id, Aspect newAspect){
     lightSignals[id]->setAspect(newAspect);
-    qDebug() << "AM NOT USELESS  !!!";
 }
 
 void MaquetteHandler::updateZoneFromRadioButton(QString name, bool state){
     zones[name]->setState(state);
+}
+
+void MaquetteHandler::updateAiguilleFromRadioButton(int id, Direction newDir){
+    qDebug() << "fn call";
+    aiguilles[id]->setDirection(newDir);
 }
 
 void MaquetteHandler::disableBAL(){
@@ -312,7 +319,7 @@ void MaquetteHandler::SETUP_AIGUILLES(){
     addAiguilleToMaquette(new Aiguille(7,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(8,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(9,GAUCHE,this));
-    addAiguilleToMaquette(new Aiguille(10,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(11,GAUCHE,this));
 
 }
 

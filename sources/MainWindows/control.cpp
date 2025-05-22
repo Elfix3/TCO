@@ -33,9 +33,9 @@ void Control::SetupConnections(){
     }
 
     //finds all the frames with the object name starting with Z for the zones
-    const auto frames = findChildren<QFrame*>(QRegularExpression("^Z"));
+    const auto framesZones = findChildren<QFrame*>(QRegularExpression("^Z"));
 
-    for(QFrame *frame : frames){
+    for(QFrame *frame : framesZones){
         QString zoneName = frame->objectName().mid(1); //removes the Z in front of the zone name
         
         //ptrs to store the qRadioButtons
@@ -77,27 +77,76 @@ void Control::SetupConnections(){
     
     QRadioButton *gauche = ui->gauche;
     QRadioButton *droie = ui->droite;
-    connect(gauche,&QRadioButton::clicked,this,[this,gauche](){
-        if (gauche->isChecked()) {
-            // Création du popup de confirmation
-            QMessageBox::StandardButton reply;
-            reply = QMessageBox::question(this, "Confirmation", 
-                                        "Voulez-vous vraiment activer cette option ?",
-                                        QMessageBox::Yes|QMessageBox::No);
-            
-            if (reply == QMessageBox::Yes) {
-                // Action si confirmé
-                qDebug() << "Option activée";
-                //emit optionConfirmed(true);  // Exemple de signal émis
-            } else {
-                // Action si annulé
-                gauche->setChecked(false);  // On décoche si annulation
-                qDebug() << "Action annulée";
-                //emit optionConfirmed(false); 
+
+
+
+    const auto framesAiguilles = findChildren<QFrame*>(QRegularExpression("Aig\\d+"));
+    for(QFrame *frame : framesAiguilles){
+        bool isValidId = false;
+        QString frameName = frame->objectName();
+        int id = frameName.mid(3).toInt(&isValidId);
+        if(!isValidId){
+            qWarning() << "Error ! Id not recognized";
+            return;
+        }
+
+
+
+        QRadioButton *droite = nullptr;
+        QRadioButton *gauche = nullptr;
+        QLabel *labelAiguille = nullptr;
+
+        for(QRadioButton *radio : frame->findChildren<QRadioButton*>()){
+            if(radio->text().toLower() == "droite"){
+                    droite = radio;
+                } else if(radio->text().toLower() == "gauche"){
+                    gauche = radio;
             }
         }
-        });
 
+        labelAiguille = frame->findChild<QLabel*>();
+
+
+        connect(droite,&QRadioButton::toggled,this,[=](bool checked){
+            if (checked) {
+                emit sendAiguilleImpulse(id,DROITE);
+
+
+                QString message = QString("L'%1 est elle bien en direction de droite ?").arg(labelAiguille->text());
+                QMessageBox::StandardButton reply;
+                reply = QMessageBox::question(this, "Changement aiguille", 
+                message,
+                QMessageBox::Yes|QMessageBox::No);                
+            
+                if(reply == QMessageBox::Yes) {
+                    emit aiguilleChangedFromControl(id,DROITE);
+                } else {
+                    gauche->blockSignals(true);
+                    gauche->setChecked(true);  // On décoche si annulation
+                    gauche->blockSignals(false);
+                    qDebug() << labelAiguille->text() << "non mise a jour, veuillez reessayer";
+                }
+            }
+        });
+        connect(gauche,&QRadioButton::toggled,this,[=](bool checked){
+            if (checked) {
+                QString message = QString("L'%1 est elle bien en direction de droite ?").arg(labelAiguille->text());
+                QMessageBox::StandardButton reply;
+                reply = QMessageBox::question(this, "Changement aiguille", 
+                message,
+                QMessageBox::Yes|QMessageBox::No);                  
+                
+                if(reply == QMessageBox::Yes) {
+                    emit aiguilleChangedFromControl(id,GAUCHE);
+                } else {
+                    droite->blockSignals(true);
+                    droite->setChecked(true);  // On décoche si annulation
+                    droite->blockSignals(false);
+                    qDebug() << labelAiguille->text() << "non mise a jour, veuillez reessayer";
+                }
+            }
+        });
+    }
 
 }
  
@@ -215,7 +264,36 @@ void Control::updateZoneOnControl(QString name, bool state){
 }
 
 void Control::updateAiguilleOnControl(int id, Direction newDir){
-    //probaably stoopid function
+    QFrame *frame = findChild<QFrame*>(QString("Aig%1").arg(id));
+    if(!frame){
+        qWarning() << "Frame aiguille" << id << "not found";
+        return;
+    }
+
+    QRadioButton *gauche = nullptr;
+    QRadioButton *droite = nullptr;
+    for(QRadioButton* button : frame->findChildren<QRadioButton*>()){
+        if(button->text().trimmed().toLower() == "gauche"){
+            gauche = button;
+        }
+        if(button->text().trimmed().toLower() == "droite"){
+            droite = button;
+        }
+    }
+
+    if(!gauche || !droite) {
+        qWarning() << "Button not correctly found";
+        return;
+    }
+
+
+    QSignalBlocker bk1(gauche);
+    QSignalBlocker bk2(droite);
+    
+    bool dir = (newDir == GAUCHE);
+
+    gauche->setChecked(dir);
+    droite->setChecked(!dir);
 }
 
 void Control::setUpBALstatus(bool status){
