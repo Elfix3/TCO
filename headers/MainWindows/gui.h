@@ -47,22 +47,42 @@ class Gui : public QMainWindow {
         
 
         QMap<int, PositionAngle> signalPositions = {
-        {1,PositionAngle{QPoint(30,190),22}}, //OK
-        {3,PositionAngle{QPoint(322,3),90}}, //OK
-        {5,PositionAngle{QPoint(710,3),90}}, //OK
-        {7,PositionAngle{QPoint(1130,90),120}}, //OK
-        {9,PositionAngle{QPoint(1178,500),210}},//OK
-        {11,PositionAngle{QPoint(880,635),270}}, //OK
-        {13,PositionAngle{QPoint(360,635),270}}, //OK
-        {15,PositionAngle{QPoint(130,565),300}}, //OK
         
-        {2,PositionAngle{QPoint(154,390),150}}, //OK
-        {4,PositionAngle{QPoint(394,462),90}}, //OK
-        {6,PositionAngle{QPoint(780,462),90}}, //OK
+        /*VOIE 1*/
+        {1,PositionAngle{QPoint(15,168),22}},       //OK
+        {3,PositionAngle{QPoint(322,3),90}},        //OK
+        {5,PositionAngle{QPoint(710,3),90}},        //OK
+        {7,PositionAngle{QPoint(1130,90),120}},     //OK
+        {9,PositionAngle{QPoint(1190,522),210}},    //OK
+        {11,PositionAngle{QPoint(880,635),270}},    //OK
+        {13,PositionAngle{QPoint(360,635),270}},    //OK
+        {15,PositionAngle{QPoint(60,505),310}},     //OK
+
+        /*VOIE 2*/
+        {2,PositionAngle{QPoint(176,400),160}},     //OK
+        {4,PositionAngle{QPoint(394,462),90}},      //OK
+        {6,PositionAngle{QPoint(780,462),90}},      //OK
+        {8,PositionAngle{QPoint(1073,290),355}},    //OK
+        {10,PositionAngle{QPoint(855,176),270}},    //OK
+        {12,PositionAngle{QPoint(430,176),270}},    //OK
+
+        /*IPCS VOIE 1*/
+        {17,PositionAngle{QPoint(175,50),250}},     //OK
+        {19,PositionAngle{QPoint(-28,360),180}},    //OK
+        {21,PositionAngle{QPoint(180,628),118}},    //OK
+        {27,PositionAngle{QPoint(1263,350),10}},    //OK
+        {23,PositionAngle{QPoint(693,644),90}},     //OK  
+        {25,PositionAngle{QPoint(1050,595),75}},    //OK
+        {29,PositionAngle{QPoint(970,-7),282}},     //OK
+        {31,PositionAngle{QPoint(560,-5),270}},     //OK
         
-        {8,PositionAngle{QPoint(1090,300),350}}, //OK
-        {10,PositionAngle{QPoint(855,176),270}}, //OK
-        {12,PositionAngle{QPoint(430,176),270}}, //OK
+        /*IPCS VOIE 2*/
+        {14,PositionAngle{QPoint(245,440),300}},    //OK
+        {16,PositionAngle{QPoint(187,240),20}},     //OK
+        {18,PositionAngle {QPoint(645,184),90}},    //OK
+        {20,PositionAngle{QPoint(996,188),100}},    //OK
+        {22,PositionAngle{QPoint(1020,420),220}},   //OK
+        {24,PositionAngle{QPoint(575,455),270}},    //OK
         };
         
         QMap<int, PositionAngle> aiguillePositions = {
@@ -91,6 +111,7 @@ class Gui : public QMainWindow {
     private slots :
         void slotMethod();
         void buttonPressed();
+        void hideIPCS();
 
 
 

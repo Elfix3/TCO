@@ -12,7 +12,7 @@ Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
     
 
     
-
+    connect(ui->Bouton,&QPushButton::clicked,this,&Gui::hideIPCS);
     
 }
 
@@ -53,14 +53,14 @@ void Gui::loadMaquette(MaquetteHandler *handler){
         }
     }
 
-    int start = 40;
+    int start = 10;
 
     //you should place the zoneView widget correctly if it's not definitive solution
     for(Zone *zone : handler->getAllZones()){
         QString name = zone->getName();
         //verification if position is available ??
         ZoneView *view = new ZoneView(zone,this);
-        view->move(QPoint(40,start+=15));
+        view->move(QPoint(start+=15,10));
     }
 }
 
@@ -77,5 +77,11 @@ void Gui::buttonPressed() {
     //pretty much useless
 }
 
-
-
+void Gui::hideIPCS(){
+    const auto signalViews = this->findChildren<SignalView*>();
+    for(SignalView *sigVw : signalViews){
+        if(sigVw->isIPCSView()){
+            sigVw->hide();
+        }
+    }
+}

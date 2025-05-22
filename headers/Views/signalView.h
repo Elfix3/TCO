@@ -36,6 +36,7 @@ class SignalView : public QWidget{
 
         void setAngle(int degrees);
 
+        bool isIPCSView();
     protected:
         void paintEvent(QPaintEvent *event) override;
 
@@ -60,16 +61,16 @@ class SignalView : public QWidget{
 
         const int SAVL_width = 41;
         const int SAVL_height = 55;
-        const int SAVLR_width = 41;
-        const int SAVLR_height = 71;
+        const int SAVLR_width = 81;
+        const int SAVLR_height = 91;
         const int CSAVLRRR_width = 91;
         const int CSAVLRRR_height = 91;
 
-        const int SAVL_IPCS_width = 81;
-        const int SAVL_IPCS_height = 91;
-        const int SAVLR_IPCS_width = 121;
-        const int SAVLR_IPCS_height = 71;
-        const int CSAVLRRR_IPCS_width = 131;
+        const int SAVL_IPCS_width = 41;
+        const int SAVL_IPCS_height = 55;
+        const int SAVLR_IPCS_width = 91;
+        const int SAVLR_IPCS_height = 91;
+        const int CSAVLRRR_IPCS_width = 106;
         const int CSAVLRRR_IPCS_height = 91;
 
         bool border = false;
