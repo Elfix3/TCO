@@ -11,8 +11,8 @@ Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
     this->setWindowTitle("Tableau de contrôle optique"); //Title of gui
     
 
-    
-    connect(ui->Bouton,&QPushButton::clicked,this,&Gui::hideIPCS);
+    ui->BoutonIPCS->setCheckable(true);
+    connect(ui->BoutonIPCS,&QPushButton::toggled,this,&Gui::hideIPCS);
     
 }
 
@@ -77,11 +77,16 @@ void Gui::buttonPressed() {
     //pretty much useless
 }
 
-void Gui::hideIPCS(){
+void Gui::hideIPCS(bool isHidden){
     const auto signalViews = this->findChildren<SignalView*>();
     for(SignalView *sigVw : signalViews){
         if(sigVw->isIPCSView()){
-            sigVw->hide();
+            if(isHidden){
+                sigVw->hide();
+            } else {
+                sigVw->show();
+            }
         }
     }
+    ui->BoutonIPCS->setText(isHidden ?  "Afficher IPCS" : "Masquer IPCS");
 }

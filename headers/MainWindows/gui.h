@@ -111,7 +111,7 @@ class Gui : public QMainWindow {
     private slots :
         void slotMethod();
         void buttonPressed();
-        void hideIPCS();
+        void hideIPCS(bool isHidden);
 
 
 

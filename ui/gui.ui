@@ -44,17 +44,31 @@
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="Bouton">
+   <widget class="QPushButton" name="BoutonIPCS">
     <property name="geometry">
      <rect>
-      <x>1280</x>
-      <y>30</y>
-      <width>75</width>
+      <x>1300</x>
+      <y>720</y>
+      <width>91</width>
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #4a4a4a;  /* Gris foncé */
+    color: white;
+    border: 1px solid #2e2e2e;
+    padding: 4px 8px;
+}
+
+QPushButton:checked {
+    background-color: #4a4a4a;
+    color: white;
+    border: 1px solid #2e2e2e;
+}</string>
+    </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Masquer IPCS</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelSig1">
