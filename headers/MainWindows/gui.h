@@ -89,14 +89,16 @@ class Gui : public QMainWindow {
         {1,PositionAngle{QPoint(438,130),0}}, //OK for placement... id ???
         {2,PositionAngle{QPoint(480,188),180}}, //OK for placement... id ???
         {3,PositionAngle{QPoint(805,130),0}}, //OK for placement... id ???
-        {4,PositionAngle{QPoint(874,200),180}},
+        {4,PositionAngle{QPoint(845,190),180}},
+        {-4,PositionAngle{QPoint(896,190),180}},
         {5,PositionAngle{QPoint(940,130),180}},
 
-        {6,PositionAngle{QPoint(438,648),0}},
-        {7,PositionAngle{QPoint(480,590),180}},
-        {8,PositionAngle{QPoint(805,648),0}},
-        {9,PositionAngle{QPoint(874,578),0}},
-        {11,PositionAngle{QPoint(940,648),180}},  
+        {6,PositionAngle{QPoint(895,589),0}},
+        {-6,PositionAngle{QPoint(848,589),0}},
+        {7,PositionAngle{QPoint(940,648),180}}, 
+        {8,PositionAngle{QPoint(480,590),180}},
+        {9,PositionAngle{QPoint(805,648),0}},
+        {11,PositionAngle{QPoint(438,648),0}},
         };
 
         QMap<QString,QPoint> zonePositions = {

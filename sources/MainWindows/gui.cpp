@@ -42,15 +42,31 @@ void Gui::loadMaquette(MaquetteHandler *handler){
     //pour toutes les aiguilles crée les vues
     for(Aiguille *aiguille : handler->getAllAiguilles()){
         short id = aiguille->getId();
-        if(aiguillePositions.contains(id)){
+        if(aiguillePositions.contains(id)){ //-id if for the traversée jonction double aiguilles
             AiguilleView *view = new AiguilleView(aiguille,this);
+            
+            
             if(aiguillePositions[id].angle == 180){
                 view->flipAiguille();
             }
             view->move(aiguillePositions[id].position);
+           //continue ?
         } else {
             qWarning() << "Error : no placement avaiable for aiguille " << id;
         }
+
+        if(aiguillePositions.contains(-id)){
+            AiguilleView *view = new AiguilleView(aiguille,this);
+            if(aiguillePositions[-id].angle == 180){
+                view->flipAiguille();
+            }
+            view->move(aiguillePositions[-id].position);
+        } else {
+            qWarning() << "Error : no placement avaiable for aiguille " << id;
+        }
+        
+        
+        
     }
 
     int start = 10;

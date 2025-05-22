@@ -314,12 +314,12 @@ void MaquetteHandler::SETUP_AIGUILLES(){
     addAiguilleToMaquette(new Aiguille(2,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(3,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(4,GAUCHE,this));
-    addAiguilleToMaquette(new Aiguille(5,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(5,DROITE,this));
     addAiguilleToMaquette(new Aiguille(6,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(7,GAUCHE,this));
-    addAiguilleToMaquette(new Aiguille(8,GAUCHE,this));
-    addAiguilleToMaquette(new Aiguille(9,GAUCHE,this));
-    addAiguilleToMaquette(new Aiguille(11,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(8,DROITE,this));
+    addAiguilleToMaquette(new Aiguille(9,DROITE,this));
+    addAiguilleToMaquette(new Aiguille(11,DROITE,this));
 
 }
 
