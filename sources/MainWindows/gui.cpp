@@ -9,7 +9,7 @@ Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
 
 
     this->setWindowTitle("Tableau de contrôle optique"); //Title of gui
-    
+    this->setWindowIcon(QIcon(":/images/train.png"));
 
     ui->BoutonIPCS->setCheckable(true);
     connect(ui->BoutonIPCS,&QPushButton::toggled,this,&Gui::hideIPCS);

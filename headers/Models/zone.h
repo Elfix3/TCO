@@ -7,6 +7,8 @@
 //Qt includes
 #include <QObject>
 
+class LightSignal;
+
 class Zone : public QObject{
     Q_OBJECT
     public :

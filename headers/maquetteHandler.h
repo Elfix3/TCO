@@ -58,6 +58,10 @@ class MaquetteHandler : public QObject {
             QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
             QMap <QString,Zone*> zones; //Qmap with all my zones
 
+            Zone* zoneTrain1 = nullptr; //stores the position of the first train
+            Zone* zoneTrain2 = nullptr; //stores the position of the second train (not yet implemented)
+            
+
             bool IsBalActive = true; //enables or disables the BAL
 
             //ADD objects functions

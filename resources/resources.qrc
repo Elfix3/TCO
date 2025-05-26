@@ -8,5 +8,7 @@
         <file>images/SAVLRipcs.png</file>
         <file>images/CSAVLRRRipcs.png</file>
         <file>images/aiguille.png</file>
+        <file>images/train.png</file>
+        <file>images/settings.png</file>
     </qresource>
 </RCC>

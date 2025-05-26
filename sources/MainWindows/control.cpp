@@ -3,7 +3,9 @@
 
 Control::Control(QWidget *parent) : QMainWindow(parent), ui(new Ui::CONTROL) {
     ui->setupUi(this);
-    
+
+    this->setWindowTitle("Fenêtre de contrôle");
+    this->setWindowIcon(QIcon(":/images/settings.png"));
     loadSignalQvariant(); //maps the combobox text to a Aspect Argument
     SetupConnections();
 }

@@ -57,6 +57,7 @@ void MaquetteHandler::updateAll(){
 }
 
 void MaquetteHandler::handleObjectUpdate(){
+    //messy or clear enough ?
     QObject* obj = sender();
     if(!obj)return; //nullptr
     if(LightSignal *sig = qobject_cast<LightSignal*>(obj)){ //tries to cast the objet to a signal
@@ -172,6 +173,10 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
         return;
     } */
 
+
+    //################IMPORTANT##################//
+    //UPDATE THE POSITION OF THE TRAIN INSTEAD !!!
+    //##########################################//
 }
 
 
