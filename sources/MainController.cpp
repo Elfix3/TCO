@@ -19,7 +19,8 @@ MainController::MainController(QObject *parent)
     qInfo() << "############################################\n";
     if(!mySerialHandler->INIT()) qFatal("\033[1;31m\nError: Arduino missing end of the program\033[0m");
     qInfo() << "############################################\n";
-    //myMaquetteHandler->INIT();
+    
+    myMaquetteHandler->INIT();
     
     
     //QMainWindows
@@ -43,7 +44,10 @@ MainController::MainController(QObject *parent)
 
 
     //connects the sensor command reception with the zone update
-    connect(mySerialHandler,&SerialHandler::commandReady,myMaquetteHandler,&MaquetteHandler::zoneUpdateFromSensor);
+    //connect(mySerialHandler,&SerialHandler::commandReady,myMaquetteHandler,&MaquetteHandler::updateTrainPosition);
+
+
+
     
     //connects the object update with the command sending
     connect(myMaquetteHandler,&MaquetteHandler::aiguilleChanged,mySerialHandler,&SerialHandler::sendCommandAiguille); //not necessary in my opinion
@@ -77,7 +81,9 @@ MainController::~MainController(){
     delete myControl;
     delete myGui;
     delete myMaquetteHandler;
+    mySerialHandler->closeSerial();
     delete mySerialHandler;
+
 }
 
 

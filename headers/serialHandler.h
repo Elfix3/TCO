@@ -25,13 +25,13 @@ class SerialHandler : public QObject{
 
 
         bool INIT(); //finds the correct serial ports by sending ID request returns 0 if arduino recognition fails
-        
+
         void closeSerial();
 
         
         void readDataFromArduinoA(); //when data is avilable on Arduino A, reads it
         void readDataFromArduinoB(); //when data is available on Arduino B, reads it
-        void processBuffer(QByteArray &buffer); //fills the dedicated buffer for A and B, to process command, sends signal data recieved.
+        void processBuffer(QByteArray *buffer); //fills the dedicated buffer for A and B, to process command, sends signal data recieved.
 
 
         void writeData(const QString &data, Arduino myArduino); //writes on a specific Arduino (BOTH NOT IMPLEMENTED)

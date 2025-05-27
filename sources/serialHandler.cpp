@@ -31,7 +31,10 @@ bool SerialHandler::INIT(){
             tempPort->setStopBits(QSerialPort::OneStop);
             tempPort->setFlowControl(QSerialPort::NoFlowControl);
 
+            //waits the reboot for the arduino
+            
             //sends Id request for the device identification;
+            QThread::msleep(200);
             tempPort->write("ID_REQUEST\n");
            
             //waits for the response of the arduino
@@ -49,12 +52,13 @@ bool SerialHandler::INIT(){
                 }else if(response.contains("Arduino_B") && !mySerialB){
                     mySerialB = tempPort; //Arduino plaque B found
                     qDebug() << "  Arduino B found on port" << port.portName().toStdString().c_str();
+                
                     continue;
                 }
 
                 else {
                     tempPort->close();
-                    qWarning() << "Unidentified device on "<< port.portName();
+                    qWarning() << "Unidentified device on "<< port.portName(); //if the programm didn't recieve the correct answer from arduino
                 }
             }
 
@@ -109,22 +113,27 @@ void SerialHandler::closeSerial(){
 
 void SerialHandler::readDataFromArduinoA(){
     bufferA.append(mySerialA->readAll());
-    processBuffer(bufferA);
+    processBuffer(&bufferA);
+    
 }
 
 void SerialHandler::readDataFromArduinoB(){
     bufferB.append(mySerialB->readAll());
-    processBuffer(bufferB);
+    processBuffer(&bufferB);
 }
 
-void SerialHandler::processBuffer(QByteArray &buffer){
+void SerialHandler::processBuffer(QByteArray *buffer){
     int endIndex;
-    while ((endIndex = buffer.indexOf("\r\n")) != -1) {
-        QString message = QString(buffer.left(endIndex).trimmed());
-        buffer.remove(0, endIndex + 2);
+    while ((endIndex = buffer->indexOf("\r\n")) != -1) {
+        QString message = QString(buffer->left(endIndex).trimmed());
+        buffer->remove(0, endIndex + 2);
         
         if(message.startsWith("/")){
-            qDebug() << message;
+            qDebug() <<((buffer == &bufferA) ? "\033[93m[Arduino A]  \033[0m :":"\033[93m[Arduino B]  \033[0m :") << message;
+            /* if(buffer == &bufferB){
+                qDebug() << "OUI";
+                qDebug() << message;
+            } */
             emit commandReady(message);
         } else {
             qWarning() << "Error : invalid command, must start with /";

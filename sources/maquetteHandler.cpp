@@ -145,10 +145,7 @@ bool MaquetteHandler::connectSetup(int setup){
 }
 
 void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
-    //COMMAND to process : type /Z-12B END
-    //In this case, looks for the zone 12B and updates it
-    
-    //qDebug("AAAAA");
+
     if(IsBalActive){
         if(command.startsWith("/C_")){
             //qDebug() << "HAAAAAAA";
@@ -162,21 +159,29 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
             
         }
     }
+}
+
+void MaquetteHandler::updateTrainPosition(const QString &command){
+    //recieves the command from the sensor to update signals S->A->VL
+    //command structure is : "/C-Z4A"
     
-    /* if(command.startsWith("/Z-")&&command.endsWith(" END")){
-        qDebug() << "Processing of the command : ";
-        QString zone = command.mid(1,command.length()-5);
-        ///////Extraction du nom de la zone à mettre à jour
+    /*train position is a zone occupied, used to determine whether
+    user changed on signalisation should be allowed or not*/
 
-    } else {
-        qWarning() << "Error : incorrect command from arduino, no relais update";
-        return;
-    } */
+    if(IsBalActive){
+        if(command.startsWith("/C_Z")){
+            Zone *zone = zones[command.mid(4)]; //gets the corresponding zone
+            if(zone!=nullptr){
+                zoneTrain1 = zone;
+            } else {
+                qWarning() << "Error : Zone "<<command.mid(4) << "does not exist on the maquette";
+            }
+        } else {
+            qWarning() << "Error : command" << command<< "is not valid";
+        }
+    } 
 
 
-    //################IMPORTANT##################//
-    //UPDATE THE POSITION OF THE TRAIN INSTEAD !!!
-    //##########################################//
 }
 
 

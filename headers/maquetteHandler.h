@@ -17,35 +17,37 @@ class MaquetteHandler : public QObject {
     Q_OBJECT
 
     public:
-        explicit MaquetteHandler(QObject *parent = nullptr);
-        ~MaquetteHandler();
+            explicit MaquetteHandler(QObject *parent = nullptr);
+            ~MaquetteHandler();
 
-        void INIT();
+            void INIT();
 
-        //Getters
-        const QMap<int,LightSignal*> getAllSignals(); //utile ?
-        const QMap<int,Aiguille*> getAllAiguilles();
-        const QMap<QString,Zone*> getAllZones();
+            //Getters
+            const QMap<int,LightSignal*> getAllSignals(); //utile ?
+            const QMap<int,Aiguille*> getAllAiguilles();
+            const QMap<QString,Zone*> getAllZones();
 
-        void emitAllStates();
+            void emitAllStates();
 
-        public slots:
-        
-        void zoneUpdateFromSensor(const QString &command); //updates the internal state  of the maquette
-        //UPDATES TRAINS POSITION !!!!!
-        
-        void handleObjectUpdate(); //sends the correct signals for any object change 
-        
-        void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
-        void updateZoneFromRadioButton(QString name, bool state);
-        void updateAiguilleFromRadioButton(int id, Direction newDir);
-        
-        void disableBAL();
-        void enableBAL();
+    public slots:
+            void zoneUpdateFromSensor(const QString &command); //updates the internal state  of the maquette
+            //UPDATES TRAINS POSITION !!!!!
+            void updateTrainPosition(const QString &command);//updates the train position
+
+
+
+            void handleObjectUpdate(); //sends the correct signals for any object change 
+                
+            void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
+            void updateZoneFromRadioButton(QString name, bool state);
+            void updateAiguilleFromRadioButton(int id, Direction newDir);
+                
+            void disableBAL();
+            void enableBAL();
         
          //sends the update signal for anyObject on the maquette
-        signals:
-        
+    signals:
+
             void signalChanged(int id, Aspect newAspect); //if isFromUser, wont try to change the Control
             void aiguilleChanged(int id, Direction newDirection);
             void zoneChanged(QString name, bool state);
@@ -55,8 +57,11 @@ class MaquetteHandler : public QObject {
             void sendCommand(const QString &command); //should we keep this
         
         
-        private:
-            //all my objects for maquette handler
+    private:
+            //##########################################//
+            //#####  All objects on my maquette  #######//
+            //##########################################//
+
             QMap <int,LightSignal*> lightSignals; //Qmap with all my lightSignals
             QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
             QMap <QString,Zone*> zones; //Qmap with all my zones
@@ -94,7 +99,7 @@ class MaquetteHandler : public QObject {
             
 
 
-
+            //to show some debug informations
             struct DebugFlags{
                 bool signal = false;
                 bool aiguille = false;

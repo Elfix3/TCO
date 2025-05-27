@@ -3,7 +3,7 @@
 
 
 //this file has the purpose to link all the other components of this app
-#define NO_DEBUG 0
+#define NO_DEBUG 0 //kakvo ?
 #define DEBUG 1
 
 //file includes
