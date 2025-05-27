@@ -20,11 +20,12 @@ class SerialHandler : public QObject{
     Q_OBJECT
     
     public:
-        //Finds and opens the serial port of arduino A and B
         SerialHandler(QObject *parent=nullptr);
         ~SerialHandler();
 
-        void INIT();
+
+        bool INIT(); //finds the correct serial ports by sending ID request returns 0 if arduino recognition fails
+        
         void closeSerial();
 
         
@@ -69,9 +70,10 @@ class SerialHandler : public QObject{
 
         //Zones on A and zones on B
         QVector<QString> nameZoneOnArdA = {"11B","13A","13B","15A","15B","1A","1B","3A","3B","4A","2B","2A","12B","12A","10B"};
-        QVector<QString> namezoneOnArdB = {"5A","5B","7A","7B","9A","9B","11A","10A","8B","8A","6B","6A","4B"};
+        QVector<QString> nameZoneOnArdB = {"5A","5B","7A","7B","9A","9B","11A","10A","8B","8A","6B","6A","4B"};
 
         //We consider all aiguilles are on B
+
 };
 
 #endif

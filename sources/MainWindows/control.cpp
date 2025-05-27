@@ -8,6 +8,8 @@ Control::Control(QWidget *parent) : QMainWindow(parent), ui(new Ui::CONTROL) {
     this->setWindowIcon(QIcon(":/images/settings.png"));
     loadSignalQvariant(); //maps the combobox text to a Aspect Argument
     SetupConnections();
+
+    qInfo()<<"<----------Control window created---------->\n";
 }
 
 Control::~Control() {

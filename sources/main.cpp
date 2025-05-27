@@ -13,6 +13,7 @@
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     
+    //translations for the qinfo box
     QTranslator translator;
     if (translator.load(QLocale::French, "qtbase", "_",
         QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
@@ -20,18 +21,10 @@ int main(int argc, char *argv[]) {
     }
 
 
-
-
+    //instance of my main controller
     MainController myController;
 
-
-    //Signal info example :
-    //LightSignal *mySig = new LightSignal(1,SAVL);
-    //mySig->info();
-    
-    
-
-    myController.showGui();
-    myController.showControl();
+    //myController.showGui();
+    //myController.showControl();
     return app.exec();
 }

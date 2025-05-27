@@ -1,29 +1,37 @@
 #include "MainController.h"
 #include "zoneView.h"
-#include <iostream>
+
 
 MainController::MainController(QObject *parent)
     : QObject(parent)
 {
-    std::cout<<"<----Controller created---->\n"<<std::endl;
+    qInfo() << "\n"
+           ".-------------------------------------------.\n"
+           "|                  APP START                |\n"
+           "'-------------------------------------------'\n";
+    
+    //creation of all my elements
+    mySerialHandler = new SerialHandler(this);
+    myMaquetteHandler = new MaquetteHandler(this);
+    myControl = new Control();
+    myGui = new Gui();
+
+    qInfo() << "############################################\n";
+    if(!mySerialHandler->INIT()) qFatal("\033[1;31m\nError: Arduino missing end of the program\033[0m");
+    qInfo() << "############################################\n";
+    //myMaquetteHandler->INIT();
     
     
     //QMainWindows
-    //mySerialHandler = new SerialHandler(this);
-    std::cout<<"<----Serial Handler---->\n"<<std::endl;
-    mySerialHandler = new SerialHandler();
-    mySerialHandler->INIT();
     
-    myGui = new Gui();
-    myControl = new Control();
+    //mySerialHandler->INIT();
+    
     //Handlers
     
-    std::cout<<"\n\n<----Maquette Handler---->\n"<<std::endl;
-    myMaquetteHandler = new MaquetteHandler(this);
-    myMaquetteHandler->INIT();
+    //Info()<< "\n\n<----Maquette Handler---->\n";
 
 
-    myGui->loadMaquette(myMaquetteHandler);
+    //myGui->loadMaquette(myMaquetteHandler);
     //myControl->loadMaquette(myMaquetteHandler);
 
     
@@ -59,15 +67,9 @@ MainController::MainController(QObject *parent)
     connect(myControl,&Control::aiguilleChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateAiguilleFromRadioButton);
     connect(myControl,&Control::sendAiguilleImpulse,mySerialHandler,&SerialHandler::sendCommandAiguille);
 
-    //aiguilles with popup?
-    /* myMaquetteHandler->getAllSignals()[1]->setAspect(A);
-    myMaquetteHandler->getAllSignals()[2]->setAspect(S);
-    myMaquetteHandler->getAllZones()["5A"]->setState(true);
-    myMaquetteHandler->getAllZones()["8B"]->setState(true);
 
-    myMaquetteHandler->getAllZones()["8B"]->setState(false); */
     
-    myMaquetteHandler->updateAll();
+    //myMaquetteHandler->emitAllStates(); //alows the sync between Control, MaquetteHandler and the actual maquette
 }
 
 

@@ -3,6 +3,7 @@
 
 MaquetteHandler::MaquetteHandler(QObject *parent)
     : QObject(parent){
+    qInfo()<<"<---------Maquette Handler created--------->\n";
 }
 
 MaquetteHandler::~MaquetteHandler(){
@@ -11,7 +12,7 @@ MaquetteHandler::~MaquetteHandler(){
     qDeleteAll(zones);
 }
 
-void MaquetteHandler::INIT(){
+void MaquetteHandler::INIT(){ //to rework ?
     //create all the objets
     SETUP_SIGNALS();
     SETUP_AIGUILLES();
@@ -29,19 +30,19 @@ void MaquetteHandler::INIT(){
     
 }
 
-QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){
+const QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){
     return lightSignals;
 }
 
-QMap<int, Aiguille *> MaquetteHandler::getAllAiguilles(){
+const QMap<int, Aiguille *> MaquetteHandler::getAllAiguilles(){
     return aiguilles;
 }
 
-QMap<QString, Zone *> MaquetteHandler::getAllZones(){
+const QMap<QString, Zone *> MaquetteHandler::getAllZones(){
     return zones;
 }
 
-void MaquetteHandler::updateAll(){
+void MaquetteHandler::emitAllStates(){
     //sends all the signals to update the maquette
     for(LightSignal *sig : lightSignals){
         sig->emitUpdateSig();
@@ -53,7 +54,6 @@ void MaquetteHandler::updateAll(){
         z->emitUpdateZone();
     }
     emit initBALstatus(IsBalActive); // is supposed to be on by default :)
-
 }
 
 void MaquetteHandler::handleObjectUpdate(){
@@ -228,7 +228,7 @@ void MaquetteHandler::addSignalToMaquette(LightSignal *mySignal){
         
         //qDebug() << "Signal"<<sigId<< "with type"<<mySignal->toString(mySignal->getType()).c_str()<<"added to the maquette" << "\t\t"<< (mySignal->getisIPCS() ? "[IPCS]":"[Normal sens]");
         
-        if(debugSignal){ QString typeStr = QString::fromStdString(mySignal->toString(mySignal->getType()));
+        if(debug.signal){ QString typeStr = QString::fromStdString(mySignal->toString(mySignal->getType()));
         QString sensStr = mySignal->getisIPCS() ? "[IPCS]" : "[Normal sens]";
         qDebug() << "Signal" << sigId
             << "with type" << typeStr
@@ -251,7 +251,7 @@ void MaquetteHandler::addAiguilleToMaquette(Aiguille *myAiguille){
     } else if(aiguilles.contains(aigId)){
         qWarning() << "Error : Aiguille with ID" << aigId << "  already exits";
     } else{
-        if(debugAiguille) qDebug() << "Aiguille" << aigId << "added to the maquette";
+        if(debug.aiguille) qDebug() << "Aiguille" << aigId << "added to the maquette";
         
         aiguilles[myAiguille->getId()] = myAiguille;
         connect(myAiguille,&Aiguille::positionChanged,this,&MaquetteHandler::handleObjectUpdate);
@@ -269,7 +269,7 @@ void MaquetteHandler::addZoneToMaquette(Zone *zone){
     } else if(zones.contains(name)){
         qWarning() << "Error : Zone with name : " << name << "already exists";
     } else {
-        if(debugZone) qDebug() << "Zone with name" << name << "added to the maquette";
+        if(debug.zone) qDebug() << "Zone with name" << name << "added to the maquette";
         
         zones[zone->getName()] = zone; 
         connect(zone,&Zone::powerChanged,this,&MaquetteHandler::handleObjectUpdate);

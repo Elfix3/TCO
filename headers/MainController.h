@@ -23,8 +23,9 @@ class MainController : public QObject {
         MainController(QObject* parent=nullptr);
         ~MainController();
     
-        void showGui();
-        void showControl();
+
+        void showGui(); //shows TCO
+        void showControl(); //shows control pannel
         
 
     private:

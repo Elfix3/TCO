@@ -14,6 +14,7 @@ Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
     ui->BoutonIPCS->setCheckable(true);
     connect(ui->BoutonIPCS,&QPushButton::toggled,this,&Gui::hideIPCS);
     
+    qInfo()<<"<------------TCO window created------------>\n";
 }
 
 Gui::~Gui(){

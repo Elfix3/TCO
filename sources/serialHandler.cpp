@@ -2,6 +2,7 @@
 
 SerialHandler::SerialHandler(QObject *parent)
     : QObject(parent),mySerialA(nullptr),mySerialB(nullptr){  
+        qInfo()<<"<----------Serial Handler created---------->\n";
 }
 
 
@@ -11,17 +12,19 @@ SerialHandler::~SerialHandler(){
     delete mySerialB;
 }
 
-void SerialHandler::INIT(){
-    
-    //finds every serialPort found on the device
+bool SerialHandler::INIT(){
+
+    //finds every serialPort infos on the device
     QList<QSerialPortInfo> ports = QSerialPortInfo::availablePorts();
     
+    qDebug() << "-> Scanning serial  ports...\n";
     for(const QSerialPortInfo &port : ports){
         QSerialPort *tempPort = new QSerialPort(port,this);
-        //tries to open each serialPort on the device
+        //tries to open each serialPort on the device in ReadWrite  mode
+
         if(tempPort->open(QIODevice::ReadWrite)){
             
-            //sets the port communication for
+            //sets the port communication to send the id request
             tempPort->setBaudRate(9600);
             tempPort->setParity(QSerialPort::NoParity);
             tempPort->setDataBits(QSerialPort::Data8);
@@ -31,8 +34,7 @@ void SerialHandler::INIT(){
             //sends Id request for the device identification;
             tempPort->write("ID_REQUEST\n");
            
-            
-            //waites for the response of the arduino
+            //waits for the response of the arduino
             if (tempPort->waitForReadyRead(300)) {
                 QByteArray response = tempPort->readAll();
                 while (tempPort->waitForReadyRead(50)) {
@@ -41,11 +43,12 @@ void SerialHandler::INIT(){
 
                 if(response.contains("Arduino_A") && !mySerialA){
                     mySerialA = tempPort; //Arduino plaque A found
-                    qDebug() << "Arduino A found on port" << port.portName().toStdString().c_str();;
+                    qDebug() << "  Arduino A found on port" << port.portName().toStdString().c_str();
+                    //qDebug("oui");
                     continue;
                 }else if(response.contains("Arduino_B") && !mySerialB){
                     mySerialB = tempPort; //Arduino plaque B found
-                    qDebug() << "Arduino B found on port" << port.portName().toStdString().c_str();
+                    qDebug() << "  Arduino B found on port" << port.portName().toStdString().c_str();
                     continue;
                 }
 
@@ -57,16 +60,16 @@ void SerialHandler::INIT(){
 
         }
         delete tempPort;
+
     }
 
     //problem in the detection
     if(!mySerialA || !mySerialB){
         QString errorMessage;
-        
         if(mySerialA){
-            errorMessage = "Arduino B not detected";
+            errorMessage = "  Arduino B not detected";
         } else if(mySerialB){
-            errorMessage = "Arduino A not detected";
+            errorMessage = "  Arduino A not detected";
         } else {
             errorMessage = "No arduino detected";
         }
@@ -76,17 +79,19 @@ void SerialHandler::INIT(){
 
         //QMessageBox::critical(nullptr,"Error : ",errorMessage,QMessageBox::Ok,QMessageBox::Ok);
         //qFatal("End of the program");
+        return false;
     }
     
     else {
-        qDebug() << "\n<----Sucessfull initialization of serial A and B communication---->";
-    
+        qDebug() << "\033[1;32m\n -> Successful initialization of serial COM\n\033[0m";
         connect(mySerialA,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoA);
         connect(mySerialB,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoB);
+        return true;
     }
 
     //for test purposes to delete :
-    connect(mySerialA,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoA);
+    //connect(mySerialA,&QSerialPort::readyRead,this,&SerialHandler::readDataFromArduinoA);
+    return false;
 }
 
 
@@ -103,7 +108,6 @@ void SerialHandler::closeSerial(){
 }
 
 void SerialHandler::readDataFromArduinoA(){
-    
     bufferA.append(mySerialA->readAll());
     processBuffer(bufferA);
 }
@@ -111,8 +115,6 @@ void SerialHandler::readDataFromArduinoA(){
 void SerialHandler::readDataFromArduinoB(){
     bufferB.append(mySerialB->readAll());
     processBuffer(bufferB);
-
-    
 }
 
 void SerialHandler::processBuffer(QByteArray &buffer){
@@ -190,10 +192,10 @@ void SerialHandler::sendCommandAiguille(int id, Direction direction){
 
 void SerialHandler::sendCommandZone(QString name, bool state){
     QString command = "/Z_"+name+"_"+(state==1 ? "ON" : "OFF");
-    if(nameZoneOnArdA.contains(name) && !namezoneOnArdB.contains(name)){
+    if(nameZoneOnArdA.contains(name) && !nameZoneOnArdB.contains(name)){
         qDebug() << "Command sent on Arduino A : " << command;
         writeData(command,Ard_A);
-    } else if(!nameZoneOnArdA.contains(name) && namezoneOnArdB.contains(name)){
+    } else if(!nameZoneOnArdA.contains(name) && nameZoneOnArdB.contains(name)){
         qDebug() << "Command sent on Arduino B : " << command;
         writeData(command,Ard_B);
     }

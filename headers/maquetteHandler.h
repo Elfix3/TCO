@@ -23,24 +23,27 @@ class MaquetteHandler : public QObject {
         void INIT();
 
         //Getters
-        QMap<int,LightSignal*> getAllSignals();
-        QMap<int,Aiguille*> getAllAiguilles();
-        QMap<QString,Zone*> getAllZones();
+        const QMap<int,LightSignal*> getAllSignals(); //utile ?
+        const QMap<int,Aiguille*> getAllAiguilles();
+        const QMap<QString,Zone*> getAllZones();
 
-        void updateAll(); //sends the update signal for anyObject on the maquette
+        void emitAllStates();
 
-    public slots:
-
+        public slots:
+        
         void zoneUpdateFromSensor(const QString &command); //updates the internal state  of the maquette
+        //UPDATES TRAINS POSITION !!!!!
+        
         void handleObjectUpdate(); //sends the correct signals for any object change 
-
+        
         void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
         void updateZoneFromRadioButton(QString name, bool state);
         void updateAiguilleFromRadioButton(int id, Direction newDir);
         
         void disableBAL();
         void enableBAL();
-
+        
+         //sends the update signal for anyObject on the maquette
         signals:
         
             void signalChanged(int id, Aspect newAspect); //if isFromUser, wont try to change the Control
@@ -53,7 +56,7 @@ class MaquetteHandler : public QObject {
         
         
         private:
-            //all my objects
+            //all my objects for maquette handler
             QMap <int,LightSignal*> lightSignals; //Qmap with all my lightSignals
             QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
             QMap <QString,Zone*> zones; //Qmap with all my zones
@@ -62,8 +65,10 @@ class MaquetteHandler : public QObject {
             Zone* zoneTrain2 = nullptr; //stores the position of the second train (not yet implemented)
             
 
-            bool IsBalActive = true; //enables or disables the BAL
+            bool IsBalActive = true; //enables or disables the BAL restrictions
 
+
+            
             //ADD objects functions
             void addSignalToMaquette(LightSignal *mySignal);
             void addAiguilleToMaquette(Aiguille *myAiguille);
@@ -90,12 +95,13 @@ class MaquetteHandler : public QObject {
 
 
 
-            //debug parameters
-            bool debugSignal = 0;
-            bool debugAiguille = 0;
-            bool debugZone = 0;
-
-            
+            struct DebugFlags{
+                bool signal = false;
+                bool aiguille = false;
+                bool zone = false;
+            };
+            DebugFlags debug;
+           
 };
 
 
