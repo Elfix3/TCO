@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     //instance of my main controller
     MainController myController;
 
-    //myController.showGui();
-    //myController.showControl();
+    myController.showGui();
+    myController.showControl();
     return app.exec();
 }

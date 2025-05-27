@@ -38,13 +38,18 @@ void Zone::setNextZone(Zone* z){
     nextZone = z;
 }
 
-void Zone::setNextSignal(LightSignal* s){
-    nextSignal = s;
+void Zone::setProtectionSignal(LightSignal *s){
+    protectionSignal = s;
 }
+
 
 
 QString Zone::getName(){
     return name;
+}
+
+LightSignal *Zone::getProtectionSignal(){
+    return protectionSignal;
 }
 
 bool Zone::isZoneEnabled(){

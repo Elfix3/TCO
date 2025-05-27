@@ -21,7 +21,7 @@ MainController::MainController(QObject *parent)
     qInfo() << "############################################\n";
     
     myMaquetteHandler->INIT();
-    
+    qInfo() << "############################################\n";
     
     //QMainWindows
     
@@ -32,8 +32,8 @@ MainController::MainController(QObject *parent)
     //Info()<< "\n\n<----Maquette Handler---->\n";
 
 
-    //myGui->loadMaquette(myMaquetteHandler);
-    //myControl->loadMaquette(myMaquetteHandler);
+    myGui->loadMaquette(myMaquetteHandler);
+    myControl->loadMaquette(myMaquetteHandler);
 
     
     //Main controller has the purpose to link all the class between them with the slot signal system
@@ -44,7 +44,7 @@ MainController::MainController(QObject *parent)
 
 
     //connects the sensor command reception with the zone update
-    //connect(mySerialHandler,&SerialHandler::commandReady,myMaquetteHandler,&MaquetteHandler::updateTrainPosition);
+    connect(mySerialHandler,&SerialHandler::commandReady,myMaquetteHandler,&MaquetteHandler::updateTrainPosition);
 
 
 

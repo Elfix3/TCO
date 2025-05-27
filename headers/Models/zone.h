@@ -20,10 +20,11 @@ class Zone : public QObject{
         void toggleState(); //if on goes off and if off goes on
         void setPreviousZone(Zone* z);
         void setNextZone(Zone *z);
-        void setNextSignal(LightSignal *s);
+        void setProtectionSignal(LightSignal *s);
 
         //getters
         QString getName();
+        LightSignal* getProtectionSignal();
         bool isZoneEnabled();
         
 
@@ -34,9 +35,10 @@ class Zone : public QObject{
         QString name;
         bool currentState;
 
-        Zone *nextZone;
-        Zone *previousZone;
-        LightSignal *nextSignal; //to allow enable of the zone on non semaphore or carre next signal
+        Zone *nextZone = nullptr;
+        Zone *previousZone = nullptr;
+        
+        LightSignal *protectionSignal = nullptr; //signal that protects the zone
 
     
 };

@@ -51,9 +51,10 @@ class LightSignal : public QObject{
 
         //setters
         void setAspect(Aspect newAspect);
-        void setId(int id); //uselessmais 
+        void setId(int id); //useless mais
         void setPrevious(LightSignal* previous);
         void setNext(LightSignal* next);
+        void setprotectedZone(Zone *zoneToProtect);
 
         //miscellaneaous
         static std::string toString(Aspect someAspect);
@@ -77,7 +78,7 @@ class LightSignal : public QObject{
         bool isIPCS;
 
         //pointers to other objetcs
-        const Zone* protectedZone;
+        Zone* protectedZone;
         LightSignal* previousSignal = nullptr;
         LightSignal* nextSignal = nullptr; 
 

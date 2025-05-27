@@ -23,14 +23,13 @@ class MaquetteHandler : public QObject {
             void INIT();
 
             //Getters
-            const QMap<int,LightSignal*> getAllSignals(); //utile ?
-            const QMap<int,Aiguille*> getAllAiguilles();
-            const QMap<QString,Zone*> getAllZones();
+            const QMap<int,LightSignal*>& getAllSignals(); //utile ?
+            const QMap<int,Aiguille*>& getAllAiguilles();
+            const QMap<QString,Zone*>& getAllZones();
 
             void emitAllStates();
 
     public slots:
-            void zoneUpdateFromSensor(const QString &command); //updates the internal state  of the maquette
             //UPDATES TRAINS POSITION !!!!!
             void updateTrainPosition(const QString &command);//updates the train position
 
@@ -88,6 +87,10 @@ class MaquetteHandler : public QObject {
 
             //CONNECT OBJECTS
             bool connectSignalsById(int next, int previous);
+            bool connectZonesByNames(QString previous, QString next);
+
+            bool connectSignalsWithZone(int idSig, QString zoneName);
+
             bool connectAiguilleConj(int aig, int conj);
             bool connectSetup(int setup=1);
 

@@ -86,10 +86,10 @@ void LightSignal::setNext(LightSignal *next){
     nextSignal = next;
 }
 
-
-
-
-
+void LightSignal::setprotectedZone(Zone *zoneToProtect){
+    //zone to protect is the same as nextZone
+    protectedZone = zoneToProtect;
+}
 
 //Miscellaneaous 
 std::string LightSignal::toString(Aspect someAspect){

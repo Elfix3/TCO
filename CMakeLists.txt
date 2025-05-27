@@ -4,6 +4,12 @@ cmake_minimum_required(VERSION 3.16)
 #Nom du projet
 project(TCO)
 
+# Ajout de l'icône Windows si on est sous Windows
+if(WIN32)
+    set(APP_ICON_RESOURCE "${CMAKE_CURRENT_SOURCE_DIR}/resources/app_icon.rc")
+endif()
+
+
 #Langage utilisé
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -38,7 +44,7 @@ set(CMAKE_AUTORCC ON)
 #set(CMAKE_AUTOUIC ON) 
 
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI_SOURCES} ${QRC_SOURCES}) 
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI_SOURCES} ${QRC_SOURCES} ${APP_ICON_RESOURCE}) 
 
 foreach(_headerDir ${HEADER_DIRS})
     if(IS_DIRECTORY ${_headerDir})

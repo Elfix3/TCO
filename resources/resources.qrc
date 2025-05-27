@@ -10,5 +10,7 @@
         <file>images/aiguille.png</file>
         <file>images/train.png</file>
         <file>images/settings.png</file>
+
+        
     </qresource>
 </RCC>

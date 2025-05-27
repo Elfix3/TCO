@@ -30,15 +30,15 @@ void MaquetteHandler::INIT(){ //to rework ?
     
 }
 
-const QMap<int, LightSignal *> MaquetteHandler::getAllSignals(){
+const QMap<int, LightSignal*>& MaquetteHandler::getAllSignals(){
     return lightSignals;
 }
 
-const QMap<int, Aiguille *> MaquetteHandler::getAllAiguilles(){
+const QMap<int, Aiguille *>& MaquetteHandler::getAllAiguilles(){
     return aiguilles;
 }
 
-const QMap<QString, Zone *> MaquetteHandler::getAllZones(){
+const QMap<QString, Zone *>& MaquetteHandler::getAllZones(){
     return zones;
 }
 
@@ -56,6 +56,38 @@ void MaquetteHandler::emitAllStates(){
     emit initBALstatus(IsBalActive); // is supposed to be on by default :)
 }
 
+void MaquetteHandler::updateTrainPosition(const QString &command){
+    //recieves the command from the sensor to update signals S->A->VL
+    //command structure is : "/C-Z4A"
+    
+    /*train position is a zone occupied, used to determine whether
+    user changed on signalisation should be allowed or not*/
+    if(IsBalActive){
+        if(command.startsWith("/C_Z")){
+            Zone *zone = zones[command.mid(4)]; //gets the corresponding zone
+            if(zone!=nullptr){
+                zoneTrain1 = zone;
+                LightSignal *protectionSig = zoneTrain1->getProtectionSignal();
+
+                if(protectionSig!=nullptr){
+                    protectionSig->setAspect(S);
+                    protectionSig->getPrevious()->setAspect(A);
+                    protectionSig->getPrevious()->getPrevious()->setAspect(VL);
+                }
+                
+
+            } else {
+                qWarning() << "Error : Zone "<<command.mid(4) << "does not exist on the maquette";
+            }
+        } else {
+            qWarning() << "Error : command" << command<< "is not valid";
+        }
+    } 
+
+
+}
+
+
 void MaquetteHandler::handleObjectUpdate(){
     //messy or clear enough ?
     QObject* obj = sender();
@@ -69,117 +101,6 @@ void MaquetteHandler::handleObjectUpdate(){
     } else {
         qWarning("Error : unrecognized object type");
     }
-
-
-}
-
-bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
-    if(nextId == previousId){
-        qWarning("Error : cannot connect a signal to itself");
-        return false;
-    }
-    
-    if(!lightSignals.contains(previousId)){
-        qWarning() << "Error : signal with Id"<<previousId<<"not found";
-        qWarning("here");
-        return false;
-    }
-    if(!lightSignals.contains(nextId)){
-        qWarning() << "Error : signal with Id"<<nextId<<"not found";
-        return false;
-    }
-    LightSignal* prev = lightSignals[previousId];
-    LightSignal* next = lightSignals[nextId];
-    prev->setNext(next);
-    next->setPrevious(prev);
-    return true;
-}
-
-bool MaquetteHandler::connectAiguilleConj(int aigId, int conjId){
-    if(!aiguilles.contains(aigId)){
-        qWarning() << "Error : aiguille with Id"<<aigId<<"not found";
-        return false;
-    }
-    if(!aiguilles.contains(conjId)){
-        qWarning() << "Error : aiguille with Id"<<conjId<<"not found";
-        return false;
-    }
-    Aiguille *aig = aiguilles[aigId];
-    Aiguille *conj = aiguilles[conjId];
-    aig->setConj(conj);
-    conj->setConj(aig);
-    return true;
-}
-
-bool MaquetteHandler::connectSetup(int setup){
-    if(setup==1){
-        qDebug() << "Setting up of all the connections :";
-        
-        //Voie 1 SENS optimisable ?
-        return connectSignalsById(1,3) &&
-        connectSignalsById(3,5) &&
-        connectSignalsById(5,7) &&
-        connectSignalsById(7,9) &&
-        connectSignalsById(9,11) &&
-        connectSignalsById(11,13) &&
-        connectSignalsById(13,15) &&
-        connectSignalsById(15,1) &&
-
-        //voie 2 SENS
-
-        //Voie 2
-        connectSignalsById(2,4) &&
-        connectSignalsById(4,6) &&
-        connectSignalsById(6,8) &&
-        connectSignalsById(8,10) &&
-        connectSignalsById(10,12) &&
-        connectSignalsById(12,2) &&
-    
-        connectAiguilleConj(1,2);
-    }
-    if(setup == -1) {
-        qDebug() << "TestSetup";
-        return false;
-    }
-    return false;
-}
-
-void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
-
-    if(IsBalActive){
-        if(command.startsWith("/C_")){
-            //qDebug() << "HAAAAAAA";
-            Zone *zoneToUpdate = zones[command.mid(4)]; //removes /C_Z from the arduino command
-            if(zoneToUpdate!=nullptr){
-                zoneToUpdate->setState(true);
-                //lightSignals[3]->setAspect(C);
-            } else {
-                qWarning() << "Error : undefined Zone";
-            }
-            
-        }
-    }
-}
-
-void MaquetteHandler::updateTrainPosition(const QString &command){
-    //recieves the command from the sensor to update signals S->A->VL
-    //command structure is : "/C-Z4A"
-    
-    /*train position is a zone occupied, used to determine whether
-    user changed on signalisation should be allowed or not*/
-
-    if(IsBalActive){
-        if(command.startsWith("/C_Z")){
-            Zone *zone = zones[command.mid(4)]; //gets the corresponding zone
-            if(zone!=nullptr){
-                zoneTrain1 = zone;
-            } else {
-                qWarning() << "Error : Zone "<<command.mid(4) << "does not exist on the maquette";
-            }
-        } else {
-            qWarning() << "Error : command" << command<< "is not valid";
-        }
-    } 
 
 
 }
@@ -282,6 +203,10 @@ void MaquetteHandler::addZoneToMaquette(Zone *zone){
 }
 
 
+//##########################################//
+//#####Instanciation of my models here#####//
+//#########################################//
+
 void MaquetteHandler::SETUP_SIGNALS(){
     //VERY IMPORTANT, HERE IS THE INSTANCIATION OF ALL SIGNALS
     addSignalToMaquette(new LightSignal(1, SAVLR,this)); //voie 1 selon le sens de circulation
@@ -331,6 +256,8 @@ void MaquetteHandler::SETUP_AIGUILLES(){
     addAiguilleToMaquette(new Aiguille(9,DROITE,this));
     addAiguilleToMaquette(new Aiguille(11,DROITE,this));
 
+    //10 is missing, not an error :)
+
 }
 
 void MaquetteHandler::SETUP_ZONES(){
@@ -366,12 +293,148 @@ void MaquetteHandler::SETUP_ZONES(){
 
 }
 
-void MaquetteHandler::SET_ALL_VL(){
+
+bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
+    qDebug() << previousId << " : " << nextId;
+    if(nextId == previousId){
+        qWarning() << "Error : cannot connect a signal to itself";
+        return false;
+    }
+    
+    if(!lightSignals.contains(previousId)){
+        qWarning() << "Error : signal with Id"<<previousId<<"not found";
+        return false;
+    }
+    if(!lightSignals.contains(nextId)){
+        qWarning() << "Error : signal with Id"<<nextId<<"not found";
+        return false;
+    }
+    LightSignal* prev = lightSignals[previousId];
+    LightSignal* next = lightSignals[nextId];
+    prev->setNext(next);
+    next->setPrevious(prev);
+    return true;
+}
+
+bool MaquetteHandler::connectZonesByNames(QString previousName, QString nextName){
+    qDebug() << previousName << " : " << nextName;
+    if(previousName == nextName){
+        qWarning() << "Error : cannot connect a zone to it self";
+    }
+
+    if(!zones.contains(previousName)){
+        qWarning() << "Error : zone with name" << previousName << "not found";
+    }
+    if(!zones.contains(nextName)){
+        qWarning() << "Error : zone with name" << nextName << "not found";
+    }
+    Zone* prev = zones[previousName];
+    Zone* next = zones[nextName];
+    prev->setNextZone(next);
+    next->setPreviousZone(prev);
+    return true;
+}
+
+bool MaquetteHandler::connectSignalsWithZone(int idSig, QString zoneName){
+    qDebug() << idSig << "covers" << zoneName;
+    if(!zones.contains(zoneName)){
+        qWarning() << "Error : zone with name" << zoneName << "not found";
+        return false;
+    }
+    if(!lightSignals.contains(idSig)){
+        qWarning() << "Error : signal with Id" << idSig << "not found";
+        return false;
+    }
+    Zone *z = zones[zoneName];
+    LightSignal *s = lightSignals[idSig];
+    z->setProtectionSignal(s);
+    s->setprotectedZone(z);
+    return true;
+}
+
+bool MaquetteHandler::connectAiguilleConj(int aigId, int conjId){
+    if(!aiguilles.contains(aigId)){
+        qWarning() << "Error : aiguille with Id"<<aigId<<"not found";
+        return false;
+    }
+    if(!aiguilles.contains(conjId)){
+        qWarning() << "Error : aiguille with Id"<<conjId<<"not found";
+        return false;
+    }
+    Aiguille *aig = aiguilles[aigId];
+    Aiguille *conj = aiguilles[conjId];
+    aig->setConj(conj);
+    conj->setConj(aig);
+    return true;
+}
+
+bool MaquetteHandler::connectSetup(int setup){
+    
+ 
+    qDebug() << "Setting up of all the connections :";
+
+
+    //### SIGNAUX ###//
+
+    //Voie 1 sens
+    for(int i = 1; i<16; i+=2){
+        if(!connectSignalsById(i,(i+2)%16)){ //connects all the odd signals (1,3) (3,5) [...] (13,15) (15,1)
+            return false;
+        }
+    }
+    //Voie 2 sens
+    for(int i = 2; i <= 12;i+=2){
+        if(!connectSignalsById(i, ((i==12) ? 2 : i + 2))){ //connects all the even signals (2,4) (4,6) [...] (12,2)
+            return false;
+        } 
+    }
+
+    //### ZONES avec ZONES ###///
+
+    //voie 1
+    for(int i = 1; i <= 15; i += 2) {
+        QString currentA = QString("%1A").arg(i);
+        QString currentB = QString("%1B").arg(i);
+        QString nextA = QString("%1A").arg((i + 2) % 16);  // Bouclage 15→1
+
+        if(!connectZonesByNames(currentA, currentB) || !connectZonesByNames(currentB, nextA)){
+            return false;
+        }
+    }
+    //voie 2
+    for(int i = 2; i<=12;i+=2){
+        QString currentA = QString("%1A").arg(i);
+        QString currentB = QString("%1B").arg(i);
+        QString nextA = QString("%1A").arg(((i==12) ? 2 : i + 2));
+        if(!connectZonesByNames(currentA, currentB) || !connectZonesByNames(currentB, nextA)){
+            return false;
+        }
+    }
+
+    //### SIGNAUX avec ZONES ###//
+    for(int i = 1 ; i <=15;i++){
+        //ADD IPCS AS WELL !!!!!!!
+        if(i==14)continue; //14 or any incorrect signal value;
+
+        if(!connectSignalsWithZone(i,QString("%1A").arg(i))){
+            return false;
+        }
+        //here I should also connect IPCS to their B protected zone
+    }
+
+    return true;
+
+
+}
+
+
+
+
+void MaquetteHandler::SET_ALL_VL(){ //necessary ?
     for(LightSignal *sig : lightSignals){
         sig->setAspect(VL);
     }
 }
-
 
 void MaquetteHandler::SET_ALL_DIR(Direction dir){
     //usefull ??
