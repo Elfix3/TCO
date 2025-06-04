@@ -83,8 +83,7 @@ class LightSignal : public QObject{
         LightSignal* nextSignal = nullptr; 
 
 
-
-        //used for dispalay purposes
+        bool debugIsSucessful = false;
         
 
 

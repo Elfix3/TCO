@@ -66,7 +66,19 @@ void LightSignal::setAspect(Aspect newAspect){
         qDebug() << "Signal" << id << "is set to"<<toString(newAspect).c_str();
         currentAspect = newAspect;
         emit aspectChanged();
-    } else {
+
+        //if semaphore or carré => disables the protected zone
+        if(this->protectedZone !=nullptr){
+            if(currentAspect == C || currentAspect == S){
+                protectedZone->setState(false);
+            }
+        }
+        
+
+
+
+
+    } else if(debugIsSucessful){
         qWarning() << "Set aspect not successfull";
     }
 

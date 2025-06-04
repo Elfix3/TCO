@@ -62,8 +62,6 @@ void Gui::loadMaquette(MaquetteHandler *handler){
                 view->flipAiguille();
             }
             view->move(aiguillePositions[-id].position);
-        } else {
-            qWarning() << "Error : no placement avaiable for aiguille " << id;
         }
         
         

@@ -48,12 +48,20 @@ QString Zone::getName(){
     return name;
 }
 
-LightSignal *Zone::getProtectionSignal(){
+LightSignal* Zone::getProtectionSignal(){
     return protectionSignal;
 }
 
 bool Zone::isZoneEnabled(){
     return currentState;
+}
+
+Zone* Zone::getPreviousZone(){
+    return previousZone;
+}
+
+Zone* Zone::getNextZone(){
+    return nextZone;
 }
 
 void Zone::emitUpdateZone(){

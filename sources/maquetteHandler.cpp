@@ -58,13 +58,14 @@ void MaquetteHandler::emitAllStates(){
 
 void MaquetteHandler::updateTrainPosition(const QString &command){
     //recieves the command from the sensor to update signals S->A->VL
-    //command structure is : "/C-Z4A"
+    //command structure is : "/C_E_{Zone name}" for entrance in a zone
+    //command structure is : /"C_S_{Zone name}" for arrival in a zone
     
     /*train position is a zone occupied, used to determine whether
     user changed on signalisation should be allowed or not*/
     if(IsBalActive){
-        if(command.startsWith("/C_Z")){
-            Zone *zone = zones[command.mid(4)]; //gets the corresponding zone
+        if(command.startsWith("/C_E_")){
+            Zone *zone = zones[command.mid(5)]; //gets the corresponding zone
             if(zone!=nullptr){
                 zoneTrain1 = zone;
                 LightSignal *protectionSig = zoneTrain1->getProtectionSignal();
@@ -73,6 +74,10 @@ void MaquetteHandler::updateTrainPosition(const QString &command){
                     protectionSig->setAspect(S);
                     protectionSig->getPrevious()->setAspect(A);
                     protectionSig->getPrevious()->getPrevious()->setAspect(VL);
+                } else {
+                    //conditionnel SI ET SS SI feu d'après n'est pas rouge
+                    zone->getPreviousZone()->setState(false);
+                    zone->getNextZone()->setState(true);
                 }
                 
 
@@ -317,7 +322,7 @@ bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
 }
 
 bool MaquetteHandler::connectZonesByNames(QString previousName, QString nextName){
-    qDebug() << previousName << " : " << nextName;
+    //qDebug() << previousName << " : " << nextName;
     if(previousName == nextName){
         qWarning() << "Error : cannot connect a zone to it self";
     }
@@ -336,7 +341,7 @@ bool MaquetteHandler::connectZonesByNames(QString previousName, QString nextName
 }
 
 bool MaquetteHandler::connectSignalsWithZone(int idSig, QString zoneName){
-    qDebug() << idSig << "covers" << zoneName;
+    //qDebug() << idSig << "covers" << zoneName;
     if(!zones.contains(zoneName)){
         qWarning() << "Error : zone with name" << zoneName << "not found";
         return false;
@@ -353,6 +358,8 @@ bool MaquetteHandler::connectSignalsWithZone(int idSig, QString zoneName){
 }
 
 bool MaquetteHandler::connectAiguilleConj(int aigId, int conjId){
+
+    // is this function okay ??????
     if(!aiguilles.contains(aigId)){
         qWarning() << "Error : aiguille with Id"<<aigId<<"not found";
         return false;
@@ -411,7 +418,7 @@ bool MaquetteHandler::connectSetup(int setup){
         }
     }
 
-    //### SIGNAUX avec ZONES ###//
+    //### SIGNAUX avec ZONES ###// //meh meh meh
     for(int i = 1 ; i <=15;i++){
         //ADD IPCS AS WELL !!!!!!!
         if(i==14)continue; //14 or any incorrect signal value;
@@ -421,6 +428,9 @@ bool MaquetteHandler::connectSetup(int setup){
         }
         //here I should also connect IPCS to their B protected zone
     }
+
+
+
 
     return true;
 

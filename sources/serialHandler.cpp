@@ -36,7 +36,7 @@ bool SerialHandler::INIT(){
             //sends Id request for the device identification;
             QThread::msleep(200);
             tempPort->write("ID_REQUEST\n");
-           
+            
             //waits for the response of the arduino
             if (tempPort->waitForReadyRead(300)) {
                 QByteArray response = tempPort->readAll();
@@ -46,8 +46,8 @@ bool SerialHandler::INIT(){
 
                 if(response.contains("Arduino_A") && !mySerialA){
                     mySerialA = tempPort; //Arduino plaque A found
+                    mySerialB = tempPort; //TO DELETE !!!!!
                     qDebug() << "  Arduino A found on port" << port.portName().toStdString().c_str();
-                    //qDebug("oui");
                     continue;
                 }else if(response.contains("Arduino_B") && !mySerialB){
                     mySerialB = tempPort; //Arduino plaque B found
@@ -114,7 +114,6 @@ void SerialHandler::closeSerial(){
 void SerialHandler::readDataFromArduinoA(){
     bufferA.append(mySerialA->readAll());
     processBuffer(&bufferA);
-    
 }
 
 void SerialHandler::readDataFromArduinoB(){

@@ -16,8 +16,10 @@ MainController::MainController(QObject *parent)
     myControl = new Control();
     myGui = new Gui();
 
+    bool crashIfNoArduino = false;
     qInfo() << "############################################\n";
-    if(!mySerialHandler->INIT()) //qFatal("\033[1;31m\nError: Arduino missing end of the program\033[0m");
+
+    if(!mySerialHandler->INIT() && crashIfNoArduino) //qFatal("\033[1;31m\nError: Arduino missing end of the program\033[0m");
     qInfo() << "############################################\n";
     
     myMaquetteHandler->INIT();

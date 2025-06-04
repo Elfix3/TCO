@@ -26,6 +26,9 @@ class Zone : public QObject{
         QString getName();
         LightSignal* getProtectionSignal();
         bool isZoneEnabled();
+        Zone* getPreviousZone();
+        Zone* getNextZone();
+        
         
 
         void emitUpdateZone();
