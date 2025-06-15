@@ -11,7 +11,7 @@ LightSignal::LightSignal(int id, SignalType type, QObject *parent)
         }
     //qDebug() <<"Signal" << id << "created" << (isIPCS ? "in IPCS" :"");
 
-}
+} 
 
 LightSignal::~LightSignal(){
     delete this;
