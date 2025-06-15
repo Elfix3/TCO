@@ -22,11 +22,12 @@ enum Direction {DROITE,GAUCHE};
             int getId();
             Direction getDirection();
             Aiguille* getConjAiguille();
-            LightSignal* getPreviousSignal();
+            QVector<LightSignal*> getProtectionSignal();
             
             //setters
             void setDirection(Direction dir);
             void setConj(Aiguille *conj);
+            void addProtectionSig(LightSignal *sig);
 
             void emitUpdateAig();
         signals :
@@ -37,8 +38,12 @@ enum Direction {DROITE,GAUCHE};
             Direction currentDirection;
 
             Aiguille* aiguilleConj = nullptr; //aiguille conjuguée
-            LightSignal* previousSignal = nullptr; //on protège l'aiguille  avec un signal avant
-
+            
+            QVector<LightSignal*> protectionSignals;
+            
+            
+            LightSignal* protectionSignal = nullptr; //on protège l'aiguille  avec un signal avant
+            LightSignal* protectionSignal2 = nullptr; //pretty much useless
 };
 
 #endif //AIGUILLE_H

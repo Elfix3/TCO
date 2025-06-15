@@ -114,7 +114,7 @@ void Control::SetupConnections(){
         connect(droite,&QRadioButton::toggled,this,[=](bool checked){
             if (checked) {
                 emit sendAiguilleImpulse(id,DROITE);
-                
+                emit sendAiguilleProtect(id);
 
                 QString message = QString("L'%1 est elle bien en direction de droite ?").arg(labelAiguille->text());
                 QMessageBox::StandardButton reply;
@@ -134,6 +134,8 @@ void Control::SetupConnections(){
         });
         connect(gauche,&QRadioButton::toggled,this,[=](bool checked){
             if (checked) {
+                emit sendAiguilleImpulse(id,GAUCHE);
+                emit sendAiguilleProtect(id);
                 QString message = QString("L'%1 est elle bien en direction de droite ?").arg(labelAiguille->text());
                 QMessageBox::StandardButton reply;
                 reply = QMessageBox::question(this, "Changement aiguille", 

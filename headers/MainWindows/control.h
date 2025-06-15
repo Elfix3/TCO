@@ -43,7 +43,7 @@ class Control : public QMainWindow {
         void zoneChangedFromControl(QString name, bool state);
 
         void sendAiguilleImpulse(int id, Direction newDir);
-
+        void sendAiguilleProtect(int id);
 
         void BALisDisabled();
         void BALisEnabled();

@@ -42,7 +42,9 @@ class MaquetteHandler : public QObject {
             void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
             void updateZoneFromRadioButton(QString name, bool state);
             void updateAiguilleFromRadioButton(int id, Direction newDir);
-                
+        
+            void protectAiguille(int id);
+            
             void disableBAL();
             void enableBAL();
         
@@ -93,10 +95,9 @@ class MaquetteHandler : public QObject {
             //CONNECT OBJECTS
             bool connectSignalsById(int next, int previous);
             bool connectZonesByNames(QString previous, QString next);
-
             bool connectSignalsWithZone(int idSigNormal, int idIPCS, QString zoneName);
-
-            bool connectAiguilleConj(int aig, int conj);
+            bool connectAiguilleWithSignal(int idAig, int idProtectionSig);
+            bool connectAiguilleConj(int aig, int conj); //NA atm
             bool connectSetup(int setup=1);
 
             

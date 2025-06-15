@@ -20,14 +20,17 @@ Aiguille *Aiguille::getConjAiguille(){
     return aiguilleConj;
 }
 
-LightSignal *Aiguille::getPreviousSignal(){
-    return previousSignal;
+QVector <LightSignal*>Aiguille::getProtectionSignal(){
+    return protectionSignals;
 }
 
 void Aiguille::setDirection(Direction newDir){
     if(currentDirection!=newDir){
         qDebug()<< "Aiguille" << id << "is set to"<< (newDir==DROITE ? "DROITE" : "GAUCHE");
         currentDirection = newDir;
+        for(LightSignal *a : protectionSignals){
+            a->setAspect(VL);
+        }
         emit positionChanged();
     } else {
         qWarning() << "Set direction not successfull ";
@@ -37,6 +40,11 @@ void Aiguille::setDirection(Direction newDir){
 void Aiguille::setConj(Aiguille *conj){
     aiguilleConj = conj;
 }
+
+void Aiguille::addProtectionSig(LightSignal *sig){
+    protectionSignals.append(sig);
+}
+
 
 void Aiguille::emitUpdateAig(){
     emit positionChanged();

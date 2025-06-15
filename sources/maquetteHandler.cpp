@@ -173,8 +173,13 @@ void MaquetteHandler::updateZoneFromRadioButton(QString name, bool state){
 }
 
 void MaquetteHandler::updateAiguilleFromRadioButton(int id, Direction newDir){
-    qDebug() << "fn call";
     aiguilles[id]->setDirection(newDir);
+}
+
+void MaquetteHandler::protectAiguille(int id){
+    for(auto a : aiguilles[id]->getProtectionSignal()){
+            a->setAspect(C);
+    }
 }
 
 void MaquetteHandler::disableBAL(){
@@ -392,8 +397,8 @@ bool MaquetteHandler::connectZonesByNames(QString previousName, QString nextName
 }
 
 bool MaquetteHandler::connectSignalsWithZone(int idSigNormal,int idSigIPCS, QString zoneName){
-    qDebug() << idSigNormal << "covers" << zoneName;
-    qDebug() << idSigIPCS << "covers" << zoneName;
+    //qDebug() << idSigNormal << "covers" << zoneName;
+    //qDebug() << idSigIPCS << "covers" << zoneName;
     if(!zones.contains(zoneName)){
         qWarning() << "Error : zone with name" << zoneName << "not found";
         return false;
@@ -413,6 +418,20 @@ bool MaquetteHandler::connectSignalsWithZone(int idSigNormal,int idSigIPCS, QStr
     z->setProtectionSignals(s,sIPCS);
     s->setprotectedZone(z);
     sIPCS->setprotectedZone(z);
+    return true;
+}
+
+bool MaquetteHandler::connectAiguilleWithSignal(int idAig, int IdprotectionSig){
+    if(!aiguilles.contains(idAig)){
+        qWarning() << "Error : aiguille with Id"<<idAig<<"not found";
+        return false;
+    } if(!lightSignals.contains(IdprotectionSig)){
+        qWarning() << "Error : signal with Id"<<IdprotectionSig <<"no found";
+        return false;
+    }
+    Aiguille *aig = aiguilles[idAig];
+    LightSignal *sig = lightSignals[IdprotectionSig];
+    aig->addProtectionSig(sig);
     return true;
 }
 
@@ -491,7 +510,7 @@ bool MaquetteHandler::connectSetup(int setup){
         }
     }
 
-    //### SIGNAUX avec ZONES ###
+    //### SIGNAUX avec ZONES ###//
 
 
     for(int i = 1 ; i <=15;i++){
@@ -502,11 +521,19 @@ bool MaquetteHandler::connectSetup(int setup){
             return false;
         }
     }
-    
+
+    //### AIGUILLES avec ZONES ###
 
 
 
 
+    if(!connectAiguilleWithSignal(1,3) || !connectAiguilleWithSignal(3,5) || !connectAiguilleWithSignal(5,29)
+    || !connectAiguilleWithSignal(7,11) || !connectAiguilleWithSignal(9,23) || !connectAiguilleWithSignal(11,13)
+    || !connectAiguilleWithSignal(2,12) || !connectAiguilleWithSignal(4,18) || !connectAiguilleWithSignal(4,10)
+    || !connectAiguilleWithSignal(6,22) || !connectAiguilleWithSignal(6,6) || !connectAiguilleWithSignal(8,4)
+        ){
+        return false;
+    }
 
 
 
