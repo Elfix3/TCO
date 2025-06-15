@@ -41,8 +41,9 @@ void Zone::setNextZone(Zone* z){
     nextZone = z;
 }
 
-void Zone::setProtectionSignal(LightSignal *s){
+void Zone::setProtectionSignals(LightSignal *s, LightSignal *sIPCS){
     protectionSignal = s;
+    protectionSignalIPCS = sIPCS;
 }
 
 
@@ -53,6 +54,10 @@ QString Zone::getName(){
 
 LightSignal* Zone::getProtectionSignal(){
     return protectionSignal;
+}
+
+LightSignal *Zone::getProtectionSignalIPCS(){
+    return protectionSignalIPCS;
 }
 
 bool Zone::isZoneEnabled(){

@@ -20,11 +20,12 @@ class Zone : public QObject{
         void toggleState(); //if on goes off and if off goes on
         void setPreviousZone(Zone* z);
         void setNextZone(Zone *z);
-        void setProtectionSignal(LightSignal *s);
+        void setProtectionSignals(LightSignal *s,LightSignal *sIPCS);
 
         //getters
         QString getName();
         LightSignal* getProtectionSignal();
+        LightSignal* getProtectionSignalIPCS();
         bool isZoneEnabled();
         Zone* getPreviousZone();
         Zone* getNextZone();
@@ -42,7 +43,7 @@ class Zone : public QObject{
         Zone *previousZone = nullptr;
         
         LightSignal *protectionSignal = nullptr; //signal that protects the zone
-
+        LightSignal *protectionSignalIPCS = nullptr;
     
 };
 

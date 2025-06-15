@@ -71,6 +71,7 @@
         "text_encoding": "cpp",
         "qmessagebox": "cpp",
         "codecvt": "cpp",
-        "qlibraryinfo": "cpp"
+        "qlibraryinfo": "cpp",
+        "qregularexpression": "cpp"
     }
 }

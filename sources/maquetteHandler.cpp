@@ -56,14 +56,57 @@ void MaquetteHandler::emitAllStates(){
     emit initBALstatus(IsBalActive); // is supposed to be on by default :)
 }
 
-void MaquetteHandler::updateTrainPosition(const QString &command){
+void MaquetteHandler::handleCommand(const QString &command){
     //recieves the command from the sensor to update signals S->A->VL
     //command structure is : "/C_E_{Zone name}" for entrance in a zone
     //command structure is : /"C_S_{Zone name}" for arrival in a zone
     
     /*train position is a zone occupied, used to determine whether
     user changed on signalisation should be allowed or not*/
+    Zone *sensorZone = nullptr;
+
+
     if(IsBalActive){
+        if(command.startsWith("/C_E_") || command.startsWith("/C_S_")){
+            Zone *zone = zones[command.mid(5)];
+            if(!zone){qWarning() << "error not a zone"; return;}        
+            processDirection(zone);
+    
+            //selon la direction, mettre à jour le BAL
+            if(directionTrain1 == 0){
+                qDebug() << "sens";
+                if(getZoneNum(zone)%2 == 1){ //capteur voie 1
+                    LightSignal *s = zone->getProtectionSignal();
+                    if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
+                } else { //capteur voie 2
+                    LightSignal *s = zone->getProtectionSignalIPCS();
+                    if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
+                }
+    
+            }
+    
+            else if(directionTrain1 == 1){
+                //contre sens voie 1 <=> sens voie 2
+                qDebug() << "contre sens";
+                if(getZoneNum(zone)%2 == 1){ //capteur voie 1
+                    LightSignal *s = zone->getProtectionSignalIPCS();
+                    if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
+                } else { //capteur voie 2
+                    LightSignal *s = zone->getProtectionSignal();
+                    if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
+                }
+    
+    
+            }
+            
+    
+        } else {
+            qWarning() << "Error no a valid command";
+        }
+    }
+    
+
+    /* if(IsBalActive){
         if(command.startsWith("/C_E_") || command.startsWith("/C_S_")){
             Zone *zone = zones[command.mid(5)];
             if(zoneTrain1!=nullptr){}
@@ -78,23 +121,25 @@ void MaquetteHandler::updateTrainPosition(const QString &command){
         } else {
             qCritical() << "\033[1;91mError: command " << command << " is not valid\033[0m";
         }
-    } 
+    } */ 
 
 
 }
 
 
 
-bool MaquetteHandler::processDirection(Zone *newZone){
-    Zone *zone = newZone;
+void MaquetteHandler::processDirection(Zone *zone){
+    if(!zoneTrain1){zoneTrain1 = zone;} //détection voie paire ou impaire ??
+
     if(zoneTrain1!=zone){
         if(zoneTrain1->getNextZone() == zone){
-            qDebug()<<"sens normal";
+            directionTrain1 = (getZoneNum(zone)%2 == 1) ? 0 : 1;
+        
         }else if(zoneTrain1->getPreviousZone() == zone) {
-            qDebug() <<"contre sens";
+            directionTrain1 = (getZoneNum(zone)%2 == 1) ? 1 : 0;
         }
+        zoneTrain1 = zone;
     }
-    return false;
 }
 
 
@@ -306,7 +351,7 @@ void MaquetteHandler::SETUP_ZONES(){
 
 
 bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
-    qDebug() << previousId << " : " << nextId;
+    qDebug() << previousId << " : " <<nextId;
     if(nextId == previousId){
         qWarning() << "Error : cannot connect a signal to itself";
         return false;
@@ -346,20 +391,28 @@ bool MaquetteHandler::connectZonesByNames(QString previousName, QString nextName
     return true;
 }
 
-bool MaquetteHandler::connectSignalsWithZone(int idSig, QString zoneName){
-    //qDebug() << idSig << "covers" << zoneName;
+bool MaquetteHandler::connectSignalsWithZone(int idSigNormal,int idSigIPCS, QString zoneName){
+    qDebug() << idSigNormal << "covers" << zoneName;
+    qDebug() << idSigIPCS << "covers" << zoneName;
     if(!zones.contains(zoneName)){
         qWarning() << "Error : zone with name" << zoneName << "not found";
         return false;
     }
-    if(!lightSignals.contains(idSig)){
-        qWarning() << "Error : signal with Id" << idSig << "not found";
+    if(!lightSignals.contains(idSigNormal)){
+        qWarning() << "Error : signal with Id" << idSigNormal << "not found";
+        return false;
+    }
+    if(!lightSignals.contains(idSigIPCS)){
+        qWarning() << "Error : signal with Id" << idSigIPCS << "not found";
         return false;
     }
     Zone *z = zones[zoneName];
-    LightSignal *s = lightSignals[idSig];
-    z->setProtectionSignal(s);
+    LightSignal *s = lightSignals[idSigNormal];
+    LightSignal *sIPCS = lightSignals[idSigIPCS];
+
+    z->setProtectionSignals(s,sIPCS);
     s->setprotectedZone(z);
+    sIPCS->setprotectedZone(z);
     return true;
 }
 
@@ -402,6 +455,20 @@ bool MaquetteHandler::connectSetup(int setup){
         } 
     }
 
+    //voie 1 contre sens
+    for(int i = 17; i < 33; i += 2) {
+        if(!connectSignalsById(i, ((i + 2 <= 31) ? i + 2 : 17))) {
+            return false;
+        }
+    }
+
+    //voie 2 contre sens
+    for(int i = 14; i<=24;i+=2){
+        if(!connectSignalsById(i, (i+2 > 24) ? 14: i+2)){
+            return false;
+        }
+    }
+
     //### ZONES avec ZONES ###///
 
     //voie 1
@@ -424,16 +491,22 @@ bool MaquetteHandler::connectSetup(int setup){
         }
     }
 
-    //### SIGNAUX avec ZONES ###// //meh meh meh
+    //### SIGNAUX avec ZONES ###
+
+
     for(int i = 1 ; i <=15;i++){
         //ADD IPCS AS WELL !!!!!!!
-        if(i==14)continue; //14 or any incorrect signal value;
+        if(i==14)continue; 
 
-        if(!connectSignalsWithZone(i,QString("%1A").arg(i))){ //signal 1 protège zone 1
+        if(!connectSignalsWithZone(i,getIPCSsig(i),QString("%1A").arg(i))){ //signal 1 protège zone 1 (et le signal IPCS aussi)
             return false;
         }
-        //here I should also connect IPCS to their B protected zone
     }
+    
+
+
+
+
 
 
 
@@ -457,4 +530,16 @@ void MaquetteHandler::SET_ALL_DIR(Direction dir){
     for(Aiguille *aig : aiguilles){
         aig->setDirection(dir);
     }
+}
+
+int MaquetteHandler::getIPCSsig(int sig){
+    static const QMap<int, int> signalMap = {
+        {1,17}, {3,31}, {5,29}, {7,27}, {9,25}, {11,23}, {13,21},{15,19},
+        {2,14},{4,24},{6,22},{8,20},{10,18},{12,16} // Complète avec tes paires
+    };
+    return signalMap.value(sig, -1);
+}
+
+int MaquetteHandler::getZoneNum(Zone *z){
+    return QRegularExpression("\\d+").match(z->getName()).captured(0).toInt();
 }

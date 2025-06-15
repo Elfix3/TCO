@@ -119,4 +119,6 @@ class Gui : public QMainWindow {
 
 };
 
+
+
 #endif //GUI_H

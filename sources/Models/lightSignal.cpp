@@ -78,7 +78,7 @@ void LightSignal::setAspect(Aspect newAspect){
             }
         } else {
             qWarning() << "Error : no protected zone for signal " << this->getId();
-        }
+        } 
         
 
 

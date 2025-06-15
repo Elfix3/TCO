@@ -27,13 +27,13 @@ class MaquetteHandler : public QObject {
             const QMap<int,Aiguille*>& getAllAiguilles();
             const QMap<QString,Zone*>& getAllZones();
 
-            bool processDirection(Zone *newZone);
+            void processDirection(Zone *newZone);
 
             void emitAllStates();
 
     public slots:
             //UPDATES TRAINS POSITION !!!!!
-            void updateTrainPosition(const QString &command);//updates the train position
+            void handleCommand(const QString &command);//updates the train position
         
 
 
@@ -94,7 +94,7 @@ class MaquetteHandler : public QObject {
             bool connectSignalsById(int next, int previous);
             bool connectZonesByNames(QString previous, QString next);
 
-            bool connectSignalsWithZone(int idSig, QString zoneName);
+            bool connectSignalsWithZone(int idSigNormal, int idIPCS, QString zoneName);
 
             bool connectAiguilleConj(int aig, int conj);
             bool connectSetup(int setup=1);
@@ -105,7 +105,8 @@ class MaquetteHandler : public QObject {
             void SET_ALL_VL();
             void SET_ALL_DIR(Direction dir);
             
-
+            static int getIPCSsig(int sig);
+            static int getZoneNum(Zone *z);
 
             //to show some debug informations
             struct DebugFlags{
