@@ -103,5 +103,13 @@ void Gui::hideIPCS(bool isHidden){
             }
         }
     }
+    const auto IPCSlabels = this->findChildren<QLabel*>(
+        QRegularExpression(".*IPCS.*", QRegularExpression::CaseInsensitiveOption)
+    );
+    
+    for(QLabel *lab : IPCSlabels){
+        isHidden ? lab->hide(): lab->show();
+    }
+
     ui->BoutonIPCS->setText(isHidden ?  "Afficher IPCS" : "Masquer IPCS");
 }

@@ -64,33 +64,39 @@ void MaquetteHandler::updateTrainPosition(const QString &command){
     /*train position is a zone occupied, used to determine whether
     user changed on signalisation should be allowed or not*/
     if(IsBalActive){
-        if(command.startsWith("/C_E_")){
-            Zone *zone = zones[command.mid(5)]; //gets the corresponding zone
-            if(zone!=nullptr){
-                zoneTrain1 = zone;
-                LightSignal *protectionSig = zoneTrain1->getProtectionSignal();
-
-                if(protectionSig!=nullptr){
-                    protectionSig->setAspect(S);
-                    protectionSig->getPrevious()->setAspect(A);
-                    protectionSig->getPrevious()->getPrevious()->setAspect(VL);
-                } else {
-                    //conditionnel SI ET SS SI feu d'après n'est pas rouge
-                    zone->getPreviousZone()->setState(false);
-                    zone->getNextZone()->setState(true);
-                }
-                
-
-            } else {
-                qWarning() << "Error : Zone "<<command.mid(4) << "does not exist on the maquette";
+        if(command.startsWith("/C_E_") || command.startsWith("/C_S_")){
+            Zone *zone = zones[command.mid(5)];
+            if(zoneTrain1!=nullptr){}
+            
+            
+            zoneTrain1 = zone;
+            if(LightSignal *sig = zone->getProtectionSignal()){
+                sig->setAspect(S);
+                sig->getPrevious()->setAspect(A);
+                sig->getPrevious()->getPrevious()->setAspect(VL);
             }
         } else {
-            qWarning() << "Error : command" << command<< "is not valid";
+            qCritical() << "\033[1;91mError: command " << command << " is not valid\033[0m";
         }
     } 
 
 
 }
+
+
+
+bool MaquetteHandler::processDirection(Zone *newZone){
+    Zone *zone = newZone;
+    if(zoneTrain1!=zone){
+        if(zoneTrain1->getNextZone() == zone){
+            qDebug()<<"sens normal";
+        }else if(zoneTrain1->getPreviousZone() == zone) {
+            qDebug() <<"contre sens";
+        }
+    }
+    return false;
+}
+
 
 
 void MaquetteHandler::handleObjectUpdate(){
@@ -423,7 +429,7 @@ bool MaquetteHandler::connectSetup(int setup){
         //ADD IPCS AS WELL !!!!!!!
         if(i==14)continue; //14 or any incorrect signal value;
 
-        if(!connectSignalsWithZone(i,QString("%1A").arg(i))){
+        if(!connectSignalsWithZone(i,QString("%1A").arg(i))){ //signal 1 protège zone 1
             return false;
         }
         //here I should also connect IPCS to their B protected zone

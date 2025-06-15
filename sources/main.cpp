@@ -25,6 +25,6 @@ int main(int argc, char *argv[]) {
     MainController myController;
 
     myController.showGui();
-    myController.showControl();
+    //myController.showControl();
     return app.exec();
 }

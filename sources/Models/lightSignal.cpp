@@ -70,8 +70,14 @@ void LightSignal::setAspect(Aspect newAspect){
         //if semaphore or carré => disables the protected zone
         if(this->protectedZone !=nullptr){
             if(currentAspect == C || currentAspect == S){
-                protectedZone->setState(false);
+                protectedZone->getPreviousZone()->setState(false); //necessary
+
+                //only if the next signal is different than semaphore or carre
+                protectedZone->setState(true);
+                protectedZone->getNextZone()->setState(true);
             }
+        } else {
+            qWarning() << "Error : no protected zone for signal " << this->getId();
         }
         
 

@@ -114,7 +114,7 @@ void Control::SetupConnections(){
         connect(droite,&QRadioButton::toggled,this,[=](bool checked){
             if (checked) {
                 emit sendAiguilleImpulse(id,DROITE);
-
+                
 
                 QString message = QString("L'%1 est elle bien en direction de droite ?").arg(labelAiguille->text());
                 QMessageBox::StandardButton reply;

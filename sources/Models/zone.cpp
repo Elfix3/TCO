@@ -14,8 +14,11 @@ void Zone::setState(bool state){
         qDebug() << "Zone"<<name<<"is now"<<(state==true ? "powered" : "unpowered");
         currentState = state;
         emit powerChanged();
+        //bizarre
     } else {
-        qWarning() << "Set state not successfull";
+        qDebug() << "Zone"<<name<<"is now"<<(state==true ? "powered" : "unpowered");
+        currentState = state;
+        emit powerChanged();
     }
     //logique à implémenter !!!!!!!!!
 

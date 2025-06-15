@@ -103,7 +103,7 @@ QPushButton:checked {
    <widget class="QLabel" name="labelSig3">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>740</x>
       <y>140</y>
       <width>49</width>
       <height>16</height>
@@ -116,8 +116,8 @@ QPushButton:checked {
    <widget class="QLabel" name="labelSig7">
     <property name="geometry">
      <rect>
-      <x>1150</x>
-      <y>180</y>
+      <x>1160</x>
+      <y>190</y>
       <width>49</width>
       <height>16</height>
      </rect>
@@ -155,7 +155,7 @@ QPushButton:checked {
    <widget class="QLabel" name="labelSig13">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>480</x>
       <y>660</y>
       <width>49</width>
       <height>16</height>
@@ -168,6 +168,253 @@ QPushButton:checked {
    <widget class="QLabel" name="labelSig15">
     <property name="geometry">
      <rect>
+      <x>190</x>
+      <y>580</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 15</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>460</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 2</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig4">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>600</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 4</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig6">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>600</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 6</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig9_2">
+    <property name="geometry">
+     <rect>
+      <x>1220</x>
+      <y>410</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 8</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig9_3">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>200</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 10</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig9_4">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>200</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 12</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig22_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>510</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 22</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig16_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>340</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 16</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig14_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>600</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 14</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig24_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>600</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 24</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig20_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>1050</x>
+      <y>200</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 20</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig18_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>200</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 18</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig17_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>170</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 17</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig31_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>140</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 31</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig29_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>1070</x>
+      <y>150</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 29</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig27_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>1260</x>
+      <y>460</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 27</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig25_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>650</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 25</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig23_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>660</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 23</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig19_IPCS_2">
+    <property name="geometry">
+     <rect>
       <x>250</x>
       <y>630</y>
       <width>49</width>
@@ -175,7 +422,20 @@ QPushButton:checked {
      </rect>
     </property>
     <property name="text">
-     <string>sig 15</string>
+     <string>sig 21</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSig19_IPCS">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>400</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>sig 19</string>
     </property>
    </widget>
   </widget>

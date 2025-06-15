@@ -27,12 +27,14 @@ class MaquetteHandler : public QObject {
             const QMap<int,Aiguille*>& getAllAiguilles();
             const QMap<QString,Zone*>& getAllZones();
 
+            bool processDirection(Zone *newZone);
+
             void emitAllStates();
 
     public slots:
             //UPDATES TRAINS POSITION !!!!!
             void updateTrainPosition(const QString &command);//updates the train position
-
+        
 
 
             void handleObjectUpdate(); //sends the correct signals for any object change 
@@ -68,6 +70,9 @@ class MaquetteHandler : public QObject {
             Zone* zoneTrain1 = nullptr; //stores the position of the first train
             Zone* zoneTrain2 = nullptr; //stores the position of the second train (not yet implemented)
             
+            short directionTrain1 = -1; //-1 for undefined 0 for normal, 1 for IPCS
+
+
 
             bool IsBalActive = true; //enables or disables the BAL restrictions
 

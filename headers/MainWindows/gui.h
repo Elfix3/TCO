@@ -67,7 +67,7 @@ class Gui : public QMainWindow {
         {12,PositionAngle{QPoint(430,176),270}},    //OK
 
         /*IPCS VOIE 1*/
-        {17,PositionAngle{QPoint(175,50),250}},     //OK
+        {17,PositionAngle{QPoint(145,65),242}},     //OK
         {19,PositionAngle{QPoint(-28,360),180}},    //OK
         {21,PositionAngle{QPoint(180,628),118}},    //OK
         {27,PositionAngle{QPoint(1263,350),10}},    //OK

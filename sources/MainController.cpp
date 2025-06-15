@@ -47,7 +47,7 @@ MainController::MainController(QObject *parent)
 
     //connects the sensor command reception with the zone update
     connect(mySerialHandler,&SerialHandler::commandReady,myMaquetteHandler,&MaquetteHandler::updateTrainPosition);
-
+    
 
 
     
