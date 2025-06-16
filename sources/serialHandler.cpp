@@ -46,7 +46,7 @@ bool SerialHandler::INIT(){
 
                 if(response.contains("Arduino_A") && !mySerialA){
                     mySerialA = tempPort; //Arduino plaque A found
-                    mySerialB = tempPort; //TO DELETE !!!!!
+                    //mySerialB = tempPort; //TO DELETE !!!!!
                     qDebug() << "  Arduino A found on port" << port.portName().toStdString().c_str();
                     continue;
                 }else if(response.contains("Arduino_B") && !mySerialB){
@@ -199,7 +199,7 @@ void SerialHandler::sendCommandAiguille(int id, Direction direction){
 }
 
 void SerialHandler::sendCommandZone(QString name, bool state){
-    QString command = "/Z_"+name+"_"+(state==1 ? "ON" : "OFF");
+    QString command = "/Z_"+name+"_"+(state==1 ? "ON" : "OFF")+"\n";
     if(nameZoneOnArdA.contains(name) && !nameZoneOnArdB.contains(name)){
         qDebug() << "Command sent on Arduino A : " << command;
         writeData(command,Ard_A);

@@ -69,23 +69,32 @@ void MaquetteHandler::handleCommand(const QString &command){
     if(IsBalActive){
         if(command.startsWith("/C_E_") || command.startsWith("/C_S_")){
             Zone *zone = zones[command.mid(5)];
+            
             if(!zone){qWarning() << "error not a zone"; return;}        
             processDirection(zone);
     
             //selon la direction, mettre à jour le BAL
             if(directionTrain1 == 0){
                 qDebug() << "sens";
-                if(getZoneNum(zone)%2 == 1){ //capteur voie 1
-                    LightSignal *s = zone->getProtectionSignal();
-                    if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
-                } else { //capteur voie 2
-                    LightSignal *s = zone->getProtectionSignalIPCS();
-                    if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
+                if(command.startsWith("/C_E_")){
+                    
+                    if(getZoneNum(zone)%2 == 1){ //capteur voie 1
+                        LightSignal *s = zone->getProtectionSignal();
+                        if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);} //désactive la zone avant
+                        else {zone->getPreviousZone()->setState(false);} //if no signal
+                    } else { //capteur voie 2
+                        LightSignal *s = zone->getProtectionSignalIPCS();
+                        if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
+                    }
                 }
     
             }
     
             else if(directionTrain1 == 1){
+                if(command.startsWith("/C_E_")){
+                    zone->setState(true);
+                    zone->getPreviousZone()->setState(true); //pas fan
+                }
                 //contre sens voie 1 <=> sens voie 2
                 qDebug() << "contre sens";
                 if(getZoneNum(zone)%2 == 1){ //capteur voie 1

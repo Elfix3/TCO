@@ -136,7 +136,7 @@ void Control::SetupConnections(){
             if (checked) {
                 emit sendAiguilleImpulse(id,GAUCHE);
                 emit sendAiguilleProtect(id);
-                QString message = QString("L'%1 est elle bien en direction de droite ?").arg(labelAiguille->text());
+                QString message = QString("L'%1 est elle bien en direction de gauche ?").arg(labelAiguille->text());
                 QMessageBox::StandardButton reply;
                 reply = QMessageBox::question(this, "Changement aiguille", 
                 message,

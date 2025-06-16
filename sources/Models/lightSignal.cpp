@@ -68,14 +68,48 @@ void LightSignal::setAspect(Aspect newAspect){
         emit aspectChanged();
 
         //if semaphore or carré => disables the protected zone
-        if(this->protectedZone !=nullptr){
+        if(protectedZone !=nullptr){
             if(currentAspect == C || currentAspect == S){
-                protectedZone->getPreviousZone()->setState(false); //necessary
+                if(!isIPCS){
+                    protectedZone->getPreviousZone()->setState(false);
+                } else {
+                    protectedZone->getNextZone()->setState(false);
+                }
+                /* if(!isIPCS){
+                    protectedZone->getPreviousZone()->setState(false); //necessary
 
-                //only if the next signal is different than semaphore or carre
-                protectedZone->setState(true);
-                protectedZone->getNextZone()->setState(true);
-            }
+                    //only if the next signal is different than semaphore or carre
+                    protectedZone->setState(true);
+                    protectedZone->getNextZone()->setState(true);
+                } else {
+                    
+                    protectedZone->getNextZone()->setState(false);
+
+                    protectedZone->setState(true);
+                    protectedZone->getPreviousZone()->setState(false);
+
+                } */
+                
+                }
+                if(currentAspect == VL){
+                    if(!isIPCS){
+                        protectedZone->setState(true);
+                        protectedZone->getPreviousZone()->setState(true);
+                    } else {
+                        protectedZone->getNextZone()->setState(true);
+                        protectedZone->setState(true);
+                    }
+                }
+
+                /* if(currentAspect == A){
+                    if(!isIPCS){
+                        protectedZone->setState(true);
+                        protectedZone->getPreviousZone()->setState(true);
+                    } else {
+                        protectedZone->getNextZone()->setState(true);
+                        protectedZone->setState(true);
+                    }
+                } */
         } else {
             qWarning() << "Error : no protected zone for signal " << this->getId();
         } 

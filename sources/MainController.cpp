@@ -71,6 +71,7 @@ MainController::MainController(QObject *parent)
     connect(myControl,&Control::signalChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo); //normal names ???
     connect(myControl,&Control::zoneChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateZoneFromRadioButton);
     connect(myControl,&Control::aiguilleChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateAiguilleFromRadioButton);
+    
     connect(myControl,&Control::sendAiguilleImpulse,mySerialHandler,&SerialHandler::sendCommandAiguille);
     connect(myControl,&Control::sendAiguilleProtect,myMaquetteHandler,&MaquetteHandler::protectAiguille);
 
