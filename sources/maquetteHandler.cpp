@@ -212,6 +212,20 @@ void MaquetteHandler::protectAiguille(int id){
     }
 }
 
+void MaquetteHandler::maquetteReset(){
+    
+    for(LightSignal *s : lightSignals){
+        s->setAspect(VL);
+    }
+    for(Zone *z : zones){
+        z->setState(false);
+    }
+    for(Aiguille *a : aiguilles){
+        a->setDirection(a->getInitialDir());
+    }
+
+}
+
 void MaquetteHandler::disableBAL(){
     if(IsBalActive){
         qDebug() << "BAL disabled";

@@ -48,7 +48,9 @@ class MaquetteHandler : public QObject {
             void updateAiguilleFromRadioButton(int id, Direction newDir);
         
             void protectAiguille(int id);
-            
+
+            void maquetteReset();
+
             void disableBAL();
             void enableBAL();
         

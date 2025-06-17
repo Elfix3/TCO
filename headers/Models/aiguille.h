@@ -21,6 +21,7 @@ enum Direction {DROITE,GAUCHE};
             //getters
             int getId();
             Direction getDirection();
+            Direction getInitialDir();
             Aiguille* getConjAiguille();
             QVector<LightSignal*> getProtectionSignal();
             
@@ -36,6 +37,7 @@ enum Direction {DROITE,GAUCHE};
         private :
             int id;
             Direction currentDirection;
+            Direction initialDir;
 
             Aiguille* aiguilleConj = nullptr; //aiguille conjuguée
             

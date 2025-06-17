@@ -1,7 +1,8 @@
 #include "aiguille.h"
 
 Aiguille::Aiguille(int id, Direction dir,QObject *parent)
- :QObject(parent), id(id), currentDirection(dir){
+ :QObject(parent), id(id), currentDirection(dir), initialDir(dir){
+
     //qDebug() << "Aiguille" << id << "created" << (dir==DROITE ? "right direction" : "left direction");
 
 }
@@ -15,6 +16,9 @@ int Aiguille::getId(){
 }
 Direction Aiguille::getDirection(){
     return currentDirection;
+}
+Direction Aiguille::getInitialDir(){
+    return initialDir;
 }
 Aiguille *Aiguille::getConjAiguille(){
     return aiguilleConj;
