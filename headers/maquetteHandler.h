@@ -32,7 +32,7 @@ class MaquetteHandler : public QObject {
             const QMap<QString,Zone*>& getAllZones();
 
             void processDirection(Zone *newZone);
-
+            void BALSignalActivation(Zone *z,LightSignal *s); //used to manage S->A->VL and zone poweroff
             void emitAllStates();
 
     public slots:

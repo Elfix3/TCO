@@ -68,7 +68,7 @@ void MaquetteHandler::handleCommand(const QString &command){
 
 
     if(IsBalActive){
-        if(command.startsWith("/C_E_") || command.startsWith("/C_S_")){
+        if (command.startsWith("/C_E_") || command.startsWith("/C_S_")) {
             Zone *zone = zones[command.mid(5)];
             
             if(!zone){qWarning() << "error not a zone"; return;}        
@@ -83,44 +83,55 @@ void MaquetteHandler::handleCommand(const QString &command){
                         LightSignal *s = zone->getProtectionSignal();
                         if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);} //désactive la zone avant
                         else {zone->getPreviousZone()->setState(false);} //if no signal
-                        //active les zones après :
+
+
+                    }
+                } else if(command.startsWith("/C_S_")){
+                    if(getZoneNum(zone)%2 == 0){ //capteur voie 2
+                        LightSignal *s = zone->getProtectionSignalIPCS();
+                        if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);} //désactive la zone avant
+                        else {zone->getNextZone()->setState(false);} 
+                    }
+    
+                }
+            }
+    
+            else if(directionTrain1 == 1){
+                qDebug() << "contre sens";
+                if(command.startsWith("/C_S_")){
+                    
+                    if(getZoneNum(zone)%2 == 1){ //capteur voie 1
+                        LightSignal *s = zone->getProtectionSignalIPCS();
+                        if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);} //désactive la zone avant
+                        else {zone->getNextZone()->setState(false);} //if no signal
+                        
+
+                    }
+                } else if(command.startsWith("/C_E_")){
+                    if(getZoneNum(zone)%2 == 0){ //capteur voie 2
+                        LightSignal *s = zone->getProtectionSignal();
+                        if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);} //désactive la zone avant
+                        else {zone->getPreviousZone()->setState(false);} 
+                    }
+    
+                }
+        }
+        } else {
+            qWarning() << "Error : not a valid command";
+        }
+    
+    
+            
+    
+        } 
+
+        //active les zones après :
                         /* LightSignal nextSignal = zone->getNextZone()->getNextZone()->getProtectionSignal();
                         if(zone->getNextZone()->getNextZone()->getProtectionSignal()->getAspect() != C &&
                             zone->getNextZone()->getNextZone()->getProtectionSignal()->getAspect() != C){
                                 zone->getNextZone()->setState(true);
                             } */ 
-
-                    } else { //capteur voie 2
-                        LightSignal *s = zone->getProtectionSignalIPCS();
-                        if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
-                    }
-                }
-    
-            }
-    
-            else if(directionTrain1 == 1){
-                if(command.startsWith("/C_E_")){
-                    zone->setState(true);
-                    zone->getPreviousZone()->setState(true); //pas fan
-                }
-                //contre sens voie 1 <=> sens voie 2
-                qDebug() << "contre sens";
-                if(getZoneNum(zone)%2 == 1){ //capteur voie 1
-                    LightSignal *s = zone->getProtectionSignalIPCS();
-                    if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
-                } else { //capteur voie 2
-                    LightSignal *s = zone->getProtectionSignal();
-                    if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
-                }
-    
-    
-            }
-            
-    
-        } else {
-            qWarning() << "Error no a valid command";
-        }
-    }
+}
     
 
     /* if(IsBalActive){
@@ -141,7 +152,8 @@ void MaquetteHandler::handleCommand(const QString &command){
     } */ 
 
 
-}
+
+
 
 
 
@@ -159,7 +171,8 @@ void MaquetteHandler::processDirection(Zone *zone){
     }
 }
 
-
+void MaquetteHandler::BALSignalActivation(Zone *z, LightSignal *s){
+}
 
 void MaquetteHandler::handleObjectUpdate(){
     //messy or clear enough ?
@@ -529,7 +542,7 @@ bool MaquetteHandler::connectSetup(int setup){
     if(!connectAiguilleWithSignal(1,3) || !connectAiguilleWithSignal(3,5) || !connectAiguilleWithSignal(5,29)
     || !connectAiguilleWithSignal(7,11) || !connectAiguilleWithSignal(9,23) || !connectAiguilleWithSignal(11,13)
     || !connectAiguilleWithSignal(2,12) || !connectAiguilleWithSignal(4,18) || !connectAiguilleWithSignal(4,10)
-    || !connectAiguilleWithSignal(6,22) || !connectAiguilleWithSignal(6,6) || !connectAiguilleWithSignal(8,4)
+    || !connectAiguilleWithSignal(6,22) || !connectAiguilleWithSignal(6,6) || !connectAiguilleWithSignal(8,24)
         ){
         return false;
     }

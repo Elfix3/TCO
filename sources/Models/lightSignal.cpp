@@ -100,6 +100,7 @@ void LightSignal::setAspect(Aspect newAspect){
                         protectedZone->setState(true);
                     }
                 }
+                
 
                 /* if(currentAspect == A){
                     if(!isIPCS){
