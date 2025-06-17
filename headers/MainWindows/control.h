@@ -50,7 +50,8 @@ class Control : public QMainWindow {
         //void sendAiguilleUpdate(); //// KEJGBKJEGOEGJBEKGB TROP DE TRUCS A FAIRE
         //void sendZoneUpdate();
 
-
+        void resetButtonPressed();
+        
     public slots :
         //void updateSigComboBox(int signalId, Aspect newAspect);
         void updateSignalOnControl(int id, Aspect newAspect);

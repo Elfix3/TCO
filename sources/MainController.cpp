@@ -75,8 +75,7 @@ MainController::MainController(QObject *parent)
     connect(myControl,&Control::sendAiguilleImpulse,mySerialHandler,&SerialHandler::sendCommandAiguille);
     connect(myControl,&Control::sendAiguilleProtect,myMaquetteHandler,&MaquetteHandler::protectAiguille);
 
-
-    
+    connect(myControl,&Control::resetButtonPressed,mySerialHandler,&SerialHandler::closeSerial);
     myMaquetteHandler->emitAllStates(); //alows the sync between Control, MaquetteHandler and the actual maquette
 }
 

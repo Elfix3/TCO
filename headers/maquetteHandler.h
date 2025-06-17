@@ -105,6 +105,7 @@ class MaquetteHandler : public QObject {
 
             void SET_ALL_VL();
             void SET_ALL_DIR(Direction dir);
+            void TURN_OFF_ZONES();
             
             static int getIPCSsig(int sig);
             static int getZoneNum(Zone *z);

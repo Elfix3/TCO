@@ -27,6 +27,7 @@ void MaquetteHandler::INIT(){ //to rework ?
 
     //
     SET_ALL_VL();
+    TURN_OFF_ZONES();
     
 }
 
@@ -82,6 +83,13 @@ void MaquetteHandler::handleCommand(const QString &command){
                         LightSignal *s = zone->getProtectionSignal();
                         if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);} //désactive la zone avant
                         else {zone->getPreviousZone()->setState(false);} //if no signal
+                        //active les zones après :
+                        /* LightSignal nextSignal = zone->getNextZone()->getNextZone()->getProtectionSignal();
+                        if(zone->getNextZone()->getNextZone()->getProtectionSignal()->getAspect() != C &&
+                            zone->getNextZone()->getNextZone()->getProtectionSignal()->getAspect() != C){
+                                zone->getNextZone()->setState(true);
+                            } */ 
+
                     } else { //capteur voie 2
                         LightSignal *s = zone->getProtectionSignalIPCS();
                         if(s){s->setAspect(S);s->getPrevious()->setAspect(A);s->getPrevious()->getPrevious()->setAspect(VL);}
@@ -365,7 +373,7 @@ void MaquetteHandler::SETUP_ZONES(){
 
 
 bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
-    qDebug() << previousId << " : " <<nextId;
+    //qDebug() << previousId << " : " <<nextId;
     if(nextId == previousId){
         qWarning() << "Error : cannot connect a signal to itself";
         return false;
@@ -556,15 +564,25 @@ bool MaquetteHandler::connectSetup(int setup){
 
 
 void MaquetteHandler::SET_ALL_VL(){ //necessary ?
+    
     for(LightSignal *sig : lightSignals){
         sig->setAspect(VL);
     }
+
 }
+
+
 
 void MaquetteHandler::SET_ALL_DIR(Direction dir){
     //usefull ??
     for(Aiguille *aig : aiguilles){
         aig->setDirection(dir);
+    }
+}
+
+void MaquetteHandler::TURN_OFF_ZONES(){
+    for(Zone *z : zones){
+        z->setState(false);
     }
 }
 

@@ -32,9 +32,24 @@ bool SerialHandler::INIT(){
             tempPort->setFlowControl(QSerialPort::NoFlowControl);
 
             //waits the reboot for the arduino
-            
-            //sends Id request for the device identification;
-            QThread::msleep(200);
+            // *** AJOUTER ICI LE RESET ***
+            /* tempPort->setDataTerminalReady(false);
+            QThread::msleep(100);  // petit délai pour décharger le condo de reset
+            tempPort->setDataTerminalReady(true);
+            QThread::msleep(300);  // attendre le reboot de l’Arduino (~250 ms pour Uno)
+            //sends Id request for the device identification; */
+
+            QSerialPort resetPort;
+            resetPort.setPort(port);
+            resetPort.setBaudRate(9600);  // la vitesse importe peu
+            if (resetPort.open(QIODevice::ReadWrite)) {
+                resetPort.setDataTerminalReady(false);
+                QThread::msleep(100);
+                resetPort.setDataTerminalReady(true);
+                resetPort.close();
+                QThread::msleep(1000);  // attendre le démarrage complet de l’Arduino
+            }
+                        
             tempPort->write("ID_REQUEST\n");
             
             //waits for the response of the arduino
@@ -104,11 +119,13 @@ void SerialHandler::closeSerial(){
         mySerialA->close();
         qDebug() << "Closing of the serial A port";
     }
+    delete mySerialA;
 
     if(mySerialB->isOpen() && mySerialB){
         mySerialB->close();
         qDebug() << "Closing of the serial B port";
     }
+    delete mySerialB;
 }
 
 void SerialHandler::readDataFromArduinoA(){

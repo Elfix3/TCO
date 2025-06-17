@@ -154,6 +154,8 @@ void Control::SetupConnections(){
         });
     }
 
+    connect(ui->resetButton,&QPushButton::clicked,this,&Control::resetButtonPressed);
+
 }
  
 
