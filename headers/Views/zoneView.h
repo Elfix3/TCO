@@ -8,6 +8,7 @@
 //Qt includes
 #include <QWidget>
 #include <QPainter>
+#include <QScopedValueRollback>
 
 class ZoneView : public QWidget{
     Q_OBJECT

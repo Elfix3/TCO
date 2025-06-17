@@ -1,9 +1,10 @@
 #include "zone.h"
 
 
-Zone::Zone(QString name, QObject *parent)
+Zone::Zone(QString name, int* ahint, QObject *parent)
     :QObject(parent), name(name), currentState(false){
         //qDebug() << "Creation of  zone " << "Z -" << name << (currentState ? "POWERED " : "NOT POWERED");
+    this->hint = ahint;
 }
 
 Zone::~Zone(){
@@ -59,6 +60,50 @@ LightSignal* Zone::getProtectionSignal(){
 LightSignal *Zone::getProtectionSignalIPCS(){
     return protectionSignalIPCS;
 }
+
+
+int* Zone::getHint(){
+    return hint;
+}
+
+int Zone::GetOrigineX(){
+    if (hint[TI_RECT2_X] == 0)
+        return hint[TI_RECT1_X];
+    // ce second cas ne devrait pas se produire.
+    if (hint[TI_RECT1_X] == 0)
+        return hint[TI_RECT2_X];
+    return std::min(hint[TI_RECT1_X], hint[TI_RECT2_X]);
+}
+
+int Zone::GetOrigineY(){
+    if (hint[TI_RECT2_Y] == 0)
+        return hint[TI_RECT1_Y];
+    // ce second cas ne devrait pas se produire.
+    if (hint[TI_RECT1_Y] == 0)
+        return hint[TI_RECT2_Y];
+    return std::min(hint[TI_RECT1_Y], hint[TI_RECT2_Y]);
+}
+
+int Zone::GetModificationAreaWidth()
+{
+    return std::max(hint[TI_RECT1_WIDTH] + hint[TI_RECT1_X], hint[TI_RECT2_WIDTH]+ hint[TI_RECT2_X]) - GetOrigineX();
+}
+
+int Zone::GetModificationAreaHeight()
+{
+    return std::max(hint[TI_RECT1_HEIGHT] + hint[TI_RECT1_Y], hint[TI_RECT2_HEIGHT]+ hint[TI_RECT2_Y]) - GetOrigineY();
+}
+
+QPoint Zone::GetRelativeOrigineRect1()
+{
+    return QPoint(hint[TI_RECT1_X] - GetOrigineX(), hint[TI_RECT1_Y] - GetOrigineY());
+}
+
+QPoint Zone::GetRelativeOrigineRect2()
+{
+    return QPoint(hint[TI_RECT2_X] - GetOrigineX(), hint[TI_RECT2_Y] - GetOrigineY());
+}
+
 
 bool Zone::isZoneEnabled(){
     return currentState;

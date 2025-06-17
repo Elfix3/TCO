@@ -68,14 +68,12 @@ void Gui::loadMaquette(MaquetteHandler *handler){
         
     }
 
-    int start = 10;
-
-    //you should place the zoneView widget correctly if it's not definitive solution
     for(Zone *zone : handler->getAllZones()){
         QString name = zone->getName();
         //verification if position is available ??
         ZoneView *view = new ZoneView(zone,this);
-        view->move(QPoint(start+=15,10));
+        view->move(QPoint(zone->GetOrigineX(), zone->GetOrigineY()));
+        view->stackUnder((QWidget*)this->children()[0]);
     }
 }
 

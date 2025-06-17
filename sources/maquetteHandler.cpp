@@ -339,38 +339,20 @@ void MaquetteHandler::SETUP_AIGUILLES(){
 }
 
 void MaquetteHandler::SETUP_ZONES(){
-    addZoneToMaquette(new Zone("1A")); //voie 1 selon le sens de circulation
-    addZoneToMaquette(new Zone("1B"));
-    addZoneToMaquette(new Zone("3A"));
-    addZoneToMaquette(new Zone("3B"));
-    addZoneToMaquette(new Zone("5A"));
-    addZoneToMaquette(new Zone("5B"));
-    addZoneToMaquette(new Zone("7A"));
-    addZoneToMaquette(new Zone("7B"));
-    addZoneToMaquette(new Zone("9A"));
-    addZoneToMaquette(new Zone("9B"));
-    addZoneToMaquette(new Zone("11A"));
-    addZoneToMaquette(new Zone("11B"));
-    addZoneToMaquette(new Zone("13A"));
-    addZoneToMaquette(new Zone("13B"));
-    addZoneToMaquette(new Zone("15A"));
-    addZoneToMaquette(new Zone("15B"));
 
-    addZoneToMaquette(new Zone("2A")); //voie 2 selon le sens de circulation
-    addZoneToMaquette(new Zone("2B"));
-    addZoneToMaquette(new Zone("4A"));
-    addZoneToMaquette(new Zone("4B"));
-    addZoneToMaquette(new Zone("6A"));
-    addZoneToMaquette(new Zone("6B"));
-    addZoneToMaquette(new Zone("8A"));
-    addZoneToMaquette(new Zone("8B"));
-    addZoneToMaquette(new Zone("10A"));
-    addZoneToMaquette(new Zone("10B"));
-    addZoneToMaquette(new Zone("12A"));
-    addZoneToMaquette(new Zone("12B"));
-
+    int i = 20;
+    int j = 20;
+    for (const auto& [key, value] : tracksIlluminations) {
+        int* temp = (int*)malloc(sizeof(int) * 8); // "fuite mémoire" (techniquement vu qu'on free pas, mais le système récupèrera a la fin du programe vu qu'on fait ça qu'une fois de toute façon)
+        for (int i = 0; i < 8; i++)
+        {
+            // * 3 / 8 pour ajuster le ratio avec l'image affiché en 1440 de large
+            temp[i] = value[i] * 3 / 8;
+        }
+       
+        addZoneToMaquette(new Zone(key.c_str(), temp));
+    }
 }
-
 
 bool MaquetteHandler::connectSignalsById(int previousId,int nextId){
     //qDebug() << previousId << " : " <<nextId;

@@ -72,6 +72,7 @@
         "qmessagebox": "cpp",
         "codecvt": "cpp",
         "qlibraryinfo": "cpp",
-        "qregularexpression": "cpp"
+        "qregularexpression": "cpp",
+        "qscopedvaluerollback": "cpp"
     }
 }
