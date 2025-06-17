@@ -6,13 +6,21 @@
 
 //Qt includes
 #include <QObject>
+#include <QPoint>
 
-class LightSignal;
+#define TI_RECT1_X 0
+#define TI_RECT1_Y 1
+#define TI_RECT1_WIDTH 2
+#define TI_RECT1_HEIGHT 3
+#define TI_RECT2_X 4
+#define TI_RECT2_Y 5
+#define TI_RECT2_WIDTH 6
+#define TI_RECT2_HEIGHT 7
 
 class Zone : public QObject{
     Q_OBJECT
     public :
-        explicit Zone(QString name, QObject *parent = nullptr);
+        explicit Zone(QString name, int* hints, QObject *parent = nullptr);
         ~Zone();
 
         //setters
@@ -24,6 +32,13 @@ class Zone : public QObject{
 
         //getters
         QString getName();
+        int* getHint();
+        int GetOrigineX();
+        int GetOrigineY();
+        int GetModificationAreaWidth();
+        int GetModificationAreaHeight();
+        QPoint GetRelativeOrigineRect1();
+        QPoint GetRelativeOrigineRect2();
         bool isZoneEnabled();
         
 
@@ -33,6 +48,7 @@ class Zone : public QObject{
     private :
         QString name;
         bool currentState;
+        int *hint;
 
         Zone *nextZone;
         Zone *previousZone;

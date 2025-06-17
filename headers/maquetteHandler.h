@@ -2,7 +2,6 @@
 #define MAQUETTE_HANDLER_H
 
 
-
 //file includes
 #include "lightSignal.h"
 #include "aiguille.h"
@@ -12,6 +11,10 @@
 #include <QObject>
 #include <QMap>
 #include <QRegularExpression>
+#include <QRect>
+
+#include <map>
+#include <string>
 
 class MaquetteHandler : public QObject {
     Q_OBJECT
@@ -36,7 +39,6 @@ class MaquetteHandler : public QObject {
 
         void updateSignalFromCombo(int id, Aspect newAspect); //probably useless
         void updateZoneFromRadioButton(QString name, bool state);
-        void updateAiguilleFromRadioButton(int id, Direction newDir);
         
         void disableBAL();
         void enableBAL();
@@ -54,13 +56,43 @@ class MaquetteHandler : public QObject {
         
         private:
             //all my objects
-            QMap <int,LightSignal*> lightSignals; //Qmap with all my lightSignals
-            QMap <int,Aiguille*> aiguilles; //Qmap with all my aiguilles
-            QMap <QString,Zone*> zones; //Qmap with all my zones
-
-            Zone* zoneTrain1 = nullptr; //stores the position of the first train
-            Zone* zoneTrain2 = nullptr; //stores the position of the second train (not yet implemented)
-            
+            QMap <int, LightSignal*> lightSignals; //Qmap with all my lightSignals
+            QMap <int, Aiguille*> aiguilles; //Qmap with all my aiguilles
+            QMap <QString, Zone*> zones; //Qmap with all my zones
+            const std::map <std::string, std::array<int, 8>> tracksIlluminations = {
+                //voie 1 selon le sens de circulation
+                //Rect X Start, Rect Y start, Rect Width, Rect Height, LinePointX, LinePointY
+                // 1440x810 ; image originelle : 3840x2160  => 8/3
+                { "1A", { 344, 568, 152, 232, 496, 440, 192, 160 } },
+                { "1B", { 680, 360, 368, 96, 0, 0, 0, 0 } },
+                { "3A", { 1048, 360, 696, 120, 0, 0, 0, 0 } },
+                { "3B", { 1747, 360, 308, 24, 0, 0, 0, 0 } },
+                { "5A", { 2048, 360, 840, 120, 0, 0, 0, 0 } },
+                { "5B", { 2888, 368, 304, 144, 0, 0, 0, 0 } },
+                { "7A", { 3192, 504, 264, 328, 3432, 832, 80, 400 } },
+                { "7B", { 3352, 1232, 136, 280, 0, 0, 0, 0 } },
+                { "9A", { 3176, 1512, 184, 160, 2980, 1672, 232, 120 } },
+                { "9B", { 2656, 1776, 328, 48, 0, 0, 0, 0 } },
+                { "11A", { 2000, 1704, 656, 120, 0, 0, 0, 0 } },
+                { "11B", { 1256, 1800, 744, 24, 0, 0, 0, 0 } },
+                { "13A", { 712, 1704, 544, 120, 0, 0, 0, 0 } },
+                { "13B", { 464, 1568, 248, 184, 0, 0, 0, 0 } },
+                { "15A", { 280, 1112, 184, 456, 0, 0, 0, 0 } },
+                { "15B", { 272, 800, 88, 312, 0, 0, 0, 0 } },
+                //voie 2 selon le sens de circulation
+                { "2A", { 576, 1280, 312, 296, 0, 0, 0, 0 } },
+                { "2B", { 888, 1560, 328, 48, 0, 0, 0, 0 } },
+                { "4A", { 1216, 1584, 640, 16, 1248, 1600, 128, 104 } },
+                { "4B", { 1856, 1584, 376, 16, 0, 0, 0, 0 } },
+                { "6A", { 2240, 1384, 888, 216, 2216, 1600, 272, 104 } },
+                { "6B", { 3120, 1088, 104, 296, 0, 0, 0, 0 } },
+                { "8A", { 3104, 768, 120, 312, 2848, 600, 256, 184 } },
+                { "8B", { 2608, 584, 232, 32, 0, 0, 0, 0 } },
+                { "10A", { 1880, 584, 728, 16, 2224, 480, 256, 104} },
+                { "10B", { 1464, 584, 408, 224, 1080, 808, 1736, 264 } }, //Stockage
+                { "12A", { 856, 480, 608, 144, 568, 624, 312, 288 } },
+                { "12B", { 536, 912, 48, 360, 0, 0, 0, 0 } },
+                };
 
             bool IsBalActive = true; //enables or disables the BAL
 

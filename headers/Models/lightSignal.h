@@ -3,14 +3,16 @@
 
 
 //file includes
-#include "zone.h"
+//#include "signalView.h"
 
 //Qt includes
 #include <QObject>
 #include <QDebug>
 #include <QStringList>
 
-class Zone;
+
+
+
 
 enum SignalType {
     SAVL = 3, 
@@ -37,8 +39,6 @@ class LightSignal : public QObject{
 
         void info();
 
-
-
         //getters
         int getId();
         SignalType getType();
@@ -46,8 +46,6 @@ class LightSignal : public QObject{
         LightSignal* getPrevious();
         LightSignal* getNext();
         bool getisIPCS();
-
-
 
         //setters
         void setAspect(Aspect newAspect);
@@ -75,9 +73,7 @@ class LightSignal : public QObject{
         const SignalType type; //SIGNAL DOESNT CHANGE ITS TYPE
         Aspect currentAspect;
         bool isIPCS;
-
-        //pointers to other objetcs
-        const Zone* protectedZone;
+        
         LightSignal* previousSignal = nullptr;
         LightSignal* nextSignal = nullptr; 
 

@@ -6,8 +6,12 @@
 #include "signalView.h"
 
 //Qt includes
+#include <QObject>
 #include <QWidget>
 #include <QPainter>
+#include <QPaintDevice>
+#include <QPaintEvent>
+
 
 class ZoneView : public QWidget{
     Q_OBJECT

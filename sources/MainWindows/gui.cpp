@@ -1,4 +1,5 @@
 #include "gui.h"
+#include "zone.h"
 #include <iostream>
 
 
@@ -9,10 +10,10 @@ Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
 
 
     this->setWindowTitle("Tableau de contrôle optique"); //Title of gui
-    this->setWindowIcon(QIcon(":/images/train.png"));
+    
 
-    ui->BoutonIPCS->setCheckable(true);
-    connect(ui->BoutonIPCS,&QPushButton::toggled,this,&Gui::hideIPCS);
+    
+
     
 }
 
@@ -42,42 +43,26 @@ void Gui::loadMaquette(MaquetteHandler *handler){
     //pour toutes les aiguilles crée les vues
     for(Aiguille *aiguille : handler->getAllAiguilles()){
         short id = aiguille->getId();
-        if(aiguillePositions.contains(id)){ //-id if for the traversée jonction double aiguilles
+        if(aiguillePositions.contains(id)){
             AiguilleView *view = new AiguilleView(aiguille,this);
-            
-            
             if(aiguillePositions[id].angle == 180){
                 view->flipAiguille();
             }
             view->move(aiguillePositions[id].position);
-           //continue ?
         } else {
             qWarning() << "Error : no placement avaiable for aiguille " << id;
         }
-
-        if(aiguillePositions.contains(-id)){
-            AiguilleView *view = new AiguilleView(aiguille,this);
-            if(aiguillePositions[-id].angle == 180){
-                view->flipAiguille();
-            }
-            view->move(aiguillePositions[-id].position);
-        } else {
-            qWarning() << "Error : no placement avaiable for aiguille " << id;
-        }
-        
-        
-        
     }
 
-    int start = 10;
-
+    //int start = 40;
     //you should place the zoneView widget correctly if it's not definitive solution
     for(Zone *zone : handler->getAllZones()){
         QString name = zone->getName();
         //verification if position is available ??
         ZoneView *view = new ZoneView(zone,this);
-        view->move(QPoint(start+=15,10));
-    }
+        view->move(QPoint(zone->GetOrigineX(), zone->GetOrigineY()));
+        view->stackUnder((QWidget*)this->children()[0]);
+        }
 }
 
 
@@ -93,16 +78,5 @@ void Gui::buttonPressed() {
     //pretty much useless
 }
 
-void Gui::hideIPCS(bool isHidden){
-    const auto signalViews = this->findChildren<SignalView*>();
-    for(SignalView *sigVw : signalViews){
-        if(sigVw->isIPCSView()){
-            if(isHidden){
-                sigVw->hide();
-            } else {
-                sigVw->show();
-            }
-        }
-    }
-    ui->BoutonIPCS->setText(isHidden ?  "Afficher IPCS" : "Masquer IPCS");
-}
+
+

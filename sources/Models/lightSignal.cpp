@@ -70,9 +70,6 @@ void LightSignal::setAspect(Aspect newAspect){
         qWarning() << "Set aspect not successfull";
     }
 
-    //désactivation de zone si signal carré ou sémaphore !!!!!
-
-
 }
 void LightSignal::setId(int newId){
     return; //pretty much useless

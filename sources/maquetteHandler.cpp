@@ -13,9 +13,9 @@ MaquetteHandler::~MaquetteHandler(){
 
 void MaquetteHandler::INIT(){
     //create all the objets
+    SETUP_ZONES();
     SETUP_SIGNALS();
     SETUP_AIGUILLES();
-    SETUP_ZONES();
     
     //connects them up();
     if(!connectSetup()){
@@ -57,7 +57,6 @@ void MaquetteHandler::updateAll(){
 }
 
 void MaquetteHandler::handleObjectUpdate(){
-    //messy or clear enough ?
     QObject* obj = sender();
     if(!obj)return; //nullptr
     if(LightSignal *sig = qobject_cast<LightSignal*>(obj)){ //tries to cast the objet to a signal
@@ -173,26 +172,15 @@ void MaquetteHandler::zoneUpdateFromSensor(const QString &command){
         return;
     } */
 
-
-    //################IMPORTANT##################//
-    //UPDATE THE POSITION OF THE TRAIN INSTEAD !!!
-    //##########################################//
 }
-
-
-// rework these baddies please, these bitches not doing their work correctly :(
 
 void MaquetteHandler::updateSignalFromCombo(int id, Aspect newAspect){
     lightSignals[id]->setAspect(newAspect);
+    qDebug() << "AM NOT USELESS  !!!";
 }
 
 void MaquetteHandler::updateZoneFromRadioButton(QString name, bool state){
     zones[name]->setState(state);
-}
-
-void MaquetteHandler::updateAiguilleFromRadioButton(int id, Direction newDir){
-    qDebug() << "fn call";
-    aiguilles[id]->setDirection(newDir);
 }
 
 void MaquetteHandler::disableBAL(){
@@ -319,46 +307,75 @@ void MaquetteHandler::SETUP_AIGUILLES(){
     addAiguilleToMaquette(new Aiguille(2,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(3,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(4,GAUCHE,this));
-    addAiguilleToMaquette(new Aiguille(5,DROITE,this));
+    addAiguilleToMaquette(new Aiguille(5,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(6,GAUCHE,this));
     addAiguilleToMaquette(new Aiguille(7,GAUCHE,this));
-    addAiguilleToMaquette(new Aiguille(8,DROITE,this));
-    addAiguilleToMaquette(new Aiguille(9,DROITE,this));
-    addAiguilleToMaquette(new Aiguille(11,DROITE,this));
+    addAiguilleToMaquette(new Aiguille(8,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(9,GAUCHE,this));
+    addAiguilleToMaquette(new Aiguille(10,GAUCHE,this));
 
 }
 
 void MaquetteHandler::SETUP_ZONES(){
-    addZoneToMaquette(new Zone("1A")); //voie 1 selon le sens de circulation
-    addZoneToMaquette(new Zone("1B"));
-    addZoneToMaquette(new Zone("3A"));
-    addZoneToMaquette(new Zone("3B"));
-    addZoneToMaquette(new Zone("5A"));
-    addZoneToMaquette(new Zone("5B"));
-    addZoneToMaquette(new Zone("7A"));
-    addZoneToMaquette(new Zone("7B"));
-    addZoneToMaquette(new Zone("9A"));
-    addZoneToMaquette(new Zone("9B"));
-    addZoneToMaquette(new Zone("11A"));
-    addZoneToMaquette(new Zone("11B"));
-    addZoneToMaquette(new Zone("13A"));
-    addZoneToMaquette(new Zone("13B"));
-    addZoneToMaquette(new Zone("15A"));
-    addZoneToMaquette(new Zone("15B"));
 
-    addZoneToMaquette(new Zone("2A")); //voie 2 selon le sens de circulation
-    addZoneToMaquette(new Zone("2B"));
-    addZoneToMaquette(new Zone("4A"));
-    addZoneToMaquette(new Zone("4B"));
-    addZoneToMaquette(new Zone("6A"));
-    addZoneToMaquette(new Zone("6B"));
-    addZoneToMaquette(new Zone("8A"));
-    addZoneToMaquette(new Zone("8B"));
-    addZoneToMaquette(new Zone("10A"));
-    addZoneToMaquette(new Zone("10B"));
-    addZoneToMaquette(new Zone("12A"));
-    addZoneToMaquette(new Zone("12B"));
+    int i = 20;
+    int j = 20;
+    for (const auto& [key, value] : tracksIlluminations) {
+        int* temp = (int*)malloc(sizeof(int) * 8); // "fuite mémoire" (techniquement vu qu'on free pas, mais le système récupèrera a la fin du programe vu qu'on fait ça qu'une fois de toute façon)
+        for (int i = 0; i < 8; i++)
+        {
+            // * 3 / 8 pour ajuster le ratio avec l'image affiché en 1440 de large
+            temp[i] = value[i] * 3 / 8;
+        }
+        /*qDebug() << "Init for : " << key << " values :" << temp[0]
+                 << " " << temp[1]
+                 << " " << temp[2]
+                 << " " << temp[3]
+                 << " " << temp[4]
+                 << " " << temp[5]
+                 << " " << temp[6]
+                 << " " << temp[7]
+                 << " .\r\nFrom : " << value[0]
+                 << " " << value[1]
+                 << " " << value[2]
+                 << " " << value[3]
+                 << " " << value[4]
+                 << " " << value[5]
+                 << " " << value[6]
+                 << " " << value[7]
+                 << " .";*/
+        addZoneToMaquette(new Zone(key.c_str(), temp));
+    }
+/*    addZoneToMaquette(new Zone("1A", new QPoint(i, j))); //voie 1 selon le sens de circulation
+    addZoneToMaquette(new Zone("3A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("1B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("3B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("5A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("5B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("7A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("7B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("9A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("9B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("11A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("11B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("13A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("13B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("15A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("15B", new QPoint(i, j)));
 
+    addZoneToMaquette(new Zone("2A", new QPoint(i, j))); //voie 2 selon le sens de circulation
+    addZoneToMaquette(new Zone("2B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("4A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("4B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("6A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("6B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("8A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("8B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("20A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("20B", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("12A", new QPoint(i, j)));
+    addZoneToMaquette(new Zone("12B", new QPoint(i, j)));
+*/
 }
 
 void MaquetteHandler::SET_ALL_VL(){
