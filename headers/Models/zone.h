@@ -27,6 +27,7 @@ class Zone : public QObject{
 
         //setters
         void setState(bool state);
+        void setHasTrain(bool h);
         void toggleState(); //if on goes off and if off goes on
         void setPreviousZone(Zone* z);
         void setNextZone(Zone *z);
@@ -37,6 +38,7 @@ class Zone : public QObject{
         LightSignal* getProtectionSignal();
         LightSignal* getProtectionSignalIPCS();
         bool isZoneEnabled();
+        bool hasTrain();
         Zone* getPreviousZone();
         Zone* getNextZone();
         
@@ -54,6 +56,7 @@ class Zone : public QObject{
     private :
         QString name;
         bool currentState;
+        bool hasTrainOnIt;
         int *hint;
 
         Zone *nextZone = nullptr;

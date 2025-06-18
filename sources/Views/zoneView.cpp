@@ -55,8 +55,8 @@ void ZoneView::paintEvent(QPaintEvent *event)
         QPixmap mask(qzone.size());
         QPixmap mask2(qzone2.size());
 
-        mask.fill(zone->isZoneEnabled() ? QColor::fromRgb(0, 255, 0) : QColor(255, 0, 0));
-        mask2.fill(zone->isZoneEnabled() ? QColor::fromRgb(0, 255, 0) : QColor(255, 0, 0));
+        mask.fill(!zone->hasTrain() ? QColor::fromRgb(0, 255, 0) : QColor(255, 0, 0));
+        mask2.fill(!zone->hasTrain()? QColor::fromRgb(0, 255, 0) : QColor(255, 0, 0));
 
         painter.drawImage(zone->GetRelativeOrigineRect1(), mask.toImage());
         painter.drawImage(zone->GetRelativeOrigineRect2(), mask2.toImage());

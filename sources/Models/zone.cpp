@@ -2,7 +2,7 @@
 
 
 Zone::Zone(QString name, int* ahint, QObject *parent)
-    :QObject(parent), name(name), currentState(false){
+    :QObject(parent), name(name), currentState(false), hasTrainOnIt(false){
         //qDebug() << "Creation of  zone " << "Z -" << name << (currentState ? "POWERED " : "NOT POWERED");
     this->hint = ahint;
 }
@@ -27,6 +27,10 @@ void Zone::setState(bool state){
     //mise à jour des signaux (tout le bal donc) et TOUJOURS
     //si feu suivant différent de sémaphore ou carré, activer le relais
     //ET IPCS ????????
+}
+
+void Zone::setHasTrain(bool h){
+    this->hasTrainOnIt = h;
 }
 
 void Zone::toggleState(){
@@ -108,6 +112,12 @@ QPoint Zone::GetRelativeOrigineRect2()
 bool Zone::isZoneEnabled(){
     return currentState;
 }
+
+bool Zone::hasTrain(){
+    return hasTrainOnIt;
+}
+
+
 
 Zone* Zone::getPreviousZone(){
     return previousZone;

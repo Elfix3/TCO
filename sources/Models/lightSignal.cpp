@@ -102,7 +102,7 @@ void LightSignal::setAspect(Aspect newAspect){
                 }
                 
 
-                /* if(currentAspect == A){
+                if(currentAspect == A){
                     if(!isIPCS){
                         protectedZone->setState(true);
                         protectedZone->getPreviousZone()->setState(true);
@@ -110,7 +110,7 @@ void LightSignal::setAspect(Aspect newAspect){
                         protectedZone->getNextZone()->setState(true);
                         protectedZone->setState(true);
                     }
-                } */
+                }
         } else {
             qWarning() << "Error : no protected zone for signal " << this->getId();
         } 

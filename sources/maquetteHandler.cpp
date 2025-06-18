@@ -70,7 +70,9 @@ void MaquetteHandler::handleCommand(const QString &command){
     if(IsBalActive){
         if (command.startsWith("/C_E_") || command.startsWith("/C_S_")) {
             Zone *zone = zones[command.mid(5)];
-            
+            CLEAR_TRAIN_ZONES();
+            zone->setHasTrain(true);
+
             if(!zone){qWarning() << "error not a zone"; return;}        
             processDirection(zone);
     
@@ -592,6 +594,12 @@ void MaquetteHandler::SET_ALL_DIR(Direction dir){
 void MaquetteHandler::TURN_OFF_ZONES(){
     for(Zone *z : zones){
         z->setState(false);
+    }
+}
+
+void MaquetteHandler::CLEAR_TRAIN_ZONES(){
+    for(Zone *z : zones){
+        z->setHasTrain(false);
     }
 }
 

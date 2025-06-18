@@ -31,6 +31,7 @@ class MaquetteHandler : public QObject {
             const QMap<int,Aiguille*>& getAllAiguilles();
             const QMap<QString,Zone*>& getAllZones();
 
+            Zone *getTrain1Zone();
             void processDirection(Zone *newZone);
             void BALSignalActivation(Zone *z,LightSignal *s); //used to manage S->A->VL and zone poweroff
             void emitAllStates();
@@ -149,6 +150,7 @@ class MaquetteHandler : public QObject {
             void SET_ALL_VL();
             void SET_ALL_DIR(Direction dir);
             void TURN_OFF_ZONES();
+            void CLEAR_TRAIN_ZONES();
             
             static int getIPCSsig(int sig);
             static int getZoneNum(Zone *z);
