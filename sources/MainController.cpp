@@ -16,14 +16,19 @@ MainController::MainController(QObject *parent)
     myControl = new Control();
     myGui = new Gui();
 
-    bool crashIfNoArduino = false;
+    bool crashIfNoArduino = true;
     qInfo() << "############################################\n";
 
-    if(!mySerialHandler->INIT() && crashIfNoArduino) //qFatal("\033[1;31m\nError: Arduino missing end of the program\033[0m");
+    if(!mySerialHandler->INIT() && crashIfNoArduino) {
+        qCritical("\033[1;31m\nError: Arduino missing end of the program\033[0m");
+        std::cout << "Press enter to leave..." << std::endl;
+        std::cin.get();
+        qFatal();
+    }
     qInfo() << "############################################\n";
     
     myMaquetteHandler->INIT();
-    qInfo() << "############################################\n";
+    qInfo() << "\n############################################\n";
     
     //QMainWindows
     
@@ -76,6 +81,7 @@ MainController::MainController(QObject *parent)
     connect(myControl,&Control::sendAiguilleProtect,myMaquetteHandler,&MaquetteHandler::protectAiguille);
 
     connect(myControl,&Control::resetButtonPressed,myMaquetteHandler,&MaquetteHandler::maquetteReset);
+    QThread::msleep(1000);
     myMaquetteHandler->emitAllStates(); //alows the sync between Control, MaquetteHandler and the actual maquette
 }
 

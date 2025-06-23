@@ -46,6 +46,8 @@ enum Direction {DROITE,GAUCHE};
             
             LightSignal* protectionSignal = nullptr; //on protège l'aiguille  avec un signal avant
             LightSignal* protectionSignal2 = nullptr; //pretty much useless
+
+            bool debugInfos = false;
 };
 
 #endif //AIGUILLE_H

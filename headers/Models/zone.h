@@ -65,6 +65,7 @@ class Zone : public QObject{
         LightSignal *protectionSignal = nullptr; //signal that protects the zone
         LightSignal *protectionSignalIPCS = nullptr;
     
+        bool debugInfos = false;
 };
 
 #endif //ZONE_H

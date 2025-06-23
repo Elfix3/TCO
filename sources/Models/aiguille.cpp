@@ -30,14 +30,14 @@ QVector <LightSignal*>Aiguille::getProtectionSignal(){
 
 void Aiguille::setDirection(Direction newDir){
     if(currentDirection!=newDir){
-        qDebug()<< "Aiguille" << id << "is set to"<< (newDir==DROITE ? "DROITE" : "GAUCHE");
+        if(debugInfos)qDebug()<< "Aiguille" << id << "is set to"<< (newDir==DROITE ? "DROITE" : "GAUCHE");
         currentDirection = newDir;
         for(LightSignal *a : protectionSignals){
             a->setAspect(VL);
         }
         emit positionChanged();
     } else {
-        qWarning() << "Set direction not successfull ";
+        if(debugInfos)qWarning() << "Set direction not successfull ";
     }
 }
 

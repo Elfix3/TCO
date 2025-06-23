@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1014</width>
+    <width>1021</width>
     <height>574</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="AlimTAB">
        <attribute name="title">
@@ -2719,7 +2719,7 @@
         <item row="0" column="0" rowspan="2">
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
-           <string>GroupBox</string>
+           <string/>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>
@@ -2926,7 +2926,7 @@
         <item row="0" column="2">
          <widget class="QGroupBox" name="groupBox_4">
           <property name="title">
-           <string>GroupBox</string>
+           <string/>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>

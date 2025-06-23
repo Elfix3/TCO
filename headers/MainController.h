@@ -14,6 +14,8 @@
 
 //Qt includes
 #include <QObject>
+#include <QThread>
+#include <iostream>
 
 
 class MainController : public QObject {

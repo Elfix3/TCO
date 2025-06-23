@@ -63,7 +63,7 @@ bool LightSignal::getisIPCS(){
 //Setters
 void LightSignal::setAspect(Aspect newAspect){
     if(newAspect != currentAspect && isValidAspect(newAspect)){
-        qDebug() << "Signal" << id << "is set to"<<toString(newAspect).c_str();
+        if(debugInfos)qDebug() << "Signal" << id << "is set to"<<toString(newAspect).c_str();
         currentAspect = newAspect;
         emit aspectChanged();
 
@@ -119,7 +119,7 @@ void LightSignal::setAspect(Aspect newAspect){
 
 
 
-    } else if(debugIsSucessful){
+    } else if(debugInfos){
         qWarning() << "Set aspect not successfull";
     }
 

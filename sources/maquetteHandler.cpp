@@ -556,7 +556,7 @@ bool MaquetteHandler::connectSetup(int setup){
 
 
     if(!connectAiguilleWithSignal(1,3) || !connectAiguilleWithSignal(3,5) || !connectAiguilleWithSignal(5,29)
-    || !connectAiguilleWithSignal(7,11) || !connectAiguilleWithSignal(9,23) || !connectAiguilleWithSignal(11,13)
+    || !connectAiguilleWithSignal(7,11) || !connectAiguilleWithSignal(9,23) || !connectAiguilleWithSignal(11,21)
     || !connectAiguilleWithSignal(2,12) || !connectAiguilleWithSignal(4,18) || !connectAiguilleWithSignal(4,10)
     || !connectAiguilleWithSignal(6,22) || !connectAiguilleWithSignal(6,6) || !connectAiguilleWithSignal(8,24)
         ){

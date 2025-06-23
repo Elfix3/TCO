@@ -12,12 +12,12 @@ Zone::~Zone(){
 
 void Zone::setState(bool state){
     if(currentState!=state){
-        qDebug() << "Zone"<<name<<"is now"<<(state==true ? "powered" : "unpowered");
+        if(debugInfos)qDebug() << "Zone"<<name<<"is now"<<(state==true ? "powered" : "unpowered");
         currentState = state;
         emit powerChanged();
         //bizarre
     } else {
-        qDebug() << "Zone"<<name<<"is now"<<(state==true ? "powered" : "unpowered");
+        if(debugInfos)qDebug() << "Zone"<<name<<"is now"<<(state==true ? "powered" : "unpowered");
         currentState = state;
         emit powerChanged();
     }
