@@ -16,7 +16,7 @@ MainController::MainController(QObject *parent)
     myControl = new Control();
     myGui = new Gui();
 
-    bool crashIfNoArduino = true;
+    bool crashIfNoArduino = false;
     qInfo() << "############################################\n";
 
     if(!mySerialHandler->INIT() && crashIfNoArduino) {
