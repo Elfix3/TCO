@@ -606,7 +606,7 @@ void MaquetteHandler::CLEAR_TRAIN_ZONES(){
 int MaquetteHandler::getIPCSsig(int sig){
     static const QMap<int, int> signalMap = {
         {1,17}, {3,31}, {5,29}, {7,27}, {9,25}, {11,23}, {13,21},{15,19},
-        {2,14},{4,24},{6,22},{8,20},{10,18},{12,16} // Complète avec tes paires
+        {2,14},{4,24},{6,22},{8,20},{10,18},{12,16}
     };
     return signalMap.value(sig, -1);
 }
