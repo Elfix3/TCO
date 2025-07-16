@@ -13,7 +13,7 @@ Gui::Gui(QWidget *parent) : QMainWindow(parent), ui(new Ui::GUI) {
 
     ui->BoutonIPCS->setCheckable(true);
     connect(ui->BoutonIPCS,&QPushButton::toggled,this,&Gui::hideIPCS);
-    
+    connect(ui->secret, &QPushButton::pressed, this, [this]() {emit secret();});
     qInfo()<<"<------------TCO window created------------>\n";
 }
 

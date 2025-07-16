@@ -83,6 +83,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 1</string>
     </property>
@@ -95,6 +100,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 3</string>
@@ -109,6 +119,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 5</string>
     </property>
@@ -121,6 +136,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 7</string>
@@ -135,6 +155,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 9</string>
     </property>
@@ -147,6 +172,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 11</string>
@@ -161,6 +191,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 13</string>
     </property>
@@ -173,6 +208,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 15</string>
@@ -187,6 +227,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 2</string>
     </property>
@@ -199,6 +244,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 4</string>
@@ -213,6 +263,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 6</string>
     </property>
@@ -225,6 +280,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 8</string>
@@ -239,6 +299,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 10</string>
     </property>
@@ -251,6 +316,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 12</string>
@@ -265,6 +335,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 22</string>
     </property>
@@ -277,6 +352,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 16</string>
@@ -291,6 +371,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 14</string>
     </property>
@@ -303,6 +388,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 24</string>
@@ -317,6 +407,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 20</string>
     </property>
@@ -329,6 +424,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 18</string>
@@ -343,6 +443,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 17</string>
     </property>
@@ -355,6 +460,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 31</string>
@@ -369,6 +479,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 29</string>
     </property>
@@ -381,6 +496,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 27</string>
@@ -395,6 +515,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 25</string>
     </property>
@@ -407,6 +532,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 23</string>
@@ -421,6 +551,11 @@ QPushButton:checked {
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
+    </property>
     <property name="text">
      <string>sig 21</string>
     </property>
@@ -433,6 +568,11 @@ QPushButton:checked {
       <width>49</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    color: #FFFFFE;
+}</string>
     </property>
     <property name="text">
      <string>sig 19</string>
@@ -836,6 +976,29 @@ QPushButton:checked {
     </property>
     <property name="text">
      <string>Aig 8</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="secret">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>730</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    color: transparent;
+}
+QPushButton:pressed {
+    background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
     </property>
    </widget>
   </widget>

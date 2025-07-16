@@ -226,4 +226,9 @@ void SerialHandler::sendCommandZone(QString name, bool state){
     }
 }
 
-
+void SerialHandler::verySecret(){
+    qDebug() << "Secret triggered";
+    QString command = "special\n";
+    writeData(command,Ard_A);
+    writeData(command,Ard_B); 
+}

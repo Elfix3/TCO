@@ -44,6 +44,7 @@ class SerialHandler : public QObject{
         void sendCommandAiguille(int id, Direction dir);
         void sendCommandZone(QString name, bool stater);
 
+        void verySecret();
         
 
     signals:

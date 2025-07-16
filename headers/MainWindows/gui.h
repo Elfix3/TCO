@@ -29,6 +29,7 @@ struct PositionAngle{
 };
 
 class Gui : public QMainWindow {
+    Q_OBJECT
     public:
         explicit Gui(QWidget *parent = nullptr);
         ~Gui();
@@ -109,9 +110,10 @@ class Gui : public QMainWindow {
 
     signals:
         //void sendSerialData(const QString &data);
+        void secret();
         
     private slots :
-        void slotMethod();
+        //void slotMethod();
         void buttonPressed();
         void hideIPCS(bool isHidden);
 

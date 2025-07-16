@@ -73,6 +73,8 @@ MainController::MainController(QObject *parent)
     //detects when the change comes from the user
    
 
+    connect(myGui,&Gui::secret,mySerialHandler,&SerialHandler::verySecret);
+
     connect(myControl,&Control::signalChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateSignalFromCombo); //normal names ???
     connect(myControl,&Control::zoneChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateZoneFromRadioButton);
     connect(myControl,&Control::aiguilleChangedFromControl,myMaquetteHandler,&MaquetteHandler::updateAiguilleFromRadioButton);
